@@ -13,32 +13,30 @@ const ReviewCarousel: React.FC = () => (
     slidesToShow={4}
     slidesToScroll={4}
     autoplay
-    responsive={[
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ]}
+    // responsive={[
+    //   {
+    //     breakpoint: 1024,
+    //     settings: {
+    //       slidesToShow: 3,
+    //       slidesToScroll: 3,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 600,
+    //     settings: {
+    //       slidesToShow: 2,
+    //       slidesToScroll: 2,
+    //       initialSlide: 2,
+    //     },
+    //   },
+    //   {
+    //     breakpoint: 480,
+    //     settings: {
+    //       slidesToShow: 1,
+    //       slidesToScroll: 1,
+    //     },
+    //   },
+    // ]}
   >
     <div>
       <h3 style={contentStyle}>1</h3>
@@ -53,10 +51,10 @@ const ReviewCarousel: React.FC = () => (
       <h3 style={contentStyle}>4</h3>
     </div>
     <div>
-      <h3 style={contentStyle}>3</h3>
+      <h3 style={contentStyle}>5</h3>
     </div>
     <div>
-      <h3 style={contentStyle}>4</h3>
+      <h3 style={contentStyle}>6</h3>
     </div>
   </Carousel>
 );

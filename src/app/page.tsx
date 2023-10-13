@@ -1,14 +1,20 @@
+import Partners from "@/components/ui/Partners/Partners";
 import ReviewCarousel from "@/components/ui/Reviews/ReviewCarousel";
+import HeroSlider from "@/components/ui/heroSlider/HeroSlider";
+import SoloPackage from "@/components/ui/soloPackage/SoloPackage";
+import TourPackage from "@/components/ui/tourPackage/TourPackage";
 import { LoadingOutlined } from "@ant-design/icons";
-import { Spin } from "antd";
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 export default function Home() {
   return (
-    <h1 className="text-3xl font-bold underline h-96">
-      Hello world!
-      <Spin indicator={antIcon} />
+    <div>
+      <HeroSlider />
+      <TourPackage />
+      <SoloPackage />
+      <Partners />
       <ReviewCarousel />
-    </h1>
+      {/* <AboutUs /> */}
+    </div>
   );
 }
