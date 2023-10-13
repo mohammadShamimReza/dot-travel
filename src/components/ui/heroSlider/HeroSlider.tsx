@@ -17,13 +17,25 @@ const HeroSlider: React.FC = () => (
   <div className=" ">
     <Carousel autoplay>
       <div className="w-full h-96">
-        <Image src={heroImage1} width={1246} alt="hrro bannar 1" />
+        <Image
+          src={heroImage1}
+          style={{ height: "100%" }}
+          alt="hrro bannar 1"
+        />
       </div>
       <div className="w-full h-96">
-        <Image src={heroImage2} width={1246} alt="hrro bannar 1" />
+        <Image
+          src={heroImage2}
+          style={{ height: "100%" }}
+          alt="hrro bannar 1"
+        />
       </div>
       <div className="w-full h-96">
-        <Image src={heroImage3} width={1246} alt="hrro bannar 1" />
+        <Image
+          src={heroImage3}
+          style={{ height: "100%" }}
+          alt="hrro bannar 1"
+        />
       </div>
     </Carousel>
   </div>

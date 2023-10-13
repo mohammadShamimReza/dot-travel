@@ -8,7 +8,7 @@ interface TourPackageProps {
   tourPackage: TourPackageData;
 }
 
-const TourCart: React.FC<TourPackageProps> = ({ tourPackage }) => {
+const TourCartContant: React.FC<TourPackageProps> = ({ tourPackage }) => {
   const {
     title = "Tour Package",
     description = "Tour Package Description and Features",
@@ -61,4 +61,4 @@ const TourCart: React.FC<TourPackageProps> = ({ tourPackage }) => {
   );
 };
 
-export default TourCart;
+export default TourCartContant;

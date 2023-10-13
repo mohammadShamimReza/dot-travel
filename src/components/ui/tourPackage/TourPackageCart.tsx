@@ -1,7 +1,7 @@
-import TourCart from "./TourCart";
+import TourCartContant from "./TourCartContant";
 import { TourPackageData } from "./tourCommon";
 
-const TourPage = () => {
+const TourPackageCart = () => {
   // Define your tour package data
   const tourPackagesdata: TourPackageData[] = [
     {
@@ -82,11 +82,11 @@ const TourPage = () => {
     <div className="flex justify-center align-middle">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 ">
         {tourPackagesdata.map((tourPackage, index) => (
-          <TourCart key={index} tourPackage={tourPackage} />
+          <TourCartContant key={index} tourPackage={tourPackage} />
         ))}
       </div>
     </div>
   );
 };
 
-export default TourPage;
+export default TourPackageCart;
