@@ -1,5 +1,5 @@
 import Partners from "@/components/ui/Partners/Partners";
-import ReviewCarousel from "@/components/ui/Reviews/ReviewCarousel";
+import ReviewContantCart from "@/components/ui/Reviews/ReviewContantCart";
 import HeroSlider from "@/components/ui/heroSlider/HeroSlider";
 import SoloPackageCart from "@/components/ui/soloPackage/SoloPackageCart";
 import TourPackageCart from "@/components/ui/tourPackage/TourPackageCart";
@@ -14,7 +14,10 @@ export default function Home() {
         <HeroSlider />
       </div>
       <div className="mt-12">
-        <div className="">Our Special Tour</div>
+        <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-pink-500">
+          Our Special Tour
+        </div>
+
         <div className="m-11">
           <TourPackageCart />
         </div>
@@ -25,9 +28,9 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="">
+      <div className="mt-12">
         <div className="">Our Special Tour</div>
-        <div className="">
+        <div className="m-11">
           {" "}
           <SoloPackageCart />
         </div>
@@ -38,11 +41,17 @@ export default function Home() {
           </button>
         </div>
       </div>
+
       <div className="">
+        <h1 className="text-center">Trusted By</h1>
         <Partners />
       </div>
       <div className="">
-        <ReviewCarousel />
+        <p className="text-center">Happy Users</p>
+        <div className="m-10">
+          {" "}
+          <ReviewContantCart />
+        </div>
       </div>
       {/* <AboutUs /> */}
     </div>

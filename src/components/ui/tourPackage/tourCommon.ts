@@ -1,7 +1,7 @@
 export interface TourPackageData {
   title: string;
   description: string;
-  images: string[];
+  images: string | any;
   pricing: string;
   availability: string;
   locationFrom: string;

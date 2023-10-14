@@ -1,5 +1,6 @@
 "use client";
 
+import { UpOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 
 const ScrollToTopButton = () => {
@@ -30,12 +31,12 @@ const ScrollToTopButton = () => {
 
   return (
     <button
-      className={`fixed bottom-4 right-4 rounded-full p-2 outline-none transition-opacity duration-200 ${
+      className={`h-10 w-10 bg-slate-600 text-slate-100  fixed bottom-4 right-4 rounded-full p-2 outline-none transition-opacity duration-200 ${
         isVisible ? "opacity-100" : "opacity-0"
       }`}
       onClick={scrollToTop}
     >
-      Go to top
+      <UpOutlined className="" />
     </button>
   );
 };

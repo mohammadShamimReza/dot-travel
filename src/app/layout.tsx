@@ -25,12 +25,13 @@ export default function RootLayout({
           <div className="">
             <NavBar />
             <div className="min-h-screen flex justify-center m-4">
-              <div className="w-full max-w-7xl p-4 border border-b-0 border-t-0  border-r-gray-200 border-l-gray-200 dark:border-l-gray-600 dark:border-r-gray-600 ">
+              <div className="w-full max-w-7xl p-4     ">
                 {children}
+                <ScrollToTopButton />
+                <hr />
+                <Footer />
               </div>
             </div>
-            <ScrollToTopButton />
-            <Footer />
           </div>
         </Providers>
       </body>

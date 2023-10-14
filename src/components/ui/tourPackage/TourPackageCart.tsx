@@ -1,3 +1,6 @@
+import heroImage1 from "../../../assets/heroImage1.jpg";
+import heroImage2 from "../../../assets/heroImage2.jpg";
+import heroImage3 from "../../../assets/heroImage3.jpg";
 import TourCartContant from "./TourCartContant";
 import { TourPackageData } from "./tourCommon";
 
@@ -7,7 +10,7 @@ const TourPackageCart = () => {
     {
       title: "Tour Package 1",
       description: "Tour Package Description and Features",
-      images: [], // You can add image URLs here
+      images: [heroImage1], // You can add image URLs here
       pricing: "455",
       availability: "INSTOCK",
       locationFrom: "Dhaka",
@@ -19,7 +22,7 @@ const TourPackageCart = () => {
     {
       title: "Tour Package 2",
       description: "Another Tour Package Description",
-      images: [], // You can add image URLs here
+      images: [heroImage2],
       pricing: "550",
       availability: "OUTOFSTOCK",
       locationFrom: "Dhaka",
@@ -31,7 +34,7 @@ const TourPackageCart = () => {
     {
       title: "Tour Package 2",
       description: "Another Tour Package Description",
-      images: [], // You can add image URLs here
+      images: [heroImage1], // You can add image URLs here
       pricing: "550",
       availability: "OUTOFSTOCK",
       locationFrom: "Dhaka",
@@ -43,7 +46,7 @@ const TourPackageCart = () => {
     {
       title: "Tour Package 2",
       description: "Another Tour Package Description",
-      images: [], // You can add image URLs here
+      images: [heroImage2], // You can add image URLs here
       pricing: "550",
       availability: "OUTOFSTOCK",
       locationFrom: "Dhaka",
@@ -55,7 +58,7 @@ const TourPackageCart = () => {
     {
       title: "Tour Package 2",
       description: "Another Tour Package Description",
-      images: [], // You can add image URLs here
+      images: [heroImage3], // You can add image URLs here
       pricing: "550",
       availability: "OUTOFSTOCK",
       locationFrom: "Dhaka",
@@ -67,7 +70,7 @@ const TourPackageCart = () => {
     {
       title: "Tour Package 2",
       description: "Another Tour Package Description",
-      images: [], // You can add image URLs here
+      images: [heroImage1], // You can add image URLs here
       pricing: "550",
       availability: "OUTOFSTOCK",
       locationFrom: "Dhaka",
