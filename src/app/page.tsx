@@ -1,8 +1,8 @@
 import Partners from "@/components/ui/Partners/Partners";
 import ReviewContantCart from "@/components/ui/Reviews/ReviewContantCart";
 import HeroSlider from "@/components/ui/heroSlider/HeroSlider";
-import SoloPackageCart from "@/components/ui/soloPackage/SoloPackageCart";
-import TourPackageCart from "@/components/ui/tourPackage/TourPackageCart";
+import TourPackageCart from "@/components/ui/packages/TourPackageCart";
+import SoloPackageCart from "@/components/ui/solo/SoloPackageCart";
 import { DoubleRightOutlined, LoadingOutlined } from "@ant-design/icons";
 import Link from "next/link";
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
@@ -27,9 +27,9 @@ export default function Home() {
         </div>
         <div className="text-right">
           <button className="transition-transform transform hover:scale-105 text-pink-500 ">
-            <Link href="/package-tour">
+            <Link href="/package">
               {" "}
-              See more Tours <DoubleRightOutlined />
+              See more Packages <DoubleRightOutlined />
             </Link>{" "}
           </button>
         </div>
@@ -50,7 +50,7 @@ export default function Home() {
 
         <div className="text-right pt-10">
           <button className="transition-transform transform hover:scale-105 text-pink-500 ">
-            <Link href="/package-tour" className="">
+            <Link href="/solo" className="">
               {" "}
               See more Rooms <DoubleRightOutlined />
             </Link>{" "}

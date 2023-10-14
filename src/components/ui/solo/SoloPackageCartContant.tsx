@@ -2,7 +2,7 @@ import { Card, Carousel } from "antd";
 import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 import heroImage1 from "../../../assets/heroImage1.jpg";
-import { TourPackageData } from "../tourPackage/tourCommon";
+import { TourPackageData } from "../packages/tourCommon";
 
 interface TourPackageProps {
   tourPackage: TourPackageData;
