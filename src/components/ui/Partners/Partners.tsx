@@ -9,7 +9,7 @@ import conpanyLogo4 from "../../../assets/companyLogo4.jpeg";
 function Partners() {
   return (
     <div className="flex justify-center align-middle">
-      <div className="p-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-20">
+      <div className="p-3 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-20">
         <Image
           src={conpanyLogo1}
           height={50}
@@ -44,7 +44,14 @@ function Partners() {
           width={50}
           alt="host image"
           className="w-24 h-24 rounded-2xl border-2 "
-        />
+        />{" "}
+        <Image
+          src={conpanyLogo4}
+          height={50}
+          width={50}
+          alt="host image"
+          className="w-24 h-24 rounded-2xl border-2 "
+        />{" "}
       </div>
     </div>
   );

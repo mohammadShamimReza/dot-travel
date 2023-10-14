@@ -28,7 +28,6 @@ export default function RootLayout({
               <div className="w-full max-w-7xl p-4     ">
                 {children}
                 <ScrollToTopButton />
-                <hr />
                 <Footer />
               </div>
             </div>

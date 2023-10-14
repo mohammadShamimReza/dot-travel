@@ -83,7 +83,7 @@ const TourPackageCart = () => {
 
   return (
     <div className="flex justify-center align-middle">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 ">
         {tourPackagesdata.map((tourPackage, index) => (
           <TourCartContant key={index} tourPackage={tourPackage} />
         ))}

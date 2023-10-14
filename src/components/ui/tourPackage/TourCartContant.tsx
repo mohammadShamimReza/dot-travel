@@ -46,7 +46,7 @@ const TourCartContant: React.FC<TourPackageProps> = ({ tourPackage }) => {
                   height={100}
                   style={{ width: "100%" }}
                   alt="hrro bannar 1"
-                  className="rounded-xl border-2"
+                  className="rounded-xl rounded-b-none "
                 />
               </div>
             )

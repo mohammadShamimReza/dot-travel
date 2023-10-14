@@ -48,7 +48,7 @@ const SoloPackageCartContant: React.FC<TourPackageProps> = ({
                     // height={100}
                     style={{ width: "100%" }}
                     alt="hrro bannar 1"
-                    className="rounded-lg border-2"
+                    className="rounded-xl rounded-b-none"
                   />
                 </div>
               )
