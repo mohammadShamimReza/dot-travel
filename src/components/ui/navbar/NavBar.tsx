@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { RxAvatar } from "react-icons/rx";
-import ThemeToggle from "./ThemeToggle";
 
 function NavBar() {
   return (
@@ -20,14 +19,15 @@ function NavBar() {
           </div>
         </div>
         <div className="flex items-center space-x-4">
-          <div>
-            <ThemeToggle />
-          </div>
-
           <div className="flex items-center space-x-2">
-            <Link href="/about">
+            <Link href="/package">
               <button className="text-gray-600 dark:text-white flex items-center gap-2  p-2 rounded transition duration-300 transform hover:scale-110 cursor-pointer">
-                About
+                Tour package
+              </button>
+            </Link>
+            <Link href="/solo">
+              <button className="text-gray-600 dark:text-white flex items-center gap-2  p-2 rounded transition duration-300 transform hover:scale-110 cursor-pointer">
+                Solo tour
               </button>
             </Link>
             <Link href="/about">
@@ -37,7 +37,7 @@ function NavBar() {
             </Link>
             <Link href="/about">
               <button className="text-gray-600 dark:text-white flex items-center gap-2  p-2 rounded transition duration-300 transform hover:scale-110 cursor-pointer">
-                About
+                Contact
               </button>
             </Link>
 
