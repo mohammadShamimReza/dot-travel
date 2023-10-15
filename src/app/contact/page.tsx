@@ -1,5 +1,11 @@
+import Contact from "./ContactForm";
+
 function page() {
-  return <div className="min-h-screen">page</div>;
+  return (
+    <div>
+      <Contact />
+    </div>
+  );
 }
 
 export default page;

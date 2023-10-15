@@ -68,7 +68,7 @@ function NavBar() {
             >
               {/* <Button className=""> */}
               {/* <button className="border-none"> */}
-              <RxAvatar className="w-8 h-8 hover:text-pink-500 text-pink-300" />
+              <RxAvatar className="w-8 h-8 hover:text-pink-600 text-pink-500" />
               {/* </button> */}
               {/* </Button> */}
             </Dropdown>
