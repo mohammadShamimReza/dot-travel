@@ -1,0 +1,90 @@
+"use client";
+import { useUpdateUserMutation, useUsersQuery } from "@/redux/api/userApi";
+import { IUser } from "@/types";
+import { Button, Modal, Select, message } from "antd";
+import { useState } from "react";
+import { AiOutlineUserAdd } from "react-icons/ai";
+
+const { Option } = Select;
+
+function AddAdminModal() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUserId, setSelectedUserId] = useState(null);
+  const [updateUser] = useUpdateUserMutation();
+  console.log(selectedUserId);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleOk = async () => {
+    try {
+      message.loading("creating Admin");
+
+      const res = await updateUser({
+        id: selectedUserId,
+        body: { role: "admin" },
+      }).unwrap();
+      if (res?.id) {
+        message.success("Admin added Successfully Updated!");
+      }
+    } catch (err: any) {
+      console.error(err.message);
+    }
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+  const { data, isLoading } = useUsersQuery({
+    role: "user",
+  });
+  const user = data?.data;
+  return (
+    <div>
+      <button
+        onClick={showModal}
+        className=" flex justify-center items-center pb-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125 text-center"
+      >
+        Add Admin
+        <AiOutlineUserAdd className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-100" />
+      </button>
+      <Modal
+        title="Add Admin"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        footer={[
+          <Button key="cancel" className="bg-gray-100" onClick={handleCancel}>
+            Cancel
+          </Button>,
+          <Button
+            key="ok"
+            onClick={handleOk}
+            className="bg-pink-500 text-white w-20"
+          >
+            OK
+          </Button>,
+        ]}
+      >
+        <Select
+          showSearch
+          style={{ width: 200 }}
+          placeholder="Select an email"
+          optionFilterProp="children"
+          onChange={(value) => setSelectedUserId(value)}
+          value={selectedUserId}
+        >
+          {user?.map((user: IUser) => (
+            <Option key={user.id} value={user.id}>
+              {user.email}
+            </Option>
+          ))}
+        </Select>
+      </Modal>
+    </div>
+  );
+}
+
+export default AddAdminModal;

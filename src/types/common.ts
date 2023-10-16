@@ -30,7 +30,7 @@ export interface IDepartment {
 
 
 
-export interface IAdmin {
+export interface IUser {
   id: string;
   firstName: string;
   lastName: string;
