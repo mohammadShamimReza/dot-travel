@@ -1,4 +1,3 @@
-import { IAdmin } from "@/types";
 import { tagTypes } from "../tag-types";
 import { baseApi } from "./baseApi";
 const URL = "/users";
@@ -13,11 +12,11 @@ export const adminApi = baseApi.injectEndpoints({
           params: arg,
         };
       },
-      transformResponse: (response: IAdmin[]) => {
-        return {
-          admins: response,
-        };
-      },
+      // transformResponse: (response: IAdmin[]) => {
+      //   return {
+      //     admins: response,
+      //   };
+      // },
       providesTags: [tagTypes.admin],
     }),
   }),
