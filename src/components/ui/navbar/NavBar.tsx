@@ -1,32 +1,12 @@
-import type { MenuProps } from "antd";
-import { Dropdown } from "antd";
 import Link from "next/link";
-import { RxAvatar } from "react-icons/rx";
+import NavbarDropdown from "./NavbarDropdown";
 
-const items: MenuProps["items"] = [
-  {
-    key: "1",
-    label: (
-      <Link rel="noopener noreferrer" href="/login">
-        Log In
-      </Link>
-    ),
-  },
-  {
-    key: "2",
-    label: (
-      <Link rel="noopener noreferrer" href="/signup">
-        Sign Up
-      </Link>
-    ),
-  },
-];
 function NavBar() {
   return (
     <nav className="p-4 border border-t-0 border-l-0 border-r-0 border-b-gray-200 dark:border-b-gray-600">
       <div className="flex items-center justify-between">
         <Link href="/">
-          <div className="p-2">Dot-travel</div>
+          <p className="p-2">Dot-travel</p>
         </Link>
         <div>
           <div className="relative mt-2 ">
@@ -61,17 +41,7 @@ function NavBar() {
               </button>
             </Link>
 
-            <Dropdown
-              menu={{ items }}
-              placement="bottom"
-              className="cursor-pointer"
-            >
-              {/* <Button className=""> */}
-              {/* <button className="border-none"> */}
-              <RxAvatar className="w-8 h-8 hover:text-pink-600 text-pink-500" />
-              {/* </button> */}
-              {/* </Button> */}
-            </Dropdown>
+            <NavbarDropdown />
           </div>
         </div>
       </div>
