@@ -50,7 +50,6 @@ function NavbarDropdown() {
   const items = role ? loginItems : withoutLoginItems;
   const avatarRef = useRef(null);
 
-  console.log(role);
   return (
     <div>
       {" "}

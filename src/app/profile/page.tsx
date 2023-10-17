@@ -1,10 +1,9 @@
-"use client";
-import SignupForm from "./SighUpForm";
+import ProfileContant from "./ProfileContant";
 
 function page() {
   return (
     <div className="min-h-screen">
-      <SignupForm />
+      <ProfileContant />
     </div>
   );
 }

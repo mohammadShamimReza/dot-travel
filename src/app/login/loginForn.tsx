@@ -38,15 +38,7 @@ const LoginForm: React.FC = () => {
         storeUserInfo({ accessToken: res?.accessToken });
         const { role } = getUserInfo() as any;
         console.log(role, "form role");
-        if (role === "super_admin") {
-          router.push("/super_admin");
-        }
-        if (role === "admin") {
-          router.push("/admin");
-        }
-        if (role === "host") {
-          router.push("/host");
-        }
+
         message.success("User logged in successfully!");
       } else {
         message.error("User login was not successful! Please try again.");

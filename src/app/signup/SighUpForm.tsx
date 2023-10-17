@@ -1,5 +1,12 @@
 "use client";
+import {
+  useCreateUserMutation,
+  useUserLoginMutation,
+} from "@/redux/api/authApi";
+import { getUserInfo, storeUserInfo } from "@/services/auth.service";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { message } from "antd";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -8,7 +15,43 @@ interface SignupFormProps {
   onSubmit: (data: any) => void;
 }
 
-const SignupForm: React.FC<SignupFormProps> = ({ onSubmit }) => {
+const SignupForm: React.FC = () => {
+  const [createUser] = useCreateUserMutation();
+  const [userLogin] = useUserLoginMutation();
+  const router = useRouter();
+
+  const handleSignup = async (data: any) => {
+    // Handle signup logic here
+    delete data.terms;
+    delete data.repassword;
+
+    data.role = "user";
+    try {
+      const result = await createUser({ ...data }).unwrap();
+      message.loading("Creating User!");
+      console.log(result);
+
+      const logIndata = { email: data.email, password: data.password };
+      const res = await userLogin({ ...logIndata }).unwrap();
+      message.loading("Creating User!");
+
+      if (res?.accessToken) {
+        storeUserInfo({ accessToken: res?.accessToken });
+        const { role } = getUserInfo() as any;
+        router.push("/profile");
+        console.log(role, "form role");
+
+        message.success("User log in successfully!");
+      } else {
+        message.error("User log was not successful! Please try again.");
+      }
+    } catch (err: any) {
+      console.log(err.message, "this is error message");
+      message.error("An error occurred while logging in. Please try again.");
+    }
+    console.log(data);
+  };
+
   const validationSchema = yup.object().shape({
     firstName: yup.string().required("First Name is required"),
     lastName: yup.string().required("Last Name is required"),
@@ -21,13 +64,12 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit }) => {
       .string()
       .oneOf([yup.ref("password"), undefined], "Passwords must match")
       .required("Please re-enter your password"),
-    district: yup.string().required("District is required"),
-    division: yup.string().required("Division is required"),
-    village: yup.string().required("Village is required"),
+    address: yup.string().required("Address is required"),
+
     phone: yup
       .string()
       //   .matches(/^\d{10}$/, "Invalid phone number")
-      .required("Phone is required"),
+      .required("contactNo is required"),
     terms: yup.boolean().oneOf([true], "Terms and Conditions must be accepted"),
   });
 
@@ -46,11 +88,11 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit }) => {
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-md m-auto p-6 bg-white rounded-lg shadow-md">
+      <div className="w-full max-w-md m-auto p-6 bg-white rounded-lg shadow-md mb-40">
         <h1 className="text-2xl text-center mb-4 font-semibold text-pink-600">
           Sign Up
         </h1>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={handleSubmit(handleSignup)} className="space-y-4">
           <div>
             <label className="block text-sm text-gray-600">First Name</label>
             <Controller
@@ -141,9 +183,9 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit }) => {
             )}
           </div>
           <div>
-            <label className="block text-sm text-gray-600">District</label>
+            <label className="block text-sm text-gray-600">Address</label>
             <Controller
-              name="district"
+              name="address"
               control={control}
               render={({ field }) => (
                 <input
@@ -153,44 +195,11 @@ const SignupForm: React.FC<SignupFormProps> = ({ onSubmit }) => {
                 />
               )}
             />
-            {errors.district && (
-              <p className="text-red-500 text-xs">{errors.district.message}</p>
+            {errors.address && (
+              <p className="text-red-500 text-xs">{errors.address.message}</p>
             )}
           </div>
-          <div>
-            <label className="block text-sm text-gray-600">Division</label>
-            <Controller
-              name="division"
-              control={control}
-              render={({ field }) => (
-                <input
-                  {...field}
-                  type="text"
-                  className="w-full border p-2 rounded-md"
-                />
-              )}
-            />
-            {errors.division && (
-              <p className="text-red-500 text-xs">{errors.division.message}</p>
-            )}
-          </div>
-          <div>
-            <label className="block text-sm text-gray-600">Village</label>
-            <Controller
-              name="village"
-              control={control}
-              render={({ field }) => (
-                <input
-                  {...field}
-                  type="text"
-                  className="w-full border p-2 rounded-md"
-                />
-              )}
-            />
-            {errors.village && (
-              <p className="text-red-500 text-xs">{errors.village.message}</p>
-            )}
-          </div>
+
           <div>
             <label className="block text-sm text-gray-600">Phone Number</label>
             <Controller
