@@ -46,6 +46,25 @@ export interface IUser {
   profileImg: string;
 }
 
+export interface IPackageCategory {
+  id: string;
+  title: string;
+}
+
+export interface IPackage {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  from: string;
+  to: string;
+  status: string;
+  packageImage: string;
+  maxUser: number;
+  destination: string;
+  packageCategoryId: string;
+}
+
 export interface Guardian {
   fatherName: string;
   fatherOccupation: string;

@@ -1,52 +1,39 @@
 "use client";
+
 import {
-  useDeletePackageTourMutation,
-  usePackageTourQuery,
-} from "@/redux/api/packageApi";
-import { IPackage } from "@/types";
+  useDeletePackageCategoryMutation,
+  usePackageCategoryQuery,
+} from "@/redux/api/packageCategoryApi";
+import { IPackageCategory } from "@/types";
 import { Avatar, Card, message } from "antd";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { AiFillDelete } from "react-icons/ai";
-import { RxAvatar } from "react-icons/rx";
-import AddPackageModal from "../modal/package/AddPackageModal";
-import EditPackageModal from "../modal/package/EditPackageModal";
+import { MdTravelExplore } from "react-icons/md";
+import AddPackageCategoryModal from "../modal/package_category/AddPackageCategoryModal";
+import EditPackageCategoryModal from "../modal/package_category/EditPackageCategoryModal";
 
-function Manage_admin() {
+function Manage_package_category() {
   const loadingData = [1, 2, 3, 4];
-  const { data, isLoading } = usePackageTourQuery({});
+  const { data, isLoading } = usePackageCategoryQuery({});
   console.log(data);
-  const [deletePackageTour] = useDeletePackageTourMutation();
+  const [deletePackageCategory] = useDeletePackageCategoryMutation();
 
-  const packages = data;
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const packageCategorys = data;
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
   const avatarRef = useRef(null);
 
-  const handleDeletePackage = async (id: string) => {
+  const handleDeletePackageCategory = async (id: string) => {
     try {
       message.loading("Deleteting package category");
-      const result = await deletePackageTour(id);
+      const result = await deletePackageCategory(id);
       console.log(result);
-
-      if (result?.data === undefined) {
+      if (result) {
         message.success("package category deleted successfully");
       }
     } catch (error) {
       message.success("package category not deleted successfully");
     }
   };
-
   if (!data) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -67,33 +54,28 @@ function Manage_admin() {
 
   return (
     <>
-      <AddPackageModal />
+      <AddPackageCategoryModal />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {packages?.map((packaged: IPackage) => (
+        {packageCategorys?.map((packageCategory: IPackageCategory) => (
           <Card
-            key={packaged.id}
-            title={packaged.title}
+            key={packageCategory.id}
+            title="package-category"
             extra={<a href="#"></a>}
             style={{ width: 250 }}
           >
             <div ref={avatarRef} className="flex justify-center align-middle">
-              <RxAvatar className="w-8 h-8 hover:text-pink-600 text-pink-500" />
+              <MdTravelExplore className="w-8 h-8 hover:text-pink-600 text-pink-500" />
             </div>
-            <p>Price: {packaged.price}</p>
-            <p>from: {packaged.from}</p>
-            <p>to: {packaged.to}</p>
-            <p>id: {packaged.id}</p>
-
-            <p>Price: {packaged.status}</p>
-
+            <p>{packageCategory.title}</p>
             <br />
             <p className="flex justify-evenly">
               <div className="">
-                <EditPackageModal packaged={packaged} />
+                <EditPackageCategoryModal packageCategory={packageCategory} />
               </div>
-
-              <button onClick={() => handleDeletePackage(packaged.id)}>
+              <button
+                onClick={() => handleDeletePackageCategory(packageCategory.id)}
+              >
                 {" "}
                 <AiFillDelete className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
               </button>
@@ -105,4 +87,4 @@ function Manage_admin() {
   );
 }
 
-export default Manage_admin;
+export default Manage_package_category;

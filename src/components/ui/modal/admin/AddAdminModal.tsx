@@ -3,7 +3,6 @@ import { useUpdateUserMutation, useUsersQuery } from "@/redux/api/userApi";
 import { IUser } from "@/types";
 import { Button, Modal, Select, message } from "antd";
 import { useState } from "react";
-import { AiOutlineUserAdd } from "react-icons/ai";
 
 const { Option } = Select;
 
@@ -42,14 +41,16 @@ function AddAdminModal() {
   });
   const user = data?.data;
   return (
-    <div>
-      <button
-        onClick={showModal}
-        className=" flex justify-center items-center pb-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125 text-center"
-      >
-        Add Admin
-        <AiOutlineUserAdd className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-100" />
-      </button>
+    <div className="">
+      <div className="pb-5">
+        <button
+          onClick={showModal}
+          className="  border rounded w-32 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125 text-center"
+        >
+          Add Package
+        </button>
+      </div>
+
       <Modal
         title="Add Admin"
         open={isModalOpen}

@@ -1,12 +1,32 @@
 "use client";
 import { useUsersByIdQuery } from "@/redux/api/userApi";
 import { getUserInfo } from "@/services/auth.service";
-import { Avatar } from "antd";
+import { Avatar, Card } from "antd";
+import Meta from "antd/es/card/Meta";
 
 function ProfileContant() {
   const { id, role, email } = getUserInfo() as any;
   const { data, isLoading } = useUsersByIdQuery(id);
   console.log(id, data);
+
+  if (!data) {
+    return (
+      <div className="flex flex-col items-center justify-center mt-6">
+        <Avatar size={200} src={data?.profileImg} />
+        <br />
+        <br />
+        <Card style={{ width: 400, marginTop: 16 }} loading={true}>
+          <Meta
+            avatar={
+              <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
+            }
+            title="Card title"
+            description="This is the description"
+          />
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div>

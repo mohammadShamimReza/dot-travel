@@ -42,6 +42,22 @@ const loginItems: MenuProps["items"] = [
       </Link>
     ),
   },
+  {
+    key: "3",
+    label: (
+      <Link rel="noopener noreferrer" href="/setting">
+        Setting
+      </Link>
+    ),
+  },
+  {
+    key: "4",
+    label: (
+      <Link rel="noopener noreferrer" href="/">
+        log out
+      </Link>
+    ),
+  },
 ];
 
 function NavbarDropdown() {

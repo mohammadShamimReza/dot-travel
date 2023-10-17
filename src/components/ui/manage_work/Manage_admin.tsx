@@ -1,11 +1,11 @@
 "use client";
-import EditModal from "@/components/ui/editModal/EditModal";
-import AddAdminModal from "@/components/ui/modal/AddAdminModal";
 import { useDeleteUserMutation, useUsersQuery } from "@/redux/api/userApi";
 import { IUser } from "@/types";
 import { Avatar, Card, message } from "antd";
-import { useState } from "react";
-import { AiFillDelete, AiFillEdit } from "react-icons/ai";
+import { useRef, useState } from "react";
+import { AiFillDelete } from "react-icons/ai";
+import { RxAvatar } from "react-icons/rx";
+import AddAdminModal from "../modal/admin/AddAdminModal";
 
 function Manage_admin() {
   const loadingData = [1, 2, 3, 4];
@@ -18,17 +18,19 @@ function Manage_admin() {
   const admins = data?.data;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
+  // const showModal = () => {
+  //   setIsModalOpen(true);
+  // };
 
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
+  // const handleOk = () => {
+  //   setIsModalOpen(false);
+  // };
 
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
+  // const handleCancel = () => {
+  //   setIsModalOpen(false);
+  // };
+  const avatarRef = useRef(null);
+
   const handleDeleteAdmin = async (id: string) => {
     try {
       message.loading("Deleteting Admin");
@@ -68,11 +70,14 @@ function Manage_admin() {
             extra={<a href="#"></a>}
             style={{ width: 250 }}
           >
+            <div ref={avatarRef} className="flex justify-center align-middle">
+              <RxAvatar className="w-8 h-8 hover:text-pink-600 text-pink-500" />
+            </div>
             <p>{admin.email}</p>
             <p>{admin.phone}</p>
             <br />
             <p className="flex justify-evenly">
-              <div className="">
+              {/* <div className="">
                 <AiFillEdit
                   onClick={showModal}
                   className="h-5 w-5 hover:cursor-pointer transition duration-300 transform hover:scale-125"
@@ -83,7 +88,7 @@ function Manage_admin() {
                   handleOk={handleOk}
                   admins={admins}
                 />
-              </div>
+              </div> */}
 
               <button onClick={() => handleDeleteAdmin(admin.id)}>
                 {" "}
