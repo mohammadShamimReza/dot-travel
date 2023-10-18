@@ -1,12 +1,15 @@
 "use client";
-import { useCreateFAQMutation } from "@/redux/api/faqApi";
+import { useUpdateBlogMutation } from "@/redux/api/blogApi";
+import { IBlog } from "@/types";
 import { Modal, message } from "antd";
 import { useState } from "react";
+import { AiFillEdit } from "react-icons/ai";
 
-function AddFaqModal() {
+function EditBlogModal({ blog }: { blog: IBlog }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const blogsData = blog;
 
-  const [createFaq, { error }] = useCreateFAQMutation();
+  const [updateBlog] = useUpdateBlogMutation();
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -22,48 +25,36 @@ function AddFaqModal() {
 
   const handleOnSubmit = async (e: any) => {
     e.preventDefault();
-    if (
-      e.currentTarget.title.value !== "" &&
-      e.currentTarget.description.value !== ""
-    ) {
-      try {
-        const res = await createFaq({
-          title: e.currentTarget.title.value,
-          description: e.currentTarget.description.value,
-        });
+    console.log(e.currentTarget.title);
+    try {
+      message.loading("Updating faq");
+      const res = await updateBlog({
+        id: blogsData.id,
+        body: {
+          title: e.currentTarget.title.value || blogsData.title,
+          description:
+            e.currentTarget.description.value || blogsData.description,
+        },
+      });
 
-        message.loading("creating faq");
+      console.log(res, "res from");
 
-        if (error) {
-          message.error("faq is not created");
-        } else {
-          // if (res?.id) {
-          message.success("faq created successfully");
-        }
-        // }
-      } catch (error) {
-        message.success("faq is not created");
-        console.log(error);
-      }
-      setIsModalOpen(false);
-    } else {
-      message.error("give all needed data");
+      message.success("faq Update successfully");
+    } catch (error) {
+      message.success("faq Update is not successfully");
+      console.log(error);
     }
+    setIsModalOpen(false);
   };
 
   return (
     <div className="">
-      <div className="pb-5">
-        <button
-          onClick={showModal}
-          className=" border rounded w-32 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125 text-center"
-        >
-          Add FAQ
-        </button>
-      </div>
-
+      <AiFillEdit
+        onClick={showModal}
+        className="h-5 w-5 hover:cursor-pointer transition duration-300 transform hover:scale-125"
+      />
       <Modal
-        title="Add Faq"
+        title="Add Admin"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -82,6 +73,7 @@ function AddFaqModal() {
               type="text"
               name="title"
               placeholder="Faq Title"
+              defaultValue={blogsData.title}
               className="w-full border p-2 rounded-md"
             />
           </div>
@@ -94,6 +86,7 @@ function AddFaqModal() {
             </label>
             <textarea
               name="description"
+              defaultValue={blogsData.description}
               className="w-full border p-2 rounded-md"
             ></textarea>
           </div>
@@ -118,4 +111,4 @@ function AddFaqModal() {
   );
 }
 
-export default AddFaqModal;
+export default EditBlogModal;

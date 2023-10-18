@@ -1,12 +1,12 @@
 "use client";
-import { useCreateFAQMutation } from "@/redux/api/faqApi";
+import { useCreateBlogMutation } from "@/redux/api/blogApi";
 import { Modal, message } from "antd";
 import { useState } from "react";
 
-function AddFaqModal() {
+function AddBlogModal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const [createFaq, { error }] = useCreateFAQMutation();
+  const [createBlog, { error }] = useCreateBlogMutation();
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -22,27 +22,28 @@ function AddFaqModal() {
 
   const handleOnSubmit = async (e: any) => {
     e.preventDefault();
+
     if (
       e.currentTarget.title.value !== "" &&
       e.currentTarget.description.value !== ""
     ) {
       try {
-        const res = await createFaq({
+        const res = await createBlog({
           title: e.currentTarget.title.value,
           description: e.currentTarget.description.value,
         });
 
-        message.loading("creating faq");
+        message.loading("creating blog");
 
         if (error) {
-          message.error("faq is not created");
+          message.error("blog is not created");
         } else {
           // if (res?.id) {
-          message.success("faq created successfully");
+          message.success("blog created successfully");
         }
         // }
       } catch (error) {
-        message.success("faq is not created");
+        message.success("blog is not created");
         console.log(error);
       }
       setIsModalOpen(false);
@@ -58,12 +59,12 @@ function AddFaqModal() {
           onClick={showModal}
           className=" border rounded w-32 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125 text-center"
         >
-          Add FAQ
+          Add blog
         </button>
       </div>
 
       <Modal
-        title="Add Faq"
+        title="Add Admin"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -75,13 +76,13 @@ function AddFaqModal() {
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="title"
             >
-              Faq Title
+              blog Title
             </label>
             <input
               id="title"
               type="text"
               name="title"
-              placeholder="Faq Title"
+              placeholder="blog Title"
               className="w-full border p-2 rounded-md"
             />
           </div>
@@ -90,7 +91,7 @@ function AddFaqModal() {
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="description"
             >
-              Faq Answer
+              blog Answer
             </label>
             <textarea
               name="description"
@@ -118,4 +119,4 @@ function AddFaqModal() {
   );
 }
 
-export default AddFaqModal;
+export default AddBlogModal;

@@ -1,28 +1,28 @@
 "use client";
-import { useDeleteUserMutation, useUsersQuery } from "@/redux/api/userApi";
-import { IUser } from "@/types";
+import { useBlogQuery } from "@/redux/api/blogApi";
+import { useDeleteUserMutation } from "@/redux/api/userApi";
+import { IBlog } from "@/types";
 import { Avatar, Card, message } from "antd";
 import { useRef } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { RxAvatar } from "react-icons/rx";
+import AddBlogModal from "../modal/blog/AddBlogModal";
+import EditBlogModal from "../modal/blog/EditBlogModal";
 
 function Manage_blog() {
   const loadingData = [1, 2, 3, 4];
-  const { data, isLoading } = useUsersQuery({
+  const { data, isLoading } = useBlogQuery({
     role: "user",
   });
   const [deleteUser] = useDeleteUserMutation();
 
-  const faqs = data?.data;
+  const blogs = data;
   const avatarRef = useRef(null);
-
-  console.log(data);
 
   const handleDeleteAdmin = async (id: string) => {
     try {
       message.loading("Deleteting Admin");
       const result = await deleteUser(id);
-      console.log(result);
       if (result) {
         message.success("Admin deleted successfully");
       }
@@ -47,49 +47,42 @@ function Manage_blog() {
     );
   }
 
-  if (data.data.length === 0) {
+  if (data?.data?.length === 0) {
     return (
       <div className="text-lg text-center text-pink-700">User Not found</div>
     );
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-      {faqs?.map((admin: IUser) => (
-        <Card
-          key={admin.id}
-          title={admin.firstName + " " + admin.lastName}
-          extra={<a href="#"></a>}
-          style={{ width: 250 }}
-        >
-          <div ref={avatarRef} className="flex justify-center align-middle">
-            <RxAvatar className="w-8 h-8 adminshover:text-pink-600 text-pink-500" />
-          </div>
-          <p>{admin.email}</p>
-          <p>{admin.phone}</p>
-          <br />
-          <p className="flex justify-evenly">
-            {/* <div className="">
-                <AiFillEdit
-                  onClick={showModal}
-                  className="h-5 w-5 hover:cursor-pointer transition duration-300 transform hover:scale-125"
-                />
-                <EditModal
-                  isModalOpen={isModalOpen}
-                  handleCancel={handleCancel}
-                  handleOk={handleOk}
-                  admins={admins}
-                />
-              </div> */}
+    <>
+      <AddBlogModal />
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        {blogs?.map((blog: IBlog) => (
+          <Card
+            key={blog.id}
+            title={blog.title}
+            extra={<a href="#"></a>}
+            style={{ width: 250 }}
+          >
+            <div ref={avatarRef} className="flex justify-center align-middle">
+              <RxAvatar className="w-8 h-8 adminshover:text-pink-600 text-pink-500" />
+            </div>
+            <p>{blog.description}</p>
+            <br />
+            <p className="flex justify-evenly">
+              <div className="">
+                <EditBlogModal blog={blog} />
+              </div>
 
-            <button onClick={() => handleDeleteAdmin(admin.id)}>
-              {" "}
-              <AiFillDelete className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
-            </button>
-          </p>
-        </Card>
-      ))}
-    </div>
+              <button onClick={() => handleDeleteAdmin(blog.id)}>
+                {" "}
+                <AiFillDelete className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
+              </button>
+            </p>
+          </Card>
+        ))}
+      </div>
+    </>
   );
 }
 
