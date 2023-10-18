@@ -1,10 +1,13 @@
 "use client";
-import { getUserInfo } from "@/services/auth.service";
+import { authKey } from "@/constants/storageKey";
+import { getUserInfo, removeUserInfo } from "@/services/auth.service";
 import type { MenuProps } from "antd";
 import { Dropdown } from "antd";
 import Link from "next/link";
 import { useRef } from "react";
 import { RxAvatar } from "react-icons/rx";
+
+const { role, id } = getUserInfo() as any;
 
 const withoutLoginItems: MenuProps["items"] = [
   {
@@ -53,17 +56,22 @@ const loginItems: MenuProps["items"] = [
   {
     key: "4",
     label: (
-      <Link rel="noopener noreferrer" href="/">
+      <Link
+        onClick={() => {
+          removeUserInfo(authKey);
+        }}
+        rel="noopener noreferrer"
+        href="/"
+      >
         log out
       </Link>
     ),
   },
 ];
 
-function NavbarDropdown() {
-  const { role, id } = getUserInfo() as any;
+let items = role ? loginItems : withoutLoginItems;
 
-  const items = role ? loginItems : withoutLoginItems;
+function NavbarDropdown() {
   const avatarRef = useRef(null);
 
   return (

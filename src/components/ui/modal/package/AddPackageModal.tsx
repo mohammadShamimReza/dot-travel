@@ -3,8 +3,7 @@ import { useCreatePackageTourMutation } from "@/redux/api/packageApi";
 import { usePackageCategoryQuery } from "@/redux/api/packageCategoryApi";
 import { IPackageCategory } from "@/types";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, DatePicker, Modal, Select, message } from "antd";
-import dayjs from "dayjs";
+import { Button, Modal, Select, message } from "antd";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
@@ -21,12 +20,14 @@ function AddPackageModal() {
     maxUser: 0,
     packageCategoryId: "",
     destination: "",
-    status: "",
   });
+  console.log(packageData, "packageData");
   const { data, isLoading } = usePackageCategoryQuery({});
   const packageCategorys = data;
 
-  const [createPackage] = useCreatePackageTourMutation();
+  console.log(packageCategorys);
+
+  const [createPackage, { error }] = useCreatePackageTourMutation();
 
   const validationSchema = yup.object().shape({
     title: yup.string().required("title is required"),
@@ -39,7 +40,13 @@ function AddPackageModal() {
     packageCategoryId: yup.string().required("packageCategoryId is required"),
     destination: yup.string().required("destination is required"),
   });
-  const { control, handleSubmit, setValue, formState } = useForm({
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState,
+    formState: { isSubmitSuccessful },
+  } = useForm({
     resolver: yupResolver(validationSchema),
   });
   const { errors } = formState;
@@ -57,81 +64,68 @@ function AddPackageModal() {
   };
 
   useEffect(() => {
-    if (packageData.title !== "") {
-      // Check if the title (or any required field) is not empty
-      handleingCreatePackage();
+    if (formState.isSubmitSuccessful) {
+      reset({
+        description: "",
+        destination: "",
+        from: "",
+        to: "",
+        maxUser: 0,
+        packageImage: "",
+        price: 0,
+        title: "",
+      });
     }
-  }, [packageData]);
+    // if (packageData.title !== "") {
+    //   // handleingCreatePackage();
+    // }
+  }, [formState, packageData.title, reset]);
 
   const handleOnSubmit = (data: any) => {
     setPackageData({
-      ...packageData,
       title: data.title,
       description: data.description,
       packageCategoryId: data.packageCategoryId,
+      from: data.from,
+      to: data.to,
       price: data.price,
       packageImage: data.packageImage,
       maxUser: data.maxUser,
       destination: data.destination,
-      status: "inprogress",
     });
     handleingCreatePackage();
+    reset({
+      description: "",
+      destination: "",
+      from: "",
+      to: "",
+      maxUser: 0,
+      packageImage: "",
+      price: 0,
+      title: "",
+    });
 
     setIsModalOpen(false);
   };
 
   const handleingCreatePackage = async () => {
     try {
-      message.loading("creating package");
       const res = await createPackage(packageData);
-      console.log(packageData);
-      // if (res?.id) {
-      // message.success("package created successfully");
+
+      message.loading("creating package");
+
+      if (error) {
+        message.error("package is not created");
+      } else {
+        console.log(packageData);
+        // if (res?.id) {
+        message.success("package created successfully");
+      }
       // }
-      message.success("package created successfully");
     } catch (error) {
-      message.success("package created successfully");
+      message.success("package is not created");
       console.log(error);
     }
-
-    setValue("title", "");
-    setValue("description", "");
-    setValue("price", 0);
-    setValue("from", new Date().toDateString());
-
-    setValue("to", new Date().toDateString());
-    setValue("packageImage", "");
-    setValue("maxUser", 0);
-    setValue("packageCategoryId", "");
-
-    setValue("destination", "");
-
-    setPackageData({
-      title: "",
-      description: "",
-      price: 0,
-      from: "",
-      to: "",
-      packageImage: "",
-      maxUser: 0,
-      packageCategoryId: "",
-      destination: "",
-      status: "",
-    });
-  };
-
-  const handleFromDate = (date: any, dateString: any) => {
-    const newData = `${dateString.slice(0, 7)}-15T00:00:00.000Z`;
-
-    setPackageData({ ...packageData, from: newData });
-  };
-  const handleToDate = (date: any, dateString: any) => {
-    const newData = `${dateString.slice(0, 7)}-15T00:00:00.000Z`;
-
-    setPackageData({ ...packageData, to: newData });
-  };
-  const handlePackageCategoryId = (date: any) => {
-    setPackageData({ ...packageData, packageCategoryId: date });
   };
 
   return (
@@ -223,11 +217,10 @@ function AddPackageModal() {
               name="from"
               control={control}
               render={({ field }) => (
-                <DatePicker
-                  defaultValue={dayjs(field.value) || Date.now()}
-                  size="middle"
-                  onChange={handleFromDate}
-                  style={{ width: "100%" }}
+                <input
+                  {...field}
+                  type="date"
+                  className="w-full border p-2 rounded-md"
                 />
               )}
             />
@@ -238,14 +231,13 @@ function AddPackageModal() {
           <div>
             <label className="block text-sm text-gray-600">to</label>
             <Controller
-              name="from"
+              name="to"
               control={control}
               render={({ field }) => (
-                <DatePicker
-                  defaultValue={dayjs(field.value) || Date.now()}
-                  size="middle"
-                  onChange={handleToDate}
-                  style={{ width: "100%" }}
+                <input
+                  {...field}
+                  type="date"
+                  className="w-full border p-2 rounded-md"
                 />
               )}
             />

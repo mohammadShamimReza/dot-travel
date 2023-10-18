@@ -29,7 +29,7 @@ const LoginForm: React.FC = () => {
     resolver: yupResolver(validationSchema),
   });
 
-  const handleSignup = async (data: any) => {
+  const handleLogin = async (data: any) => {
     try {
       const res = await userLogin({ ...data }).unwrap();
       message.loading("Logging!");
@@ -40,8 +40,11 @@ const LoginForm: React.FC = () => {
         console.log(role, "form role");
 
         message.success("User logged in successfully!");
+        router.push("/profile");
+        router.refresh();
       } else {
         message.error("User login was not successful! Please try again.");
+        message.error("user not found");
       }
     } catch (err: any) {
       console.log(err.message, "this is error message");
@@ -56,7 +59,7 @@ const LoginForm: React.FC = () => {
         <h1 className="text-2xl text-center mb-4 font-semibold text-pink-600">
           Login
         </h1>
-        <form onSubmit={handleSubmit(handleSignup)} className="space-y-4">
+        <form onSubmit={handleSubmit(handleLogin)} className="space-y-4">
           <div>
             <label
               className="block text-gray-700 text-sm font-bold mb-2"

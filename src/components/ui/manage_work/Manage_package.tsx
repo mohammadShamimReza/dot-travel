@@ -7,14 +7,13 @@ import { IPackage } from "@/types";
 import { Avatar, Card, message } from "antd";
 import { useRef, useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
-import { RxAvatar } from "react-icons/rx";
+import { MdTour } from "react-icons/md";
 import AddPackageModal from "../modal/package/AddPackageModal";
 import EditPackageModal from "../modal/package/EditPackageModal";
 
 function Manage_admin() {
   const loadingData = [1, 2, 3, 4];
   const { data, isLoading } = usePackageTourQuery({});
-  console.log(data);
   const [deletePackageTour] = useDeletePackageTourMutation();
 
   const packages = data;
@@ -39,7 +38,7 @@ function Manage_admin() {
       const result = await deletePackageTour(id);
       console.log(result);
 
-      if (result?.data === undefined) {
+      if (result !== undefined) {
         message.success("package category deleted successfully");
       }
     } catch (error) {
@@ -78,14 +77,11 @@ function Manage_admin() {
             style={{ width: 250 }}
           >
             <div ref={avatarRef} className="flex justify-center align-middle">
-              <RxAvatar className="w-8 h-8 hover:text-pink-600 text-pink-500" />
+              <MdTour className="w-8 h-8 hover:text-pink-600 text-pink-500" />
             </div>
             <p>Price: {packaged.price}</p>
             <p>from: {packaged.from}</p>
             <p>to: {packaged.to}</p>
-            <p>id: {packaged.id}</p>
-
-            <p>Price: {packaged.status}</p>
 
             <br />
             <p className="flex justify-evenly">

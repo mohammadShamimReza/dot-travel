@@ -1,23 +1,25 @@
 "use client";
-import { useDeleteUserMutation, useUsersQuery } from "@/redux/api/userApi";
+import { useDeleteFAQMutation, useFAQQuery } from "@/redux/api/faqApi";
+
 import { IUser } from "@/types";
 import { Avatar, Card, message } from "antd";
 import { useRef } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { RxAvatar } from "react-icons/rx";
-import AddAdminModal from "../modal/admin/AddAdminModal";
+import AddFaqModal from "../modal/faq/AddFaqModal";
+import EditFaqModal from "../modal/faq/EditFaqModal";
 
-function Manage_admin() {
+function Manage_faq() {
   const loadingData = [1, 2, 3, 4];
-  const { data, isLoading } = useUsersQuery({
-    role: "admin",
+  const { data, isLoading } = useFAQQuery({
+    role: "user",
   });
-  console.log(data);
-  const [deleteUser] = useDeleteUserMutation();
+  const [deleteUser] = useDeleteFAQMutation();
 
-  const admins = data?.data;
-
+  const faqs = data?.data;
   const avatarRef = useRef(null);
+
+  console.log(data);
 
   const handleDeleteAdmin = async (id: string) => {
     try {
@@ -29,6 +31,7 @@ function Manage_admin() {
       }
     } catch (error) {}
   };
+
   if (!data) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -47,11 +50,28 @@ function Manage_admin() {
     );
   }
 
+  if (faqs?.length === 0) {
+    return (
+      <div className="text-lg text-center text-pink-700">
+        <AddFaqModal />
+        User Not found
+      </div>
+    );
+  }
+  if (faqs === undefined) {
+    return (
+      <div className="text-lg text-center text-pink-700">
+        <AddFaqModal />
+        User Not found
+      </div>
+    );
+  }
+
   return (
     <>
-      <AddAdminModal />
+      <AddFaqModal />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {admins?.map((admin: IUser) => (
+        {faqs?.map((admin: IUser) => (
           <Card
             key={admin.id}
             title={admin.firstName + " " + admin.lastName}
@@ -59,24 +79,15 @@ function Manage_admin() {
             style={{ width: 250 }}
           >
             <div ref={avatarRef} className="flex justify-center align-middle">
-              <RxAvatar className="w-8 h-8 hover:text-pink-600 text-pink-500" />
+              <RxAvatar className="w-8 h-8 adminshover:text-pink-600 text-pink-500" />
             </div>
             <p>{admin.email}</p>
             <p>{admin.phone}</p>
             <br />
             <p className="flex justify-evenly">
-              {/* <div className="">
-                <AiFillEdit
-                  onClick={showModal}
-                  className="h-5 w-5 hover:cursor-pointer transition duration-300 transform hover:scale-125"
-                />
-                <EditModal
-                  isModalOpen={isModalOpen}
-                  handleCancel={handleCancel}
-                  handleOk={handleOk}
-                  admins={admins}
-                />
-              </div> */}
+              <div className="">
+                <EditFaqModal faqs={faqs} />
+              </div>
 
               <button onClick={() => handleDeleteAdmin(admin.id)}>
                 {" "}
@@ -90,4 +101,4 @@ function Manage_admin() {
   );
 }
 
-export default Manage_admin;
+export default Manage_faq;

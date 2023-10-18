@@ -65,6 +65,18 @@ export interface IPackage {
   packageCategoryId: string;
 }
 
+export interface IFaq {
+  id: string;
+  title: string;
+  description: string;
+}
+
+export interface IBlog {
+  id: string;
+  title: string;
+  description: string;
+}
+
 export interface Guardian {
   fatherName: string;
   fatherOccupation: string;

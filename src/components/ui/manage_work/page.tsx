@@ -1,9 +1,9 @@
 "use client";
 import { Collapse } from "antd";
 import Manage_admin from "./Manage_admin";
-import Manage_client from "./Manage_client";
 import Manage_host from "./Manage_host";
 import Manage_package from "./Manage_package";
+import Manage_client from "./Manage_user";
 const { Panel } = Collapse;
 
 function page() {

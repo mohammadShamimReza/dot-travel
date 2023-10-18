@@ -5,18 +5,15 @@ import { Avatar, Card, message } from "antd";
 import { useRef } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { RxAvatar } from "react-icons/rx";
-import AddAdminModal from "../modal/admin/AddAdminModal";
 
-function Manage_admin() {
+function Manage_user() {
   const loadingData = [1, 2, 3, 4];
   const { data, isLoading } = useUsersQuery({
-    role: "admin",
+    role: "user",
   });
-  console.log(data);
   const [deleteUser] = useDeleteUserMutation();
 
-  const admins = data?.data;
-
+  const users = data?.data;
   const avatarRef = useRef(null);
 
   const handleDeleteAdmin = async (id: string) => {
@@ -29,6 +26,7 @@ function Manage_admin() {
       }
     } catch (error) {}
   };
+
   if (!data) {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -47,25 +45,29 @@ function Manage_admin() {
     );
   }
 
+  if (data.data.length === 0) {
+    return (
+      <div className="text-lg text-center text-pink-700">User Not found</div>
+    );
+  }
+
   return (
-    <>
-      <AddAdminModal />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {admins?.map((admin: IUser) => (
-          <Card
-            key={admin.id}
-            title={admin.firstName + " " + admin.lastName}
-            extra={<a href="#"></a>}
-            style={{ width: 250 }}
-          >
-            <div ref={avatarRef} className="flex justify-center align-middle">
-              <RxAvatar className="w-8 h-8 hover:text-pink-600 text-pink-500" />
-            </div>
-            <p>{admin.email}</p>
-            <p>{admin.phone}</p>
-            <br />
-            <p className="flex justify-evenly">
-              {/* <div className="">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      {users?.map((admin: IUser) => (
+        <Card
+          key={admin.id}
+          title={admin.firstName + " " + admin.lastName}
+          extra={<a href="#"></a>}
+          style={{ width: 250 }}
+        >
+          <div ref={avatarRef} className="flex justify-center align-middle">
+            <RxAvatar className="w-8 h-8 adminshover:text-pink-600 text-pink-500" />
+          </div>
+          <p className="w-[200px] truncate">{admin.email}</p>
+          <p>{admin.phone}</p>
+          <br />
+          <p className="flex justify-evenly">
+            {/* <div className="">
                 <AiFillEdit
                   onClick={showModal}
                   className="h-5 w-5 hover:cursor-pointer transition duration-300 transform hover:scale-125"
@@ -78,16 +80,15 @@ function Manage_admin() {
                 />
               </div> */}
 
-              <button onClick={() => handleDeleteAdmin(admin.id)}>
-                {" "}
-                <AiFillDelete className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
-              </button>
-            </p>
-          </Card>
-        ))}
-      </div>
-    </>
+            <button onClick={() => handleDeleteAdmin(admin.id)}>
+              {" "}
+              <AiFillDelete className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
+            </button>
+          </p>
+        </Card>
+      ))}
+    </div>
   );
 }
 
-export default Manage_admin;
+export default Manage_user;

@@ -16,12 +16,12 @@ function EditPackageModal({ packaged }: { packaged: IPackage }) {
     title: packageTourData.title,
     description: packageTourData.description,
     price: packageTourData.price,
-
+    from: packageTourData.from,
+    to: packageTourData.to,
     packageImage: packageTourData.packageImage,
     maxUser: packageTourData.maxUser,
     packageCategoryId: packageTourData.packageCategoryId,
     destination: packageTourData.destination,
-    status: "inprogress",
   });
   const { data, isLoading } = usePackageCategoryQuery({});
   const packageCategorys = data;
@@ -32,13 +32,14 @@ function EditPackageModal({ packaged }: { packaged: IPackage }) {
     title: yup.string().optional(),
     description: yup.string().optional(),
     price: yup.number().optional(),
-
+    from: yup.string().optional(),
+    to: yup.string().optional(),
     packageImage: yup.string().optional(),
     maxUser: yup.number().optional(),
     packageCategoryId: yup.string().optional(),
     destination: yup.string().optional(),
   });
-  const { control, handleSubmit, setValue, formState } = useForm({
+  const { control, handleSubmit, reset, formState } = useForm({
     resolver: yupResolver(validationSchema),
   });
   const { errors } = formState;
@@ -57,16 +58,16 @@ function EditPackageModal({ packaged }: { packaged: IPackage }) {
 
   const handleOnSubmit = (data: any) => {
     const updatedData = {
-      ...packageData,
       title: data.title || packageTourData.title,
       description: data.description || packageTourData.description,
       packageCategoryId:
         data.packageCategoryId || packageTourData.packageCategoryId,
+      from: data.from || packageTourData.from,
+      to: data.to || packageTourData.to,
       price: data.price || packageTourData.price,
       packageImage: data.packageImage || packageTourData.packageImage,
       maxUser: data.maxUser || packageTourData.maxUser,
       destination: data.destination || packageTourData.destination,
-      status: "inprogress",
     };
     setPackageData(updatedData);
 
@@ -196,6 +197,42 @@ function EditPackageModal({ packaged }: { packaged: IPackage }) {
               <p className="text-red-500 text-xs">
                 {errors.packageImage.message}
               </p>
+            )}
+          </div>
+          <div>
+            <label className="block text-sm text-gray-600">from</label>
+            <Controller
+              name="from"
+              control={control}
+              render={({ field }) => (
+                <input
+                  {...field}
+                  type="date"
+                  defaultValue={packageTourData.from}
+                  className="w-full border p-2 rounded-md"
+                />
+              )}
+            />
+            {errors.from && (
+              <p className="text-red-500 text-xs">{errors.from.message}</p>
+            )}
+          </div>
+          <div>
+            <label className="block text-sm text-gray-600">to</label>
+            <Controller
+              name="to"
+              control={control}
+              render={({ field }) => (
+                <input
+                  {...field}
+                  type="date"
+                  defaultValue={packageTourData.to}
+                  className="w-full border p-2 rounded-md"
+                />
+              )}
+            />
+            {errors.to && (
+              <p className="text-red-500 text-xs">{errors.to.message}</p>
             )}
           </div>
           <div>
