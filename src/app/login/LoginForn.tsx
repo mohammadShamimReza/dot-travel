@@ -1,7 +1,8 @@
 import { useUserLoginMutation } from "@/redux/api/authApi";
-import { getUserInfo, storeUserInfo } from "@/services/auth.service";
+import { storeUserInfo } from "@/services/auth.service";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { message } from "antd";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -15,6 +16,12 @@ type LoinFormValue = {
   email: string;
   password: string;
 };
+
+interface ErrorType {
+  statusCode: number;
+  message: string;
+  errorMessages: string;
+}
 
 const LoginForm: React.FC = () => {
   const [userLogin] = useUserLoginMutation();
@@ -36,20 +43,29 @@ const LoginForm: React.FC = () => {
 
       if (res?.accessToken) {
         storeUserInfo({ accessToken: res?.accessToken });
-        const { role } = getUserInfo() as any;
-        console.log(role, "form role");
-
-        message.success("User logged in successfully!");
         router.push("/profile");
-        router.refresh();
+
+        message.success("User log in successfully!");
       } else {
-        message.error("User login was not successful! Please try again.");
-        message.error("user not found");
+        message.error("User log was not successful! Please try again.");
       }
-    } catch (err: any) {
-      console.log(err.message, "this is error message");
-      // You can handle the error here, e.g., display an error message to the user.
-      message.error("An error occurred while logging in. Please try again.");
+
+      if (res === undefined) {
+        message.error("User not found. Please check your credentials.");
+      }
+    } catch (error) {
+      console.log(error);
+      const specificError = error as ErrorType;
+
+      if (specificError.message === "user not found") {
+        message.error("User not found. Please check your credentials.");
+      } else {
+        // Handle other errors here.
+        // For example, display a generic error message.
+        message.error(
+          "An error occurred while logging in. Please try again later."
+        );
+      }
     }
   };
 
@@ -111,6 +127,14 @@ const LoginForm: React.FC = () => {
             </button>
           </div>
         </form>
+        <div className="text-right pt-4">
+          <Link
+            href={"signup"}
+            className="bg-purple-500 text-white font-bold p-2 rounded-md w-full hover:bg-purple-600 text-right"
+          >
+            signUp
+          </Link>
+        </div>
       </div>
     </div>
   );

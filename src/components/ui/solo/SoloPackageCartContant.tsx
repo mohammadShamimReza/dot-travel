@@ -64,20 +64,12 @@ const SoloPackageCartContant: React.FC<TourPackageProps> = ({
         />
 
         <div className="flex items-center justify-between">
-          <p>
-            <strong>{locationFrom}</strong>
-          </p>
+          <p>{locationFrom}</p>
 
-          <p>
-            <strong> {userReviews}</strong>
-          </p>
+          <p>{userReviews}</p>
         </div>
-        <p>
-          <strong>$</strong> {pricing}
-        </p>
-        <p>
-          <strong>Availability:</strong> {availability}
-        </p>
+        <p>$ {pricing}</p>
+        <p>Availability: {availability}</p>
       </div>
     </Card>
   );

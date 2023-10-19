@@ -1,12 +1,10 @@
-import { Card, Collapse } from "antd";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { Card } from "antd";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react"; // Import React from 'react' if not already imported
+import React from "react";
 import { TourPackageData } from "./tourCommon";
 
-const { Panel } = Collapse;
-
+// Define the TourPackageProps type/interface
 interface TourPackageProps {
   tourPackage: TourPackageData;
 }
@@ -24,35 +22,27 @@ const TourCartContant: React.FC<TourPackageProps> = ({ tourPackage }) => {
     userReviews = "Great",
     relatedContent = "Nothing",
   } = tourPackage;
+
   return (
-    <Link href={"TourPackages"} className=" ">
-      {" "}
+    <Link href="/TourPackages">
       <Card
-        // title={title}
         hoverable
         style={{ height: "350px" }}
         bodyStyle={{ padding: 0 }}
         bordered={false}
       >
-        <div className="tour-images ">
-          {images.map(
-            (
-              image: string | StaticImport,
-              index: React.Key | null | undefined
-            ) => (
-              <div className="w-full " key={index}>
-                <Image
-                  src={image}
-                  key={index}
-                  // width={100}
-                  height={100}
-                  style={{ width: "100%" }}
-                  alt="hrro bannar 1"
-                  className="rounded-xl rounded-b-none "
-                />
-              </div>
-            )
-          )}
+        <div className="tour-images">
+          {images.map((image: string, index: number) => (
+            <div className="w-full" key={index}>
+              <Image
+                src={image}
+                height={100}
+                style={{ width: "100%" }}
+                alt="Tour Banner"
+                className="rounded-xl rounded-b-none"
+              />
+            </div>
+          ))}
         </div>
         <div className="p-3">
           <p>Pricing: {pricing}</p>
@@ -61,7 +51,6 @@ const TourCartContant: React.FC<TourPackageProps> = ({ tourPackage }) => {
           <div>
             <p>
               From: {locationFrom}
-              <div className=""></div>
               To: {locationTo}
             </p>
             <p>Contact Information: {contactInfo}</p>

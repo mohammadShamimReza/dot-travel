@@ -38,6 +38,7 @@ export interface IPackage {
   destination: string;
   packageReviewAndRating: IpackageReviewAndRating;
   bookedPackage: IBookPackage[];
+  addToCartPackage: IAddToCartPackage[];
 }
 
 export interface IpackageReviewAndRating {

@@ -28,7 +28,33 @@ const withoutLoginItems: MenuProps["items"] = [
   },
 ];
 
-const loginItems: MenuProps["items"] = [
+const loginItemsForUser: MenuProps["items"] = [
+  {
+    key: "1",
+    label: (
+      <Link rel="noopener noreferrer" href="/profile">
+        Profile
+      </Link>
+    ),
+  },
+
+  {
+    key: "2",
+    label: (
+      <Link
+        onClick={() => {
+          removeUserInfo(authKey);
+        }}
+        rel="noopener noreferrer"
+        href="/"
+      >
+        log out
+      </Link>
+    ),
+  },
+];
+
+const loginItemsForAdmins: MenuProps["items"] = [
   {
     key: "1",
     label: (
@@ -61,7 +87,12 @@ const loginItems: MenuProps["items"] = [
   },
 ];
 
-let items = role ? loginItems : withoutLoginItems;
+let items =
+  role === "user"
+    ? loginItemsForUser
+    : role === "admin" || role === "super_admin"
+    ? loginItemsForAdmins
+    : withoutLoginItems;
 
 function NavbarDropdown() {
   const avatarRef = useRef(null);
