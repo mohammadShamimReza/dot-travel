@@ -6,21 +6,27 @@ import Manage_package from "@/components/ui/manage_work/Manage_package";
 import Manage_client from "@/components/ui/manage_work/Manage_user";
 import { getUserInfo } from "@/services/auth.service";
 // import { getUserInfo } from "@/services/auth.service";
-import { Collapse } from "antd";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { Card, Collapse } from "antd";
+import Link from "next/link";
 
 const { Panel } = Collapse;
 
 function ManageMentPage() {
   const { role, id } = getUserInfo() as any;
-  const router = useRouter();
 
-  useEffect(() => {
-    if (!role && !id) {
-      router.push("/login");
-    }
-  }, [role, id, router]);
+  if (!role && !id) {
+    return (
+      <Card style={{ width: 400, marginTop: 16 }} loading={true}>
+        <p>
+          Please Login First{" "}
+          <Link href={"/login"} className="text-lg text-pink-600">
+            Login
+          </Link>{" "}
+        </p>
+      </Card>
+    );
+  }
+
   return (
     <div className="min-h-screen mb-20">
       <Collapse defaultActiveKey={["1"]}>
