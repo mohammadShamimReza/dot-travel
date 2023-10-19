@@ -1,15 +1,25 @@
 "use client";
+import Manage_admin from "@/components/ui/manage_work/Manage_admin";
 import Manage_blog from "@/components/ui/manage_work/Manage_blog";
 import Manage_faq from "@/components/ui/manage_work/Manage_faq";
 import Manage_host from "@/components/ui/manage_work/Manage_host";
 import Manage_package from "@/components/ui/manage_work/Manage_package";
 import Manage_client from "@/components/ui/manage_work/Manage_user";
+import { getUserInfo } from "@/services/auth.service";
 // import { getUserInfo } from "@/services/auth.service";
 import { Collapse } from "antd";
+import { useRouter } from "next/router";
 
 const { Panel } = Collapse;
 
-function page() {
+function ManageMentPage() {
+  const { role, id } = getUserInfo() as any;
+
+  const router = useRouter();
+
+  if (!role && !id) {
+    router.push("/login");
+  }
 
   return (
     <div className="min-h-screen mb-20">
@@ -19,7 +29,7 @@ function page() {
           key="1"
           className="bg-pink-50 text-center"
         >
-          {/* <Manage_admin /> */}
+          <Manage_admin />
         </Panel>
 
         <Panel
@@ -63,4 +73,4 @@ function page() {
   );
 }
 
-export default page;
+export default ManageMentPage;
