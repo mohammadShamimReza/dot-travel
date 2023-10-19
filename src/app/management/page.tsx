@@ -2,7 +2,6 @@
 import Manage_admin from "@/components/ui/manage_work/Manage_admin";
 import Manage_blog from "@/components/ui/manage_work/Manage_blog";
 import Manage_faq from "@/components/ui/manage_work/Manage_faq";
-import Manage_host from "@/components/ui/manage_work/Manage_host";
 import Manage_package from "@/components/ui/manage_work/Manage_package";
 import Manage_client from "@/components/ui/manage_work/Manage_user";
 import { getUserInfo } from "@/services/auth.service";
@@ -39,16 +38,10 @@ function ManageMentPage() {
         >
           <Manage_package />
         </Panel>
-        <Panel
-          header={<p className="text-lg text-pink-600">Manage Host</p>}
-          key="3"
-          className="bg-pink-50 text-center"
-        >
-          <Manage_host />
-        </Panel>
+
         <Panel
           header={<p className="text-lg text-pink-600">Manage User</p>}
-          key="4"
+          key="3"
           className="bg-pink-50 text-center"
         >
           <Manage_client />
@@ -56,14 +49,14 @@ function ManageMentPage() {
 
         <Panel
           header={<p className="text-lg text-pink-600">Manage Faq</p>}
-          key="5"
+          key="4"
           className="bg-pink-50 text-center"
         >
           <Manage_faq />
         </Panel>
         <Panel
           header={<p className="text-lg text-pink-600">Manage Blog</p>}
-          key="6"
+          key="5"
           className="bg-pink-50 text-center"
         >
           <Manage_blog />
