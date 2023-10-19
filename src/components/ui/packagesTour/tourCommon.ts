@@ -10,3 +10,15 @@ export interface TourPackageData {
   userReviews: string;
   relatedContent: string;
 }
+
+export interface DynamicTourPackageData {
+  id: string;
+  title: string;
+  description: string;
+  destination: string;
+  price: number;
+  packageImage: string;
+  from: string;
+  to: string;
+  maxUser: number;
+}

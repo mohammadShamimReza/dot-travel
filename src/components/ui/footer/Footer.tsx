@@ -1,4 +1,6 @@
 "use client";
+
+
 const SubscriptionForm = () => {
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();

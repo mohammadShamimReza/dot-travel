@@ -25,25 +25,26 @@ function EditBlogModal({ blog }: { blog: IBlog }) {
 
   const handleOnSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(e.currentTarget.title);
-    try {
-      message.loading("Updating faq");
-      const res = await updateBlog({
-        id: blogsData.id,
-        body: {
-          title: e.currentTarget.title.value || blogsData.title,
-          description:
-            e.currentTarget.description.value || blogsData.description,
-        },
-      });
+      const form = e.currentTarget;
+      console.log(e.currentTarget.title);
+      try {
+        message.loading("Updating faq");
+        const res = await updateBlog({
+          id: blogsData.id,
+          body: {
+            title: e.currentTarget.title.value || blogsData.title,
+            description:
+              e.currentTarget.description.value || blogsData.description,
+          },
+        });
 
-      console.log(res, "res from");
+        console.log(res, "res from");
 
-      message.success("faq Update successfully");
-    } catch (error) {
-      message.success("faq Update is not successfully");
-      console.log(error);
-    }
+        message.success("faq Update successfully");
+      } catch (error) {
+        message.success("faq Update is not successfully");
+        console.log(error);
+      }
     setIsModalOpen(false);
   };
 

@@ -3,7 +3,7 @@ import { baseApi } from "./baseApi";
 
 const PACKAGE_URL = "/packages";
 
-export const packageApi = baseApi.injectEndpoints({
+export const packageTourApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     createPackageTour: build.mutation({
       query: (data) => {
@@ -20,7 +20,7 @@ export const packageApi = baseApi.injectEndpoints({
         tagTypes.packageReviewRating,
       ],
     }),
-    packageTour: build.query({
+    packageTours: build.query({
       query: (arg: Record<string, any>) => {
         return {
           url: PACKAGE_URL,
@@ -83,6 +83,6 @@ export const {
   useCreatePackageTourMutation,
   useDeletePackageTourMutation,
   usePackageTourByIdQuery,
-  usePackageTourQuery,
+  usePackageToursQuery,
   useUpdatePackageTourMutation,
-} = packageApi;
+} = packageTourApi;

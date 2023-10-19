@@ -1,7 +1,7 @@
 "use client";
 import {
   useDeletePackageTourMutation,
-  usePackageTourQuery,
+  usePackageToursQuery,
 } from "@/redux/api/packageApi";
 import { IPackage } from "@/types";
 import { Avatar, Card, message } from "antd";
@@ -11,9 +11,9 @@ import { MdTour } from "react-icons/md";
 import AddPackageModal from "../modal/package/AddPackageModal";
 import EditPackageModal from "../modal/package/EditPackageModal";
 
-function Manage_admin() {
+function Manage_package() {
   const loadingData = [1, 2, 3, 4];
-  const { data, isLoading } = usePackageTourQuery({});
+  const { data, isLoading } = usePackageToursQuery({});
   const [deletePackageTour] = useDeletePackageTourMutation();
 
   const packages = data;
@@ -101,4 +101,4 @@ function Manage_admin() {
   );
 }
 
-export default Manage_admin;
+export default Manage_package;

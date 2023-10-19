@@ -1,7 +1,7 @@
 import heroImage1 from "../../../assets/heroImage1.jpg";
 import heroImage2 from "../../../assets/heroImage2.jpg";
 import heroImage3 from "../../../assets/heroImage3.jpg";
-import { TourPackageData } from "../packages/tourCommon";
+import { TourPackageData } from "../packagesTour/tourCommon";
 import SoloPackageCartContant from "./SoloPackageCartContant";
 
 const tourPackagesdata: TourPackageData[] = [

@@ -1,4 +1,5 @@
 "use client";
+import { usePackageToursQuery } from "@/redux/api/packageApi";
 import { useUsersByIdQuery } from "@/redux/api/userApi";
 import { getUserInfo } from "@/services/auth.service";
 import { Avatar, Card } from "antd";
@@ -7,7 +8,8 @@ import Meta from "antd/es/card/Meta";
 function ProfileContant() {
   const { id, role, email } = getUserInfo() as any;
   const { data, isLoading } = useUsersByIdQuery(id);
-  console.log(id, data);
+  const { data: tourdata } = usePackageToursQuery({});
+  console.log(tourdata);
 
   if (!data) {
     return (

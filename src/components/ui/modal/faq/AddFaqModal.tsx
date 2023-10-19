@@ -21,35 +21,31 @@ function AddFaqModal() {
   };
 
   const handleOnSubmit = async (e: any) => {
+    console.log(e);
     e.preventDefault();
     if (
       e.currentTarget.title.value !== "" &&
       e.currentTarget.description.value !== ""
     ) {
       try {
+        message.loading("Creating FAQ");
+
+        message.success("FAQ created successfully");
         const res = await createFaq({
           title: e.currentTarget.title.value,
           description: e.currentTarget.description.value,
         });
-
-        message.loading("creating faq");
-
-        if (error) {
-          message.error("faq is not created");
-        } else {
-          // if (res?.id) {
-          message.success("faq created successfully");
-        }
-        // }
+        e.currentTarget.reset(); // This will clear all form fields
       } catch (error) {
-        message.success("faq is not created");
+        //  message.error("FAQ is not created");
         console.log(error);
       }
       setIsModalOpen(false);
     } else {
-      message.error("give all needed data");
+      message.error("Provide all needed data");
     }
   };
+
 
   return (
     <div className="">

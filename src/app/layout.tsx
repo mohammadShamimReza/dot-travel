@@ -19,21 +19,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html className="scroll-smooth" lang="en">
-      <body>
-        <Providers>
+    <Providers>
+      <html className="scroll-smooth" lang="en">
+        <body>
           <div className="">
-            <NavBar />
             <div className="min-h-screen flex justify-center m-4">
               <div className="w-full max-w-7xl p-4     ">
+                <NavBar />
+
                 {children}
                 <ScrollToTopButton />
                 <Footer />
               </div>
             </div>
           </div>
-        </Providers>
-      </body>
-    </html>
+        </body>
+      </html>
+    </Providers>
   );
 }

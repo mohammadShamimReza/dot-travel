@@ -1,4 +1,4 @@
-import { TourPackageData } from "@/components/ui/packages/tourCommon";
+import { TourPackageData } from "@/components/ui/packagesTour/tourCommon";
 import SoloPackageCartContant from "@/components/ui/solo/SoloPackageCartContant";
 import heroImage1 from "../../assets/heroImage1.jpg";
 import heroImage2 from "../../assets/heroImage2.jpg";
@@ -80,6 +80,8 @@ const tourPackagesdata: TourPackageData[] = [
 ];
 
 function page() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+
   return (
     <>
       <div className="text-center">Places</div>

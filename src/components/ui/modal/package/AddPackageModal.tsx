@@ -1,55 +1,15 @@
 "use client";
 import { useCreatePackageTourMutation } from "@/redux/api/packageApi";
 import { usePackageCategoryQuery } from "@/redux/api/packageCategoryApi";
-import { IPackageCategory } from "@/types";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { Button, Modal, Select, message } from "antd";
-import { useEffect, useState } from "react";
-import { Controller, useForm } from "react-hook-form";
-import * as yup from "yup";
+import { Modal, message } from "antd";
+import { useState } from "react";
 
 function AddPackageModal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [packageData, setPackageData] = useState({
-    title: "",
-    description: "",
-    price: 0,
-    from: "",
-    to: "",
-    packageImage: "",
-    maxUser: 0,
-    packageCategoryId: "",
-    destination: "",
-  });
-  console.log(packageData, "packageData");
-  const { data, isLoading } = usePackageCategoryQuery({});
-  const packageCategorys = data;
 
-  console.log(packageCategorys);
+  const { data, isLoading } = usePackageCategoryQuery({});
 
   const [createPackage, { error }] = useCreatePackageTourMutation();
-
-  const validationSchema = yup.object().shape({
-    title: yup.string().required("title is required"),
-    description: yup.string().required("description is required"),
-    price: yup.number().required("price is required"),
-    from: yup.string().optional(),
-    to: yup.string().optional(),
-    packageImage: yup.string().optional(),
-    maxUser: yup.number().required("maxUser is required"),
-    packageCategoryId: yup.string().required("packageCategoryId is required"),
-    destination: yup.string().required("destination is required"),
-  });
-  const {
-    control,
-    handleSubmit,
-    reset,
-    formState,
-    formState: { isSubmitSuccessful },
-  } = useForm({
-    resolver: yupResolver(validationSchema),
-  });
-  const { errors } = formState;
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -63,71 +23,52 @@ function AddPackageModal() {
     setIsModalOpen(false);
   };
 
-  useEffect(() => {
-    if (formState.isSubmitSuccessful) {
-      reset({
-        description: "",
-        destination: "",
-        from: "",
-        to: "",
-        maxUser: 0,
-        packageImage: "",
-        price: 0,
-        title: "",
-      });
-    }
-    // if (packageData.title !== "") {
-    //   // handleingCreatePackage();
-    // }
-  }, [formState, packageData.title, reset]);
+  const handleOnSubmit = async (e: any) => {
+    e.preventDefault();
+    const form = e.currentTarget; // Get the form element
 
-  const handleOnSubmit = (data: any) => {
-    setPackageData({
-      title: data.title,
-      description: data.description,
-      packageCategoryId: data.packageCategoryId,
-      from: data.from,
-      to: data.to,
-      price: data.price,
-      packageImage: data.packageImage,
-      maxUser: data.maxUser,
-      destination: data.destination,
+    // Your existing code to log the form values
+    console.log({
+      title: form.title.value,
+      description: form.description.value,
+      price: form.price.value,
+      from: form.from.value,
+      to: form.to.value,
+      maxUser: form.maxUser.value,
+      destination: form.destination.value,
     });
-    handleingCreatePackage();
-    reset({
-      description: "",
-      destination: "",
-      from: "",
-      to: "",
-      maxUser: 0,
-      packageImage: "",
-      price: 0,
-      title: "",
-    });
+
+    if (
+      form.title.value !== "" &&
+      form.description.value !== "" &&
+      form.price.value !== "" &&
+      form.from.value !== "" &&
+      form.to.value !== "" &&
+      form.maxUser.value !== "" &&
+      form.destination.value !== ""
+    ) {
+      try {
+        const res = await createPackage({
+          title: form.title.value,
+          description: form.description.value,
+          price: parseInt(form.price.value),
+          from: form.from.value,
+          to: form.to.value,
+          maxUser: parseInt(form.maxUser.value),
+          destination: form.destination.value,
+        });
+        e.currentTarget.reset(); // This will clear all form fields
+        form.reset(); // This will clear all form fields
+
+        message.success("Package created successfully");
+      } catch (error) {
+        message.success("Package is not created");
+        console.log(error);
+      }
+    }
 
     setIsModalOpen(false);
   };
-
-  const handleingCreatePackage = async () => {
-    try {
-      const res = await createPackage(packageData);
-
-      message.loading("creating package");
-
-      if (error) {
-        message.error("package is not created");
-      } else {
-        console.log(packageData);
-        // if (res?.id) {
-        message.success("package created successfully");
-      }
-      // }
-    } catch (error) {
-      message.success("package is not created");
-      console.log(error);
-    }
-  };
-
   return (
     <div className="">
       <div className="pb-5">
@@ -135,7 +76,7 @@ function AddPackageModal() {
           onClick={showModal}
           className=" border rounded w-32 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125 text-center"
         >
-          Add Package category
+          Add Package
         </button>
       </div>
 
@@ -144,20 +85,9 @@ function AddPackageModal() {
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
-        footer={[
-          <Button key="cancel" className="bg-gray-100" onClick={handleCancel}>
-            Cancel
-          </Button>,
-          <Button
-            key="ok"
-            onClick={handleSubmit(handleOnSubmit)}
-            className="bg-pink-500 text-white w-20"
-          >
-            OK
-          </Button>,
-        ]}
+        footer={null}
       >
-        <form onSubmit={handleSubmit(handleOnSubmit)} className="space-y-4">
+        <form onSubmit={handleOnSubmit} className="space-y-4">
           <div>
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
@@ -165,183 +95,120 @@ function AddPackageModal() {
             >
               Category Title
             </label>
-            <Controller
+            <input
+              required
+              id="title"
+              type="text"
               name="title"
-              control={control}
-              render={({ field }) => (
-                <input
-                  {...field}
-                  id="Title"
-                  type="text"
-                  placeholder="Category Title"
-                  className="w-full border p-2 rounded-md"
-                />
-              )}
+              placeholder="Category Title"
+              className="w-full border p-2 rounded-md"
             />
           </div>
+
           <div>
-            <label className="block text-sm text-gray-600">description</label>
-            <Controller
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="description"
+            >
+              Category description
+            </label>
+            <input
+              required
+              id="description"
+              type="text"
               name="description"
-              control={control}
-              render={({ field }) => (
-                <textarea {...field} className="w-full border p-2 rounded-md" />
-              )}
+              placeholder="Category description"
+              className="w-full border p-2 rounded-md"
             />
-            {errors.description && (
-              <p className="text-red-500 text-xs">
-                {errors.description.message}
-              </p>
-            )}
           </div>
           <div>
-            <label className="block text-sm text-gray-600">price</label>
-            <Controller
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="price"
+            >
+              Category price
+            </label>
+            <input
+              required
+              id="price"
+              type="number"
               name="price"
-              control={control}
-              render={({ field }) => (
-                <input
-                  {...field}
-                  type="number"
-                  className="w-full border p-2 rounded-md"
-                />
-              )}
+              placeholder="Category Price"
+              className="w-full border p-2 rounded-md"
             />
-            {errors.price && (
-              <p className="text-red-500 text-xs">{errors.price.message}</p>
-            )}
           </div>
           <div>
             <label className="block text-sm text-gray-600">from</label>
-            <Controller
+            <input
+              required
+              id="from"
+              type="date"
               name="from"
-              control={control}
-              render={({ field }) => (
-                <input
-                  {...field}
-                  type="date"
-                  className="w-full border p-2 rounded-md"
-                />
-              )}
+              placeholder="From"
+              className="w-full border p-2 rounded-md"
             />
-            {errors.from && (
-              <p className="text-red-500 text-xs">{errors.from.message}</p>
-            )}
           </div>
           <div>
             <label className="block text-sm text-gray-600">to</label>
-            <Controller
+            <input
+              required
+              id="to"
+              type="date"
               name="to"
-              control={control}
-              render={({ field }) => (
-                <input
-                  {...field}
-                  type="date"
-                  className="w-full border p-2 rounded-md"
-                />
-              )}
+              placeholder="to"
+              className="w-full border p-2 rounded-md"
             />
-            {errors.to && (
-              <p className="text-red-500 text-xs">{errors.to.message}</p>
-            )}
           </div>
           <div>
             <label className="block text-sm text-gray-600">packageImage</label>
-            <Controller
+            <input
+              required
+              id="packageImage"
+              type="text"
               name="packageImage"
-              control={control}
-              render={({ field }) => (
-                <input
-                  {...field}
-                  type="string"
-                  className="w-full border p-2 rounded-md"
-                />
-              )}
+              placeholder="packageImage"
+              className="w-full border p-2 rounded-md"
             />
-            {errors.packageImage && (
-              <p className="text-red-500 text-xs">
-                {errors.packageImage.message}
-              </p>
-            )}
           </div>
           <div>
             <label className="block text-sm text-gray-600">maxUser</label>
-            <Controller
+            <input
+              required
+              id="maxUser"
+              type="number"
               name="maxUser"
-              control={control}
-              render={({ field }) => (
-                <input
-                  {...field}
-                  type="number"
-                  className="w-full border p-2 rounded-md"
-                />
-              )}
+              placeholder="maxUser"
+              className="w-full border p-2 rounded-md"
             />
-            {errors.maxUser && (
-              <p className="text-red-500 text-xs">{errors.maxUser.message}</p>
-            )}
           </div>
 
           <div>
             <label className="block text-sm text-gray-600">destination</label>
-            <Controller
+            <input
+              required
+              id="destination"
+              type="text"
               name="destination"
-              control={control}
-              render={({ field }) => (
-                <input
-                  {...field}
-                  type="text"
-                  className="w-full border p-2 rounded-md"
-                />
-              )}
+              placeholder="destination"
+              className="w-full border p-2 rounded-md"
             />
-            {errors.destination && (
-              <p className="text-red-500 text-xs">
-                {errors.destination.message}
-              </p>
-            )}
-          </div>
-          <div>
-            <label className="block text-sm text-gray-600">
-              packageCategory
-            </label>
-            <Controller
-              name="packageCategoryId"
-              control={control}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  showSearch
-                  style={{ width: "100%" }}
-                  placeholder="Select package category"
-                  optionFilterProp="children"
-                >
-                  {/* Render package categories */}
-                  {packageCategorys?.map((category: IPackageCategory) => (
-                    <Select.Option key={category.id} value={category.id}>
-                      {category.title}
-                    </Select.Option>
-                  ))}
-                </Select>
-              )}
-            />
-
-            {errors.packageCategoryId && (
-              <p className="text-red-500 text-xs">
-                {errors.packageCategoryId.message}
-              </p>
-            )}
           </div>
 
-          {/* <div>
+          <div className="flex justify-end">
             <button
+              onClick={handleCancel}
               type="button"
-              onClick={handleSubmit(handleOnSubmit)}
-              className="bg-pink-500 font-semibold py-2 rounded-md w-full"
+              className="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-lg py-2 px-4 mr-2"
             >
-              Submit
+              Cancel
             </button>
-          </div> */}
+            <button
+              type="submit"
+              className="bg-pink-500 text-white rounded-lg py-2 px-4 hover:bg-pink-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
+            >
+              OK
+            </button>
+          </div>
         </form>
       </Modal>
     </div>

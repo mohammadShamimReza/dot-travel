@@ -62,7 +62,6 @@ export interface IPackage {
   packageImage: string;
   maxUser: number;
   destination: string;
-  packageCategoryId: string;
 }
 
 export interface IFaq {

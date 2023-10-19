@@ -5,7 +5,6 @@ import TourCartContant from "./TourCartContant";
 import { TourPackageData } from "./tourCommon";
 
 const TourPackageCart = () => {
-  // Define your tour package data
   const tourPackagesdata: TourPackageData[] = [
     {
       title: "Tour Package 1",

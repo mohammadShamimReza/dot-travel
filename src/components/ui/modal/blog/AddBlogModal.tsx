@@ -32,15 +32,12 @@ function AddBlogModal() {
           title: e.currentTarget.title.value,
           description: e.currentTarget.description.value,
         });
+        e.currentTarget.reset(); // This will clear all form fields
 
         message.loading("creating blog");
 
-        if (error) {
-          message.error("blog is not created");
-        } else {
-          // if (res?.id) {
-          message.success("blog created successfully");
-        }
+        message.success("blog created successfully");
+
         // }
       } catch (error) {
         message.success("blog is not created");

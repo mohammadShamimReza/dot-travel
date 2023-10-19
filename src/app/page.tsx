@@ -1,7 +1,7 @@
 import Partners from "@/components/ui/Partners/Partners";
 import ReviewContantCart from "@/components/ui/Reviews/ReviewContantCart";
 import HeroSlider from "@/components/ui/heroSlider/HeroSlider";
-import TourPackageCart from "@/components/ui/packages/TourPackageCart";
+import TourPackageCart from "@/components/ui/packagesTour/TourPackageCart";
 import SoloPackageCart from "@/components/ui/solo/SoloPackageCart";
 import { DoubleRightOutlined, LoadingOutlined } from "@ant-design/icons";
 import Link from "next/link";

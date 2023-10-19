@@ -37,7 +37,6 @@ function EditFaqModal({ faqs }: { faqs: IFaq }) {
         },
       });
 
-      console.log(res, "res from");
 
       message.success("faq Update successfully");
     } catch (error) {
