@@ -16,7 +16,7 @@ function ManageMentPage() {
 
   if (!role && !id) {
     return (
-      <Card style={{ width: 400, marginTop: 16 }} loading={true}>
+      <Card className="min-h-screen" style={{ width: "100%", marginTop: 16 }}>
         <p>
           Please Login First{" "}
           <Link href={"/login"} className="text-lg text-pink-600">
