@@ -1,5 +1,8 @@
 // components/AboutUs.js
 
+import Image from "next/image";
+import companyLogo from "../../../assets/company_log.jpg";
+
 const AboutUs = () => {
   return (
     <section className="bg-gray-100 py-10">
@@ -17,8 +20,8 @@ const AboutUs = () => {
           </div>
           <div className="w-full md:w-1/2 px-4 mb-4">
             <div className="relative overflow-hidden rounded-lg">
-              <img
-                src="/your-image.jpg"
+              <Image
+                src={companyLogo}
                 alt="About Us"
                 className="object-cover w-full h-64 md:h-96 lg:h-full transition-transform transform hover:scale-105 duration-500"
               />
