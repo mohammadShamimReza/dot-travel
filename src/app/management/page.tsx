@@ -10,10 +10,7 @@ import { Collapse } from "antd";
 const { Panel } = Collapse;
 
 function page() {
-  // const { id, role, email } = getUserInfo();
-  const onChange = (key: string | string[]) => {
-    console.log(key);
-  };
+
   return (
     <div className="min-h-screen mb-20">
       <Collapse defaultActiveKey={["1"]}>

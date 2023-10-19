@@ -9,10 +9,8 @@ import Link from "next/link";
 import { AiFillDelete } from "react-icons/ai";
 import { MdTour } from "react-icons/md";
 
-function page() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+function FavoritePackage() {
   const { data } = useAddToCartPackageToursQuery({});
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [deleteAddToCartPackageTour] = useDeleteAddToCartPackageTourMutation();
 
   if (!data) {
@@ -74,4 +72,4 @@ function page() {
   );
 }
 
-export default page;
+export default FavoritePackage;

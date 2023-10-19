@@ -1,6 +1,6 @@
 "use client";
 
-import LoginForm from "./loginForn";
+import LoginForm from "./LoginForn";
 
 function page() {
   

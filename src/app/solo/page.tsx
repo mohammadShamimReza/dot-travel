@@ -80,8 +80,6 @@ const tourPackagesdata: TourPackageData[] = [
 ];
 
 function page() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-
   return (
     <>
       <div className="text-center">Places</div>

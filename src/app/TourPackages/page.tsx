@@ -5,7 +5,7 @@ import { usePackageTourQuery } from "@/redux/api/packageApi";
 import { Avatar, Card } from "antd";
 import { Key, useState } from "react";
 
-function page() {
+function TourPage() {
   const loadingData = [1, 2, 3, 4];
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [searchTerm, setSearchTerm] = useState("");
@@ -90,4 +90,4 @@ function page() {
   );
 }
 
-export default page;
+export default TourPage;
