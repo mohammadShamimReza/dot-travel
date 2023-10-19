@@ -132,7 +132,7 @@ function BookingModal({
       <Button onClick={showModal} size="large" className="w-full mt-4 bg-pink">
         Book Now
       </Button>
-      {id ? (
+      {!id ? (
         <Button
           onClick={() => handleAddToCartLogin()}
           size="large"
