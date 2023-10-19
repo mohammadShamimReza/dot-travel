@@ -27,7 +27,7 @@ const DynamicTourCartContant: React.FC<TourPackageProps> = ({
     title,
     to,
   } = tourPackage;
-  console.log(isLoading);
+
   if (isLoading === true) {
     return (
       <div className="flex flex-col items-center justify-center mt-6">
@@ -88,7 +88,6 @@ const DynamicTourCartContant: React.FC<TourPackageProps> = ({
           <div>
             <p>
               From: {from}
-              <div className=""></div>
               To: {to}
             </p>
             <p>Max User: {maxUser}</p>

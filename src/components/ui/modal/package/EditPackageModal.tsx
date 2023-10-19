@@ -90,15 +90,14 @@ function EditPackageModal({ packaged }: { packaged: IPackage }) {
             >
               Category description
             </label>
-            <input
+            <textarea
               required
               id="description"
-              type="text"
               name="description"
               defaultValue={packageTourData.description}
               placeholder="Category description"
               className="w-full border p-2 rounded-md"
-            />
+            ></textarea>
           </div>
           <div>
             <label

@@ -1,10 +1,16 @@
 "use client";
+import { useCreateBookPackageTourMutation } from "@/redux/api/bookPackageApi";
+import { getUserInfo } from "@/services/auth.service";
 import { IPackage } from "@/types";
 import { Button, Modal, Steps, message, theme } from "antd";
 import { useState } from "react";
 
 function BookingModal({ tourPackageData }: { tourPackageData: IPackage }) {
+  console.log(tourPackageData);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [createBookPackageTour] = useCreateBookPackageTourMutation();
+  const { id } = getUserInfo() as any;
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -22,29 +28,26 @@ function BookingModal({ tourPackageData }: { tourPackageData: IPackage }) {
     {
       title: "First",
       content: (
-        <div className="">
-          <p>This tour start from Bangladesh</p>
-          <p>Destination of this tour is {tourPackageData.destination}</p>
+        <div className="font-bold">
+          This tour start from Bangladesh, Destination of this tour is{" "}
+          {tourPackageData?.destination}
         </div>
       ),
     },
     {
       title: "Second",
       content: (
-        <div className="">
-          <p>This tour is Premium for Nangladesh</p>
-
-          <p>Price of this tour is {tourPackageData.price}</p>
+        <div className="font-bold">
+          This tour is Premium for Nangladesh, Price of this tour is{" "}
+          {tourPackageData?.price}
         </div>
       ),
     },
     {
       title: "Last",
       content: (
-        <div className="">
-          <p>Lets ready for new experiance</p>
-
-          <p>are you ready</p>
+        <div className="font-bold">
+          Lets ready for new experiance. Are you ready
         </div>
       ),
     },
@@ -74,6 +77,20 @@ function BookingModal({ tourPackageData }: { tourPackageData: IPackage }) {
     border: `1px dashed ${token.colorBorder}`,
     marginTop: 16,
   };
+  const handleBookingPackageTour = async () => {
+    try {
+      message.loading("Tour booked creating!");
+
+      const res = await createBookPackageTour({
+        userId: id,
+        packageId: tourPackageData?.id,
+      });
+      message.success("Tour booked Successfull!");
+    } catch (error) {
+      message.success("Tour booked not Successfull!"), console.log(error);
+    }
+  };
+
   return (
     <div>
       {" "}
@@ -99,8 +116,8 @@ function BookingModal({ tourPackageData }: { tourPackageData: IPackage }) {
             <Button
               type="primary"
               onClick={() => {
-                message.success("Tour booked Successfull!"),
-                  setIsModalOpen(false);
+                setIsModalOpen(false);
+                handleBookingPackageTour();
               }}
               className="bg-pink-600"
             >

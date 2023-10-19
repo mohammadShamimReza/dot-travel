@@ -1,13 +1,10 @@
 "use client";
 import { useCreatePackageTourMutation } from "@/redux/api/packageApi";
-import { usePackageCategoryQuery } from "@/redux/api/packageCategoryApi";
 import { Modal, message } from "antd";
 import { useState } from "react";
 
 function AddPackageModal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const { data, isLoading } = usePackageCategoryQuery({});
 
   const [createPackage, { error }] = useCreatePackageTourMutation();
 

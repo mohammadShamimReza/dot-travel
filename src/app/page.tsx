@@ -27,7 +27,7 @@ export default function Home() {
         </div>
         <div className="text-right">
           <button className="transition-transform transform hover:scale-105 text-pink-500 ">
-            <Link href="/package">
+            <Link href="/TourPackages">
               {" "}
               See more Packages <DoubleRightOutlined />
             </Link>{" "}

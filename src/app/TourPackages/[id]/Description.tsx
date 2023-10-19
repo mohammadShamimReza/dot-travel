@@ -1,8 +1,10 @@
 "use client";
 import { usePackageTourByIdQuery } from "@/redux/api/packageApi";
+import { IpackageReviewAndRating } from "@/types";
 import { Card } from "antd";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { MdOutlineRateReview } from "react-icons/md";
 import travelImage from "../../../assets/heroImage1.jpg";
 import BookingModal from "./BookingModal";
 
@@ -13,6 +15,8 @@ const PropertyDescriptionPage = () => {
   console.log(desiredPart);
 
   const { data: tourPackageData } = usePackageTourByIdQuery(desiredPart);
+
+  console.log(tourPackageData);
 
   return (
     <div className="container mx-auto p-4 min-h-screen">
@@ -38,6 +42,22 @@ const PropertyDescriptionPage = () => {
             <br />
             Capability {tourPackageData?.maxUser}
           </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {tourPackageData?.packageReviewAndRating?.map(
+              (packaged: IpackageReviewAndRating) => (
+                <div key={packaged.id} className="">
+                  <div className="flex justify-center align-middle">
+                    <MdOutlineRateReview className="w-8 h-8 hover:text-pink-600 text-pink-500" />
+                  </div>
+                  rating: <p className="text-pink-600">{packaged.rating}</p>{" "}
+                  <br />
+                  review: <p className="text-pink-600">
+                    {packaged.review}
+                  </p>{" "}
+                </div>
+              )
+            )}
+          </div>
         </div>
         <div className="w-1/4">
           {/* Sticky card */}

@@ -1,15 +1,15 @@
 import { tagTypes } from "../tag-types";
 import { baseApi } from "./baseApi";
 
-const PACKAGE_CATEGORY_URL = "/packages-category";
+const BOOK_PACKAGE_URL = "/booked_packages";
 
-export const packageCategoryApi = baseApi.injectEndpoints({
+export const bookPackageTourApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
-    createPackageCategory: build.mutation({
+    createBookPackageTour: build.mutation({
       query: (data) => {
         console.log(data);
         return {
-          url: `${PACKAGE_CATEGORY_URL}`,
+          url: `${BOOK_PACKAGE_URL}`,
           method: "POST",
           data: data,
         };
@@ -20,10 +20,10 @@ export const packageCategoryApi = baseApi.injectEndpoints({
         tagTypes.packageReviewRating,
       ],
     }),
-    PackageCategory: build.query({
+    bookPackageTours: build.query({
       query: (arg: Record<string, any>) => {
         return {
-          url: PACKAGE_CATEGORY_URL,
+          url: BOOK_PACKAGE_URL,
           method: "GET",
           params: arg,
         };
@@ -35,10 +35,10 @@ export const packageCategoryApi = baseApi.injectEndpoints({
         tagTypes.packageReviewRating,
       ],
     }),
-    packageCategoryById: build.query({
+    bookPackageTourById: build.query({
       query: (id: string) => {
         return {
-          url: `${PACKAGE_CATEGORY_URL}/${id}`,
+          url: `${BOOK_PACKAGE_URL}/${id}`,
           method: "GET",
         };
       },
@@ -49,10 +49,10 @@ export const packageCategoryApi = baseApi.injectEndpoints({
         tagTypes.packageReviewRating,
       ],
     }),
-    deletePackageCategory: build.mutation({
+    deleteBookPackageTour: build.mutation({
       query: (id: string) => {
         return {
-          url: `${PACKAGE_CATEGORY_URL}/${id}`,
+          url: `${BOOK_PACKAGE_URL}/${id}`,
           method: "DELETE",
         };
       },
@@ -62,10 +62,10 @@ export const packageCategoryApi = baseApi.injectEndpoints({
         tagTypes.packageReviewRating,
       ],
     }),
-    updatePackageCategory: build.mutation({
+    updateBookPackageTour: build.mutation({
       query: (data) => {
         return {
-          url: `${PACKAGE_CATEGORY_URL}/${data.id}`,
+          url: `${BOOK_PACKAGE_URL}/${data.id}`,
           method: "PATCH",
           data: data.body,
         };
@@ -80,9 +80,9 @@ export const packageCategoryApi = baseApi.injectEndpoints({
 });
 
 export const {
-  useCreatePackageCategoryMutation,
-  usePackageCategoryQuery,
-  usePackageCategoryByIdQuery,
-  useUpdatePackageCategoryMutation,
-  useDeletePackageCategoryMutation,
-} = packageCategoryApi;
+  useBookPackageTourByIdQuery,
+  useBookPackageToursQuery,
+  useCreateBookPackageTourMutation,
+  useDeleteBookPackageTourMutation,
+  useUpdateBookPackageTourMutation,
+} = bookPackageTourApi;
