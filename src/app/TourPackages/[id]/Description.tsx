@@ -1,5 +1,6 @@
 "use client";
 import { usePackageTourByIdQuery } from "@/redux/api/packageApi";
+import { getUserInfo } from "@/services/auth.service";
 import { IpackageReviewAndRating } from "@/types";
 import { Card } from "antd";
 import Image from "next/image";
@@ -9,6 +10,7 @@ import travelImage from "../../../assets/heroImage1.jpg";
 import BookingModal from "./BookingModal";
 
 const PropertyDescriptionPage = () => {
+  const { id } = getUserInfo() as any;
   const pathName = usePathname();
   const parts = pathName.split("/");
   const desiredPart = parts[parts.length - 1];
@@ -79,7 +81,7 @@ const PropertyDescriptionPage = () => {
               <p className="text-blue-600 font-semibold">
                 Total: ${tourPackageData?.price}
               </p>
-              <BookingModal tourPackageData={tourPackageData} />
+              <BookingModal tourPackageData={tourPackageData} userId={id} />
             </Card>
           </div>
         </div>

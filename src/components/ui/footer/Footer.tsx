@@ -1,10 +1,12 @@
 "use client";
 
+import { message } from "antd";
+
 
 const SubscriptionForm = () => {
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    // Handle the form submission logic here
+    message.success("Thanks for connecting with us");
   };
 
   return (

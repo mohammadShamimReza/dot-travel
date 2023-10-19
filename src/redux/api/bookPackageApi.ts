@@ -7,7 +7,6 @@ export const bookPackageTourApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     createBookPackageTour: build.mutation({
       query: (data) => {
-        console.log(data);
         return {
           url: `${BOOK_PACKAGE_URL}`,
           method: "POST",

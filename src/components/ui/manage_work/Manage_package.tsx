@@ -16,7 +16,7 @@ function Manage_package() {
   const { data, isLoading } = usePackageTourQuery({});
   const [deletePackageTour] = useDeletePackageTourMutation();
 
-  const packages = data;
+  const packages = data?.data;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {

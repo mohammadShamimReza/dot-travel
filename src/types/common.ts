@@ -37,6 +37,7 @@ export interface IPackage {
   maxUser: number;
   destination: string;
   packageReviewAndRating: IpackageReviewAndRating;
+  bookedPackage: IBookPackage[];
 }
 
 export interface IpackageReviewAndRating {
@@ -76,4 +77,11 @@ export interface IBookPackage {
   packageId: string;
   package: IPackage;
   user: IUser;
+}
+
+export interface IAddToCartPackage {
+  id: string;
+  userId: string;
+  packageId: string;
+  package: IPackage;
 }

@@ -1,13 +1,29 @@
 "use client";
+import { useCreateAddToMutation } from "@/redux/api/addToCartPackageApi";
 import { useCreateBookPackageTourMutation } from "@/redux/api/bookPackageApi";
 import { getUserInfo } from "@/services/auth.service";
 import { IPackage } from "@/types";
 import { Button, Modal, Steps, message, theme } from "antd";
-import { useState } from "react";
+import React, { useState } from "react";
 
-function BookingModal({ tourPackageData }: { tourPackageData: IPackage }) {
-  console.log(tourPackageData);
+type NotificationType = "success" | "info" | "warning" | "error";
+
+function BookingModal({
+  tourPackageData,
+  userId,
+}: {
+  tourPackageData: IPackage;
+  userId: string;
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const result = tourPackageData?.bookedPackage.filter((bookUser) => {
+    const res = bookUser.userId === userId;
+    return res;
+  });
+
+  console.log(result, "userId");
+  const [createAddTo] = useCreateAddToMutation();
 
   const [createBookPackageTour] = useCreateBookPackageTourMutation();
   const { id } = getUserInfo() as any;
@@ -91,62 +107,129 @@ function BookingModal({ tourPackageData }: { tourPackageData: IPackage }) {
     }
   };
 
+  const handleAddToCart = async () => {
+    try {
+      message.loading("Adding Package favorite!");
+
+      const res = await createAddTo({
+        userId: id,
+        packageId: tourPackageData?.id,
+      });
+      message.success("Adding Package favorite Successfull!");
+    } catch (error) {
+      message.success("Adding Package favorite not Successfull!"),
+        console.log(error);
+    }
+  };
+
+  const handleAddToCartLogin = () => {
+    message.error("Please Login first");
+  };
+
   return (
     <div>
       {" "}
       <Button onClick={showModal} size="large" className="w-full mt-4 bg-pink">
         Book Now
       </Button>
-      <Modal
-        title="Basic Modal"
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer={null}
-      >
-        <Steps current={current} items={items} />
-        <div style={contentStyle}>{steps[current].content}</div>
-        <div style={{ marginTop: 24 }}>
-          {current < steps.length - 1 && (
-            <Button className="bg-pink-600" onClick={() => next()}>
-              Next
-            </Button>
-          )}
-          {current === steps.length - 1 && (
-            <Button
-              type="primary"
-              onClick={() => {
-                setIsModalOpen(false);
-                handleBookingPackageTour();
-              }}
-              className="bg-pink-600"
+      {id ? (
+        <Button
+          onClick={() => handleAddToCartLogin()}
+          size="large"
+          className="w-full mt-4 bg-pink"
+        >
+          Add to favourite
+        </Button>
+      ) : (
+        <Button
+          onClick={() => handleAddToCart()}
+          size="large"
+          className="w-full mt-4 bg-pink"
+        >
+          Add to favourite
+        </Button>
+      )}
+      {result ? (
+        <Modal
+          title="Basic Modal"
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={null}
+        >
+          <div style={contentStyle}>
+            <p className="text-pink-600">Your already book the Package</p>
+          </div>
+
+          <div className="flex justify-end pt-5">
+            <button
+              onClick={handleCancel}
+              type="button"
+              className="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-lg py-2 px-4 mr-2"
             >
-              Done
-            </Button>
-          )}
-          {current > 0 && (
-            <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
-              Previous
-            </Button>
-          )}
-        </div>
-        <div className="flex justify-end">
-          <button
-            onClick={handleCancel}
-            type="button"
-            className="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-lg py-2 px-4 mr-2"
-          >
-            Cancel
-          </button>
-          <button
-            type="submit"
-            className="bg-pink-500 text-white rounded-lg py-2 px-4 hover:bg-pink-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
-            onClick={() => setIsModalOpen(false)}
-          >
-            OK
-          </button>
-        </div>
-      </Modal>
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="bg-pink-500 text-white rounded-lg py-2 px-4 hover:bg-pink-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
+              onClick={() => setIsModalOpen(false)}
+            >
+              OK
+            </button>
+          </div>
+        </Modal>
+      ) : (
+        <Modal
+          title="Basic Modal"
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={null}
+        >
+          <Steps current={current} items={items} />
+          <div style={contentStyle}>{steps[current].content}</div>
+          <div style={{ marginTop: 24 }}>
+            {current < steps.length - 1 && (
+              <Button className="bg-pink-600" onClick={() => next()}>
+                Next
+              </Button>
+            )}
+            {current === steps.length - 1 && (
+              <Button
+                type="primary"
+                onClick={() => {
+                  setIsModalOpen(false);
+                  handleBookingPackageTour();
+                }}
+                className="bg-pink-600"
+              >
+                Done
+              </Button>
+            )}
+            {current > 0 && (
+              <Button style={{ margin: "0 8px" }} onClick={() => prev()}>
+                Previous
+              </Button>
+            )}
+          </div>
+          <div className="flex justify-end">
+            <button
+              onClick={handleCancel}
+              type="button"
+              className="bg-gray-300 hover:bg-gray-400 text-gray-700 rounded-lg py-2 px-4 mr-2"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              className="bg-pink-500 text-white rounded-lg py-2 px-4 hover:bg-pink-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
+              onClick={() => setIsModalOpen(false)}
+            >
+              OK
+            </button>
+          </div>
+        </Modal>
+      )}
     </div>
   );
 }

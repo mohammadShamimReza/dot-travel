@@ -48,14 +48,6 @@ const loginItems: MenuProps["items"] = [
   {
     key: "3",
     label: (
-      <Link rel="noopener noreferrer" href="/setting">
-        Setting
-      </Link>
-    ),
-  },
-  {
-    key: "4",
-    label: (
       <Link
         onClick={() => {
           removeUserInfo(authKey);
