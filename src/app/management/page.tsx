@@ -8,18 +8,19 @@ import { getUserInfo } from "@/services/auth.service";
 // import { getUserInfo } from "@/services/auth.service";
 import { Collapse } from "antd";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const { Panel } = Collapse;
 
 function ManageMentPage() {
   const { role, id } = getUserInfo() as any;
-
   const router = useRouter();
 
-  if (!role && !id) {
-    router.push("/login");
-  }
-
+  useEffect(() => {
+    if (!role && !id) {
+      router.push("/login");
+    }
+  }, [role, id, router]);
   return (
     <div className="min-h-screen mb-20">
       <Collapse defaultActiveKey={["1"]}>
