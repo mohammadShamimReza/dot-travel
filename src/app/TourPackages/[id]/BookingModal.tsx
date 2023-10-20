@@ -17,12 +17,12 @@ function BookingModal({
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const resForBookNow = tourPackageData?.bookedPackage.filter((bookUser) => {
+  const resForBookNow = tourPackageData?.bookedPackage?.filter((bookUser) => {
     const res = bookUser.userId === userId;
     return res;
   });
 
-  const resForAddToFavorites = tourPackageData?.addToCartPackage.filter(
+  const resForAddToFavorites = tourPackageData?.addToCartPackage?.filter(
     (bookUser) => {
       const res = bookUser.userId === userId;
       return res;
