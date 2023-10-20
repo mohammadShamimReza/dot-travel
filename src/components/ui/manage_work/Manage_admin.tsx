@@ -1,5 +1,5 @@
 "use client";
-import { useDeleteUserMutation, useUsersQuery } from "@/redux/api/userApi";
+import { useUpdateUserMutation, useUsersQuery } from "@/redux/api/userApi";
 import { IUser } from "@/types";
 import { Avatar, Card, message } from "antd";
 import { useRef } from "react";
@@ -12,7 +12,7 @@ function Manage_admin() {
   const { data, isLoading } = useUsersQuery({
     role: "admin",
   });
-  const [deleteUser] = useDeleteUserMutation();
+  const [updateUser] = useUpdateUserMutation();
 
   const admins = data?.data;
 
@@ -21,7 +21,10 @@ function Manage_admin() {
   const handleDeleteAdmin = async (id: string) => {
     try {
       message.loading("Deleteting Admin");
-      const result = await deleteUser(id);
+      const result = await updateUser({
+        id: id,
+        body: { role: "admin" },
+      });
       if (result) {
         message.success("Admin deleted successfully");
       }
