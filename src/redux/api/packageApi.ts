@@ -7,7 +7,6 @@ export const packageApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     createPackageTour: build.mutation({
       query: (data) => {
-        console.log(data);
         return {
           url: `${PACKAGE_URL}`,
           method: "POST",

@@ -16,7 +16,6 @@ import EditProfile from "./EditProfile";
 function ProfileContant() {
   const { id, role, email } = getUserInfo() as any;
   const { data: userData, isLoading } = useUsersByIdQuery(id);
-  console.log(userData, "user data");
   const { data: BookTourdata } = useBookPackageTourByIdQuery(id);
   const [deleteBookPackageTour] = useDeleteBookPackageTourMutation();
   const [updateUser] = useUpdateUserMutation();

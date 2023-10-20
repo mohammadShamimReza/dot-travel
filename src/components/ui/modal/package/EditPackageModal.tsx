@@ -44,8 +44,8 @@ function EditPackageModal({ packaged }: { packaged: IPackage }) {
 
       message.success("package Update successfully");
     } catch (error) {
-      message.success("package Update is not successfully");
-      console.log(error);
+      message.error("package Update is not successfully");
+      console.error(error);
     }
 
     setIsModalOpen(false);

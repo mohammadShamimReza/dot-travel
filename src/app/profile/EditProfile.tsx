@@ -5,7 +5,6 @@ import { Modal, message } from "antd";
 import { useState } from "react";
 
 function EditProfile({ userData }: { userData: IUser }) {
-  console.log(userData);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [updateUser, { error }] = useUpdateUserMutation();
@@ -25,16 +24,6 @@ function EditProfile({ userData }: { userData: IUser }) {
   const handleOnSubmit = async (e: any) => {
     e.preventDefault();
     const form = e.currentTarget; // Get the form element
-
-    // Your existing code to log the form values
-    console.log({
-      address: form.address.value,
-      email: form.email.value,
-      firstName: form.firstName.value,
-      lastName: form.lastName.value,
-      password: form.password.value,
-      phone: form.phone.value,
-    });
 
     if (
       form.address.value !== "" &&
@@ -62,7 +51,7 @@ function EditProfile({ userData }: { userData: IUser }) {
         message.success("user created successfully");
       } catch (error) {
         message.success("user is not created");
-        console.log(error);
+        console.error(error);
       }
     }
 

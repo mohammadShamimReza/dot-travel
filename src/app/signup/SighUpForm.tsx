@@ -31,7 +31,6 @@ const SignupForm: React.FC = () => {
     try {
       const result = await createUser({ ...data }).unwrap();
       message.loading("Creating User!");
-      console.log(result);
 
       const logIndata = { email: data.email, password: data.password };
       const res = await userLogin({ ...logIndata }).unwrap();
@@ -49,10 +48,9 @@ const SignupForm: React.FC = () => {
         message.error("User log was not successful! Please try again.");
       }
     } catch (err: any) {
-      console.log(err.message, "this is error message");
+      console.error(err.message, "this is error message");
       message.error("An error occurred while logging in. Please try again.");
     }
-    console.log(data);
   };
 
   const validationSchema = yup.object().shape({

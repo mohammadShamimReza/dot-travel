@@ -41,7 +41,7 @@ function AddBlogModal() {
         // }
       } catch (error) {
         message.success("blog is not created");
-        console.log(error);
+        console.error(error);
       }
       setIsModalOpen(false);
     } else {

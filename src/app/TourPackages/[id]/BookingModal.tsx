@@ -29,7 +29,6 @@ function BookingModal({
     }
   );
 
-  console.log(resForAddToFavorites, "userId");
   const [createAddTo] = useCreateAddToMutation();
 
   const [createBookPackageTour] = useCreateBookPackageTourMutation();
@@ -110,7 +109,7 @@ function BookingModal({
       });
       message.success("Tour booked Successfull!");
     } catch (error) {
-      message.success("Tour booked not Successfull!"), console.log(error);
+      message.success("Tour booked not Successfull!");
     }
   };
 
@@ -125,7 +124,7 @@ function BookingModal({
       message.success("Adding Package favorite Successfull!");
     } catch (error) {
       message.success("Adding Package favorite not Successfull!"),
-        console.log(error);
+        console.error(error);
     }
   };
 

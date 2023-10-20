@@ -20,7 +20,6 @@ function Manage_user() {
     try {
       message.loading("Deleteting Admin");
       const result = await deleteUser(id);
-      console.log(result);
       if (result) {
         message.success("Admin deleted successfully");
       }

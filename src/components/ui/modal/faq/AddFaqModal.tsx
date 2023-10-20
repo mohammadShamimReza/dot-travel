@@ -21,7 +21,6 @@ function AddFaqModal() {
   };
 
   const handleOnSubmit = async (e: any) => {
-    console.log(e);
     e.preventDefault();
     if (
       e.currentTarget.title.value !== "" &&
@@ -38,7 +37,6 @@ function AddFaqModal() {
         e.currentTarget.reset(); // This will clear all form fields
       } catch (error) {
         //  message.error("FAQ is not created");
-        console.log(error);
       }
       setIsModalOpen(false);
     } else {

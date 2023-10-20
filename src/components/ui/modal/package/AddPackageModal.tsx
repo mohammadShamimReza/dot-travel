@@ -24,17 +24,6 @@ function AddPackageModal() {
     e.preventDefault();
     const form = e.currentTarget; // Get the form element
 
-    // Your existing code to log the form values
-    console.log({
-      title: form.title.value,
-      description: form.description.value,
-      price: form.price.value,
-      from: form.from.value,
-      to: form.to.value,
-      maxUser: form.maxUser.value,
-      destination: form.destination.value,
-    });
-
     if (
       form.title.value !== "" &&
       form.description.value !== "" &&
@@ -60,7 +49,7 @@ function AddPackageModal() {
         message.success("Package created successfully");
       } catch (error) {
         message.success("Package is not created");
-        console.log(error);
+        console.error(error);
       }
     }
 

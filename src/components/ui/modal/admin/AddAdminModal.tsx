@@ -10,7 +10,6 @@ function AddAdminModal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [updateUser] = useUpdateUserMutation();
-  console.log(selectedUserId);
 
   const showModal = () => {
     setIsModalOpen(true);

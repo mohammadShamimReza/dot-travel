@@ -7,7 +7,6 @@ export const faqeApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     createFAQ: build.mutation({
       query: (data) => {
-        console.log(data);
         return {
           url: `${PACKAGE_URL}`,
           method: "POST",

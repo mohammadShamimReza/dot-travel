@@ -14,11 +14,9 @@ const PropertyDescriptionPage = () => {
   const pathName = usePathname();
   const parts = pathName.split("/");
   const desiredPart = parts[parts.length - 1];
-  console.log(desiredPart);
 
   const { data: tourPackageData } = usePackageTourByIdQuery(desiredPart);
 
-  console.log(tourPackageData);
 
   return (
     <div className="container mx-auto p-4 min-h-screen">

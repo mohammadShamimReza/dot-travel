@@ -36,7 +36,6 @@ function Manage_package() {
     try {
       message.loading("Deleteting package category");
       const result = await deletePackageTour(id);
-      console.log(result);
 
       if (result !== undefined) {
         message.success("package category deleted successfully");

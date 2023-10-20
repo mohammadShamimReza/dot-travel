@@ -7,7 +7,6 @@ export const reviewBookTourApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     createRaviewTour: build.mutation({
       query: (data) => {
-        console.log(data);
         return {
           url: `${REVIEW_TOUR_URL}`,
           method: "POST",

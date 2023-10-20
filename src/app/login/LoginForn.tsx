@@ -59,7 +59,7 @@ const LoginForm: React.FC = () => {
         message.error("User not found. Please check your credentials.");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       const specificError = error as ErrorType;
 
       if (specificError.message === "user not found") {

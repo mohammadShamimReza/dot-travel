@@ -7,9 +7,7 @@ import Manage_client from "./Manage_user";
 const { Panel } = Collapse;
 
 function page() {
-  const onChange = (key: string | string[]) => {
-    console.log(key);
-  };
+
   return (
     <div className="min-h-screen">
       <Collapse defaultActiveKey={["1"]}>

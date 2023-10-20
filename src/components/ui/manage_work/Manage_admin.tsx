@@ -12,7 +12,6 @@ function Manage_admin() {
   const { data, isLoading } = useUsersQuery({
     role: "admin",
   });
-  console.log(data);
   const [deleteUser] = useDeleteUserMutation();
 
   const admins = data?.data;
@@ -23,7 +22,6 @@ function Manage_admin() {
     try {
       message.loading("Deleteting Admin");
       const result = await deleteUser(id);
-      console.log(result);
       if (result) {
         message.success("Admin deleted successfully");
       }

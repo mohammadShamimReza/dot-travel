@@ -26,7 +26,6 @@ function EditBlogModal({ blog }: { blog: IBlog }) {
   const handleOnSubmit = async (e: any) => {
     e.preventDefault();
       const form = e.currentTarget;
-      console.log(e.currentTarget.title);
       try {
         message.loading("Updating faq");
         const res = await updateBlog({
@@ -38,12 +37,10 @@ function EditBlogModal({ blog }: { blog: IBlog }) {
           },
         });
 
-        console.log(res, "res from");
-
         message.success("faq Update successfully");
       } catch (error) {
-        message.success("faq Update is not successfully");
-        console.log(error);
+        message.error("faq Update is not successfully");
+        console.error(error);
       }
     setIsModalOpen(false);
   };

@@ -25,7 +25,6 @@ function EditFaqModal({ faqs }: { faqs: IFaq }) {
 
   const handleOnSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(e.currentTarget.title);
     try {
       message.loading("Updating faq");
       const res = await updateFAQ({
@@ -37,11 +36,10 @@ function EditFaqModal({ faqs }: { faqs: IFaq }) {
         },
       });
 
-
       message.success("faq Update successfully");
     } catch (error) {
       message.success("faq Update is not successfully");
-      console.log(error);
+      console.error(error);
     }
 
     setIsModalOpen(false);

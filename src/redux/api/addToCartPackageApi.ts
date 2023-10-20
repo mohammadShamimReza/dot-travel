@@ -7,7 +7,6 @@ export const appToCartPackageTourApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     createAddTo: build.mutation({
       query: (data) => {
-        console.log(data);
         return {
           url: `${ADD_TO_CART_PACKAGE_URL}`,
           method: "POST",

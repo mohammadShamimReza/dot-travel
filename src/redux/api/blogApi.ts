@@ -7,7 +7,6 @@ export const blogApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     createBlog: build.mutation({
       query: (data) => {
-        console.log(data);
         return {
           url: `${PACKAGE_URL}`,
           method: "POST",

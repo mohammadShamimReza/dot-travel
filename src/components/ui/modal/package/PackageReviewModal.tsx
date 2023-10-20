@@ -28,7 +28,6 @@ function PackageReviewModal({
   };
 
   const handleOnSubmit = async (e: any) => {
-    console.log(e);
     e.preventDefault();
     if (
       e.currentTarget.review.value !== "" &&
@@ -47,7 +46,7 @@ function PackageReviewModal({
         e.currentTarget.reset(); // This will clear all form fields
       } catch (error) {
         //  message.error("FAQ is not created");
-        console.log(error);
+        console.error(error);
       }
       setIsModalOpen(false);
     } else {

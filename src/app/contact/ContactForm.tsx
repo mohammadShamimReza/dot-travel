@@ -16,9 +16,7 @@ const Contact = () => {
 
   const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    // You can add your logic to handle the form submission here
-    console.log("Form submitted with data:", formData);
-    // You can also make an API request to send the form data to a server
+
     message.success("Thanks for connecting with us");
   };
 
