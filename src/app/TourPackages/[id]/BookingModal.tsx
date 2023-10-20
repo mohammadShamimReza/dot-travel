@@ -167,7 +167,7 @@ function BookingModal({
           Add to favourite
         </Button>
       )}
-      {id !== "" ? (
+      {id === "" ? (
         <Modal
           title="Basic Modal"
           open={isModalOpen}
