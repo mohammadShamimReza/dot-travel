@@ -229,7 +229,7 @@ function BookingModal({
             </button>
           </div>
         </Modal>
-      ) : (
+      ) : id !== "" ? (
         <Modal
           title="Basic Modal"
           open={isModalOpen}
@@ -280,6 +280,8 @@ function BookingModal({
             </button>
           </div>
         </Modal>
+      ) : (
+        ""
       )}
     </div>
   );
