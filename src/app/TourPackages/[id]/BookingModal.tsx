@@ -150,7 +150,7 @@ function BookingModal({
         >
           Add to favourite
         </Button>
-      ) : id && resForAddToFavorites?.length !== 0 ? (
+      ) : id && resForAddToFavorites?.length > 0 ? (
         <Button
           onClick={() => handleAddToCartUser()}
           size="large"
@@ -167,7 +167,7 @@ function BookingModal({
           Add to favourite
         </Button>
       )}
-      {id === "" ? (
+      {!id ? (
         <Modal
           title="Basic Modal"
           open={isModalOpen}
@@ -200,7 +200,7 @@ function BookingModal({
             </button>
           </div>
         </Modal>
-      ) : id !== "" && resForBookNow?.length !== 0 ? (
+      ) : id !== "" && resForBookNow?.length > 0 ? (
         <Modal
           title="Basic Modal"
           open={isModalOpen}
@@ -229,7 +229,7 @@ function BookingModal({
             </button>
           </div>
         </Modal>
-      ) : id !== "" ? (
+      ) : (
         <Modal
           title="Basic Modal"
           open={isModalOpen}
@@ -280,8 +280,6 @@ function BookingModal({
             </button>
           </div>
         </Modal>
-      ) : (
-        ""
       )}
     </div>
   );
