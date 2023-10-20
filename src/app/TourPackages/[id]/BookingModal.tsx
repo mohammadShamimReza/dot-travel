@@ -200,7 +200,7 @@ function BookingModal({
             </button>
           </div>
         </Modal>
-      ) : resForBookNow?.length !== 0 ? (
+      ) : id !== "" && resForBookNow?.length !== 0 ? (
         <Modal
           title="Basic Modal"
           open={isModalOpen}
