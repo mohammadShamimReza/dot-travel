@@ -62,7 +62,7 @@ function ProfileContant() {
       <br />
       <br />
       <div className="flex items-center justify-center">
-        <EditProfile userData={userData} />
+        {role === "super_admin" ? "" : <EditProfile userData={userData} />}
       </div>
       <br />
       <br />
