@@ -48,6 +48,7 @@ function ProfileContant() {
   return (
     <div>
       {" "}
+      <p className="text-lg font-semibold my-2 text-pink-600">{role}</p>
       <div className="flex flex-col items-center justify-center mt-6">
         <Avatar size={200} src={userData?.profileImg} />
         <br />
