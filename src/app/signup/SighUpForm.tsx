@@ -1,4 +1,5 @@
 "use client";
+import { useUser } from "@/lib/UserProvider";
 import {
   useCreateUserMutation,
   useUserLoginMutation,
@@ -19,6 +20,7 @@ const SignupForm: React.FC = () => {
   const [createUser] = useCreateUserMutation();
   const [userLogin] = useUserLoginMutation();
   const router = useRouter();
+  const { user, setUser } = useUser();
 
   const handleSignup = async (data: any) => {
     // Handle signup logic here
@@ -37,9 +39,10 @@ const SignupForm: React.FC = () => {
 
       if (res?.accessToken) {
         storeUserInfo({ accessToken: res?.accessToken });
-        const { role } = getUserInfo() as any;
+        const { role, id } = getUserInfo() as any;
         router.push("/profile");
-        console.log(role, "form role");
+
+        setUser({ role: role, id: res.id });
 
         message.success("User log in successfully!");
       } else {

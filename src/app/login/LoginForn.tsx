@@ -1,5 +1,6 @@
+import { useUser } from "@/lib/UserProvider";
 import { useUserLoginMutation } from "@/redux/api/authApi";
-import { storeUserInfo } from "@/services/auth.service";
+import { getUserInfo, storeUserInfo } from "@/services/auth.service";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { message } from "antd";
 import Link from "next/link";
@@ -24,6 +25,7 @@ interface ErrorType {
 }
 
 const LoginForm: React.FC = () => {
+  const { user, setUser } = useUser();
   const [userLogin] = useUserLoginMutation();
   const router = useRouter();
 
@@ -43,7 +45,10 @@ const LoginForm: React.FC = () => {
 
       if (res?.accessToken) {
         storeUserInfo({ accessToken: res?.accessToken });
+        const { role, id } = getUserInfo() as any;
         router.push("/profile");
+
+        setUser({ role: role, id: res.id });
 
         message.success("User log in successfully!");
       } else {

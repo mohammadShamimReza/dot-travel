@@ -1,5 +1,6 @@
 "use client";
 import { authKey } from "@/constants/storageKey";
+import { useUser } from "@/lib/UserProvider";
 import { getUserInfo, removeUserInfo } from "@/services/auth.service";
 import type { MenuProps } from "antd";
 import { Dropdown } from "antd";
@@ -54,47 +55,49 @@ const loginItemsForUser: MenuProps["items"] = [
   },
 ];
 
-const loginItemsForAdmins: MenuProps["items"] = [
-  {
-    key: "1",
-    label: (
-      <Link rel="noopener noreferrer" href="/profile">
-        Profile
-      </Link>
-    ),
-  },
-  {
-    key: "2",
-    label: (
-      <Link rel="noopener noreferrer" href="/management">
-        Management
-      </Link>
-    ),
-  },
-  {
-    key: "3",
-    label: (
-      <Link
-        onClick={() => {
-          removeUserInfo(authKey);
-        }}
-        rel="noopener noreferrer"
-        href="/"
-      >
-        log out
-      </Link>
-    ),
-  },
-];
-
-let items =
-  role === "user"
-    ? loginItemsForUser
-    : role === "admin" || role === "super_admin"
-    ? loginItemsForAdmins
-    : withoutLoginItems;
-
 function NavbarDropdown() {
+  const { user, setUser } = useUser();
+  const loginItemsForAdmins: MenuProps["items"] = [
+    {
+      key: "1",
+      label: (
+        <Link rel="noopener noreferrer" href="/profile">
+          Profile
+        </Link>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <Link rel="noopener noreferrer" href="/management">
+          Management
+        </Link>
+      ),
+    },
+    {
+      key: "3",
+      label: (
+        <Link
+          onClick={() => {
+            removeUserInfo(authKey);
+            setUser({ role: "", id: "" });
+          }}
+          rel="noopener noreferrer"
+          href="/"
+        >
+          log out
+        </Link>
+      ),
+    },
+  ];
+
+  let items =
+    user.role === "user"
+      ? loginItemsForUser
+      : user.role === "admin" || user.role === "super_admin"
+      ? loginItemsForAdmins
+      : withoutLoginItems;
+
   const avatarRef = useRef(null);
 
   return (

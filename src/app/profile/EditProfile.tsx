@@ -98,7 +98,7 @@ function EditProfile({ userData }: { userData: IUser }) {
               type="text"
               name="firstName"
               placeholder="User firstName"
-              defaultValue={userData.firstName}
+              defaultValue={userData?.firstName}
               className="w-full border p-2 rounded-md"
             />
           </div>
@@ -116,7 +116,7 @@ function EditProfile({ userData }: { userData: IUser }) {
               type="text"
               name="lastName"
               placeholder="User lastName"
-              defaultValue={userData.lastName}
+              defaultValue={userData?.lastName}
               className="w-full border p-2 rounded-md"
             />
           </div>
@@ -129,7 +129,7 @@ function EditProfile({ userData }: { userData: IUser }) {
               type="text"
               name="phone"
               placeholder="phone"
-              defaultValue={userData.phone}
+              defaultValue={userData?.phone}
               className="w-full border p-2 rounded-md"
             />
           </div>
@@ -142,7 +142,7 @@ function EditProfile({ userData }: { userData: IUser }) {
               type="email"
               name="email"
               placeholder="email"
-              defaultValue={userData.email}
+              defaultValue={userData?.email}
               className="w-full border p-2 rounded-md"
             />
           </div>
@@ -159,7 +159,7 @@ function EditProfile({ userData }: { userData: IUser }) {
               type="text"
               name="password"
               placeholder="User password"
-              defaultValue={userData.password}
+              defaultValue={userData?.password}
               className="w-full border p-2 rounded-md"
             />
           </div>
@@ -176,7 +176,7 @@ function EditProfile({ userData }: { userData: IUser }) {
               type="text"
               name="address"
               placeholder="User password"
-              defaultValue={userData.address}
+              defaultValue={userData?.address}
               className="w-full border p-2 rounded-md"
             />
           </div>
