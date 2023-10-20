@@ -23,7 +23,7 @@ function Manage_admin() {
       message.loading("Deleteting Admin");
       const result = await updateUser({
         id: id,
-        body: { role: "admin" },
+        body: { role: "user" },
       });
       if (result) {
         message.success("Admin deleted successfully");
