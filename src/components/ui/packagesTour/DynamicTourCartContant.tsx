@@ -28,6 +28,8 @@ const DynamicTourCartContant: React.FC<TourPackageProps> = ({
     to,
   } = tourPackage;
 
+  console.log(tourPackage);
+
   if (isLoading === true) {
     return (
       <div className="flex flex-col items-center justify-center mt-6">
