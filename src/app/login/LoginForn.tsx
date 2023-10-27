@@ -1,6 +1,5 @@
 import { useUser } from "@/lib/UserProvider";
 import { useUserLoginMutation } from "@/redux/api/authApi";
-import { getUserInfo, storeUserInfo } from "@/services/auth.service";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { message } from "antd";
 import Link from "next/link";
@@ -34,7 +33,7 @@ const LoginForm: React.FC = () => {
     password: yup.string().required("Password is required"),
   });
 
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, reset } = useForm({
     resolver: yupResolver(validationSchema),
   });
 
@@ -43,17 +42,19 @@ const LoginForm: React.FC = () => {
       const res = await userLogin({ ...data }).unwrap();
       message.loading("Logging!");
 
-      if (res?.accessToken) {
-        storeUserInfo({ accessToken: res?.accessToken });
-        const { role, id } = getUserInfo() as any;
-        router.push("/profile");
+      // if (res?.accessToken) {
+      //   storeUserInfo({ accessToken: res?.accessToken });
+      //   const { role, id } = getUserInfo() as any;
+      //   reset({ email: "", password: "" });
 
-        setUser({ role: role, id: res.id });
+      //   router.push("/profile");
 
-        message.success("User log in successfully!");
-      } else {
-        message.error("User log was not successful! Please try again.");
-      }
+      //   setUser({ role: role, id: res.id });
+
+      //   message.success("User log in successfully!");
+      // } else {
+      //   message.error("User log was not successful! Please try again.");
+      // }
 
       if (res === undefined) {
         message.error("User not found. Please check your credentials.");

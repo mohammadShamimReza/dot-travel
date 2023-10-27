@@ -22,36 +22,6 @@ const SignupForm: React.FC = () => {
   const router = useRouter();
   const { user, setUser } = useUser();
 
-  const handleSignup = async (data: any) => {
-    // Handle signup logic here
-    delete data.terms;
-    delete data.repassword;
-
-    data.role = "user";
-    try {
-      const result = await createUser({ ...data }).unwrap();
-      message.loading("Creating User!");
-
-      const logIndata = { email: data.email, password: data.password };
-      const res = await userLogin({ ...logIndata }).unwrap();
-      message.loading("Creating User!");
-
-      if (res?.accessToken) {
-        storeUserInfo({ accessToken: res?.accessToken });
-        const { role, id } = getUserInfo() as any;
-        router.push("/profile");
-
-        setUser({ role: role, id: res.id });
-
-        message.success("User log in successfully!");
-      } else {
-        message.error("User log was not successful! Please try again.");
-      }
-    } catch (err: any) {
-      console.error(err.message, "this is error message");
-      message.error("An error occurred while logging in. Please try again.");
-    }
-  };
 
   const validationSchema = yup.object().shape({
     firstName: yup.string().required("First Name is required"),
@@ -74,10 +44,50 @@ const SignupForm: React.FC = () => {
     terms: yup.boolean().oneOf([true], "Terms and Conditions must be accepted"),
   });
 
-  const { control, handleSubmit, watch, setValue, formState, setError } =
+  const { control, handleSubmit, watch, setValue, formState, setError, reset } =
     useForm({
       resolver: yupResolver(validationSchema),
     });
+
+  const handleSignup = async (data: any) => {
+    delete data.terms;
+    delete data.repassword;
+
+    data.role = "user";
+    try {
+      const result = await createUser({ ...data }).unwrap();
+      message.loading("Creating User!");
+
+      const logIndata = { email: data.email, password: data.password };
+      const res = await userLogin({ ...logIndata }).unwrap();
+      message.loading("Creating User!");
+      reset({
+        address: "",
+        phone: "",
+        password: "",
+        email: "",
+        firstName: "",
+        lastName: "",
+        repassword: "",
+        terms: false,
+      });
+
+      if (res?.accessToken) {
+        storeUserInfo({ accessToken: res?.accessToken });
+        const { role, id } = getUserInfo() as any;
+        router.push("/profile");
+
+        setUser({ role: role, id: res.id });
+
+        message.success("User log in successfully!");
+      } else {
+        message.error("User log was not successful! Please try again.");
+      }
+    } catch (err: any) {
+      console.error(err.message, "this is error message");
+      message.error("An error occurred while logging in. Please try again.");
+    }
+  };
 
   const { errors } = formState;
 

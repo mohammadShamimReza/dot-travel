@@ -3,6 +3,7 @@ import {
   useAddToCartPackageToursQuery,
   useDeleteAddToCartPackageTourMutation,
 } from "@/redux/api/addToCartPackageApi";
+import { getUserInfo } from "@/services/auth.service";
 import { IAddToCartPackage } from "@/types";
 import { Card } from "antd";
 import Link from "next/link";
@@ -10,10 +11,16 @@ import { AiFillDelete } from "react-icons/ai";
 import { MdTour } from "react-icons/md";
 
 function FavoritePackage() {
-  const { data } = useAddToCartPackageToursQuery({});
+  const { data: favouriteItems } = useAddToCartPackageToursQuery({});
   const [deleteAddToCartPackageTour] = useDeleteAddToCartPackageTourMutation();
+  const { email, id } = getUserInfo() as any;
 
-  if (!data) {
+  const userFavouriteItems = favouriteItems?.filter((favouriteItem: any) => {
+    const res = favouriteItem.userId === id;
+    return res;
+  });
+
+  if (!favouriteItems) {
     return (
       <div className="flex items-center justify-center min-h-screen">
         <p className=" w-64 hover:text-pink-600 text-pink-500 transition duration-300 transform hover:scale-125 text-center">
@@ -36,7 +43,7 @@ function FavoritePackage() {
       <br />
       <br />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {data?.map((packaged: IAddToCartPackage) => (
+        {userFavouriteItems?.map((packaged: IAddToCartPackage) => (
           <Card
             key={packaged.package.id}
             title={packaged.package.title}

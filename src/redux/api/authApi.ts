@@ -11,6 +11,7 @@ export const authApi = baseApi.injectEndpoints({
         method: "POST",
         data: loginData,
       }),
+
       invalidatesTags: [tagTypes.user],
     }),
     createUser: build.mutation({
@@ -19,6 +20,7 @@ export const authApi = baseApi.injectEndpoints({
         method: "POST",
         data: singUpData,
       }),
+
       invalidatesTags: [tagTypes.user],
     }),
   }),

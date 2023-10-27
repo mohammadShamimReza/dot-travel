@@ -28,7 +28,6 @@ const DynamicTourCartContant: React.FC<TourPackageProps> = ({
     to,
   } = tourPackage;
 
-  console.log(tourPackage);
 
   if (isLoading === true) {
     return (

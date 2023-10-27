@@ -15,7 +15,6 @@ function TourPage() {
     searchTerm: searchTerm,
   });
 
-  console.log(tourPackages);
 
   const handleOnSubmit = (e: any) => {
     e.preventDefault();

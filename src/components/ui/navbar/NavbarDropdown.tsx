@@ -100,6 +100,8 @@ function NavbarDropdown() {
 
   const avatarRef = useRef(null);
 
+  console.log(user.role);
+
   return (
     <div>
       {" "}
