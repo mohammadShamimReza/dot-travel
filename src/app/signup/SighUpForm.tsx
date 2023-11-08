@@ -17,7 +17,7 @@ interface SignupFormProps {
 }
 
 const SignupForm: React.FC = () => {
-  const [createUser] = useCreateUserMutation();
+  const [createUser, { data, error, status }] = useCreateUserMutation();
   const [userLogin] = useUserLoginMutation();
   const router = useRouter();
   const { user, setUser } = useUser();
