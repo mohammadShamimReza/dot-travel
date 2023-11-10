@@ -19,8 +19,8 @@ function NavBar() {
   );
 
   return (
-    <nav className="p-2 pb-9   ">
-      <div className="flex items-center justify-between">
+    <nav className="p-2 pb-9 ">
+      <div className="flex items-center justify-between ">
         <Link href="/">
           <Image
             className="rounded-full"
@@ -60,6 +60,8 @@ function NavBar() {
           </div>
         </div>
       </div>
+      <br />
+      <hr />
     </nav>
   );
 }

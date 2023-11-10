@@ -83,9 +83,7 @@ export default function Home() {
       </div>
       <hr />
       <br />
-      <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-pink-500">
-        Touch withus
-      </div>
+
       <br />
 
       {/* <AboutUs /> */}

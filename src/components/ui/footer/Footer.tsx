@@ -32,6 +32,9 @@ const SubscriptionForm = () => {
 const Footer = () => {
   return (
     <footer className=" bg-pink-50 flex items-center justify-between flex-col  ">
+      <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-pink-500 mt-5">
+        Touch with Us
+      </div>
       <div className="container mx-auto m-8">
         <div className=" p-6   flex flex-col items-center md:flex-row md:justify-between">
           <SubscriptionForm />
