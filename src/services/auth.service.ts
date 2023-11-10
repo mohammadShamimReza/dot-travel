@@ -1,3 +1,4 @@
+"use client";
 import { authKey } from "@/constants/storageKey";
 import { instance as axiosInstance } from "@/helpers/axios/axiosInstance";
 import { getBaseUrl } from "@/helpers/config/envConfig";
@@ -12,6 +13,7 @@ export const getUserInfo = () => {
   const authToken = getFromLocalStorage(authKey);
   if (authToken) {
     const decodedData = decodedToken(authToken);
+    console.log(decodedData);
     return decodedData;
   } else {
     return "";

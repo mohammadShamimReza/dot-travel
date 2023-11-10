@@ -5,10 +5,8 @@ import { getUserInfo, removeUserInfo } from "@/services/auth.service";
 import type { MenuProps } from "antd";
 import { Dropdown } from "antd";
 import Link from "next/link";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { RxAvatar } from "react-icons/rx";
-
-const { role, id } = getUserInfo() as any;
 
 const withoutLoginItems: MenuProps["items"] = [
   {
@@ -57,6 +55,14 @@ const loginItemsForUser: MenuProps["items"] = [
 
 function NavbarDropdown() {
   const { user, setUser } = useUser();
+
+  const { role, id } = getUserInfo() as any;
+  console.log(role, id);
+
+  useEffect(() => {
+    setUser({ role: role, id: id });
+  }, [role, id]);
+
   const loginItemsForAdmins: MenuProps["items"] = [
     {
       key: "1",

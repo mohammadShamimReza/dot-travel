@@ -2,7 +2,6 @@ import Partners from "@/components/ui/Partners/Partners";
 import ReviewContantCart from "@/components/ui/Reviews/ReviewContantCart";
 import HeroSlider from "@/components/ui/heroSlider/HeroSlider";
 import TourPackageCart from "@/components/ui/packagesTour/TourPackageCart";
-import SoloPackageCart from "@/components/ui/solo/SoloPackageCart";
 import { DoubleRightOutlined, LoadingOutlined } from "@ant-design/icons";
 import Link from "next/link";
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
@@ -34,7 +33,7 @@ export default function Home() {
           </button>
         </div>
       </div>
-
+      {/* 
       <div className="pt-28">
         <hr />
         <br />
@@ -56,7 +55,7 @@ export default function Home() {
             </Link>{" "}
           </button>
         </div>
-      </div>
+      </div> */}
 
       <div className="mt-28">
         <hr />

@@ -15,13 +15,19 @@ import * as yup from "yup";
 interface SignupFormProps {
   onSubmit: (data: any) => void;
 }
+interface ErrorType {
+  response: {
+    statusCode: number;
+    message: string;
+    errorMessages: string;
+  };
+}
 
 const SignupForm: React.FC = () => {
   const [createUser, { data, error, status }] = useCreateUserMutation();
   const [userLogin] = useUserLoginMutation();
   const router = useRouter();
   const { user, setUser } = useUser();
-
 
   const validationSchema = yup.object().shape({
     firstName: yup.string().required("First Name is required"),
@@ -50,17 +56,15 @@ const SignupForm: React.FC = () => {
     });
 
   const handleSignup = async (data: any) => {
+    message.loading("Creating User..");
+
     delete data.terms;
     delete data.repassword;
 
     data.role = "user";
     try {
       const result = await createUser({ ...data }).unwrap();
-      message.loading("Creating User!");
 
-      const logIndata = { email: data.email, password: data.password };
-      const res = await userLogin({ ...logIndata }).unwrap();
-      message.loading("Creating User!");
       reset({
         address: "",
         phone: "",
@@ -72,26 +76,40 @@ const SignupForm: React.FC = () => {
         terms: false,
       });
 
-      if (res?.accessToken) {
-        storeUserInfo({ accessToken: res?.accessToken });
+      if (result?.data?.accessToken) {
+        message.success("User log in successfully!");
+
+        storeUserInfo({ accessToken: result?.data?.accessToken });
         const { role, id } = getUserInfo() as any;
         router.push("/profile");
 
-        setUser({ role: role, id: res.id });
+        setUser({ role: role, id: id });
 
-        message.success("User log in successfully!");
+        reset({
+          address: "",
+          phone: "",
+          password: "",
+          email: "",
+          firstName: "",
+          lastName: "",
+          repassword: "",
+          terms: false,
+        });
       } else {
         message.error("User log was not successful! Please try again.");
       }
     } catch (err: any) {
-      console.error(err.message, "this is error message");
-      message.error("An error occurred while logging in. Please try again.");
+      console.error(error);
+      const specificError = error as ErrorType;
+      console.log(specificError);
+
+      const logError = specificError?.response;
+
+      message.error(logError?.errorMessages);
     }
   };
 
   const { errors } = formState;
-
-  const isSubmitDisabled = errors.terms || formState.isSubmitting;
 
   const toggleTermsCheckbox = () => {
     setValue("terms", !watch("terms"));
@@ -249,12 +267,7 @@ const SignupForm: React.FC = () => {
           <div>
             <button
               type="submit"
-              className={`${
-                isSubmitDisabled
-                  ? "bg-gray-300 cursor-not-allowed"
-                  : "bg-pink-500 hover:bg-pink-600"
-              } text-white font-semibold py-2 rounded-md w-full`}
-              disabled={isSubmitDisabled as boolean}
+              className={`bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 rounded-md w-full`}
             >
               Sign Up
             </button>

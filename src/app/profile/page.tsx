@@ -1,16 +1,20 @@
 "use client";
 import { getUserInfo } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import ProfileContant from "./ProfileContant";
 
-function page() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+function Page() {
   const router = useRouter();
 
   const { id, role } = getUserInfo() as any;
-  if (!role && !id) {
-    router.push("/profile");
-  }
+
+  useEffect(() => {
+    if (!role && !id) {
+      router.push("/login");
+    }
+  }, [id, role]);
+
   return (
     <div className="min-h-screen">
       <ProfileContant />
@@ -18,4 +22,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;

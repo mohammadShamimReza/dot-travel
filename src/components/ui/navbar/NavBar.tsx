@@ -11,7 +11,7 @@ import NavbarDropdown from "./NavbarDropdown";
 function NavBar() {
   const { id } = getUserInfo() as any;
   const { data } = useAddToCartPackageToursQuery({ userId: id });
-  const result = data?.filter(
+  const result = data?.data?.filter(
     (addTOcartData: { id: string; userId: string; packageId: string }) => {
       const res = addTOcartData.userId === id;
       return res;

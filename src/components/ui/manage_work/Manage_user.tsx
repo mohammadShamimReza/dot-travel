@@ -65,7 +65,7 @@ function Manage_user() {
           <p className="w-[200px] truncate">{admin.email}</p>
           <p>{admin.phone}</p>
           <br />
-          <p className="flex justify-evenly">
+          <div className="flex justify-evenly">
             {/* <div className="">
                 <AiFillEdit
                   onClick={showModal}
@@ -83,7 +83,7 @@ function Manage_user() {
               {" "}
               <AiFillDelete className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
             </button>
-          </p>
+          </div>
         </Card>
       ))}
     </div>

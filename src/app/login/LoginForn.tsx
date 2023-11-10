@@ -19,9 +19,11 @@ type LoinFormValue = {
 };
 
 interface ErrorType {
-  statusCode: number;
-  message: string;
-  errorMessages: string;
+  response: {
+    statusCode: number;
+    message: string;
+    errorMessages: string;
+  };
 }
 
 const LoginForm: React.FC = () => {
@@ -39,40 +41,32 @@ const LoginForm: React.FC = () => {
   });
 
   const handleLogin = async (data: any) => {
+    message.loading("Logging ...");
+
     try {
       const res = await userLogin({ ...data }).unwrap();
-      message.loading("Logging!");
+      console.log(res);
 
-      if (res?.accessToken) {
-        storeUserInfo({ accessToken: res?.accessToken });
+      if (res?.data?.accessToken) {
+        storeUserInfo({ accessToken: res?.data?.accessToken });
         const { role, id } = getUserInfo() as any;
         reset({ email: "", password: "" });
 
         router.push("/profile");
 
-        setUser({ role: role, id: res.id });
+        setUser({ role: role, id: id });
 
         message.success("User log in successfully!");
       } else {
         message.error("User log was not successful! Please try again.");
       }
-
-      if (res === undefined) {
-        message.error("User not found. Please check your credentials.");
-      }
     } catch (error) {
       console.error(error);
       const specificError = error as ErrorType;
 
-      if (specificError.message === "user not found") {
-        message.error("User not found. Please check your credentials.");
-      } else {
-        // Handle other errors here.
-        // For example, display a generic error message.
-        message.error(
-          "An error occurred while logging in. Please try again later."
-        );
-      }
+      const logError = specificError?.response;
+
+      message.error(logError?.errorMessages);
     }
   };
 

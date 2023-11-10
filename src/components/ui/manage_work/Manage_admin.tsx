@@ -52,7 +52,7 @@ function Manage_admin() {
     <>
       <AddAdminModal />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {admins?.map((admin: IUser) => (
+        {admins?.data?.map((admin: IUser) => (
           <Card
             key={admin.id}
             title={admin.firstName + " " + admin.lastName}
@@ -65,7 +65,7 @@ function Manage_admin() {
             <p>{admin.email}</p>
             <p>{admin.phone}</p>
             <br />
-            <p className="flex justify-evenly">
+            <div className="flex justify-evenly">
               {/* <div className="">
                 <AiFillEdit
                   onClick={showModal}
@@ -83,7 +83,7 @@ function Manage_admin() {
                 {" "}
                 <AiFillDelete className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
               </button>
-            </p>
+            </div>
           </Card>
         ))}
       </div>

@@ -69,7 +69,7 @@ function Manage_blog() {
             </div>
             <p>{blog.description}</p>
             <br />
-            <p className="flex justify-evenly">
+            <div className="flex justify-evenly">
               <div className="">
                 <EditBlogModal blog={blog} />
               </div>
@@ -78,7 +78,7 @@ function Manage_blog() {
                 {" "}
                 <AiFillDelete className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
               </button>
-            </p>
+            </div>
           </Card>
         ))}
       </div>

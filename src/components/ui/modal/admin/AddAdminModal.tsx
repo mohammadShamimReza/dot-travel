@@ -76,7 +76,7 @@ function AddAdminModal() {
           onChange={(value) => setSelectedUserId(value)}
           value={selectedUserId}
         >
-          {user?.map((user: IUser) => (
+          {user?.data?.map((user: IUser) => (
             <Option key={user.id} value={user.id}>
               {user.email}
             </Option>

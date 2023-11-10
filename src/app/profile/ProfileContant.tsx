@@ -15,10 +15,14 @@ import EditProfile from "./EditProfile";
 
 function ProfileContant() {
   const { id, role, email } = getUserInfo() as any;
-  const { data: userData, isLoading } = useUsersByIdQuery(id);
+  const { data: userDatas, isLoading } = useUsersByIdQuery(id);
   const { data: BookTourdata } = useBookPackageTourByIdQuery(id);
   const [deleteBookPackageTour] = useDeleteBookPackageTourMutation();
   const [updateUser] = useUpdateUserMutation();
+
+  console.log(role);
+
+  const userData = userDatas?.data;
 
   const handleDeleteFavorites = ({ id }: { id: string }) => {
     message.loading("Removing package from favorites");
@@ -48,7 +52,6 @@ function ProfileContant() {
   return (
     <div>
       {" "}
-      <p className="text-lg font-semibold my-2 text-pink-600">{role}</p>
       <div className="flex flex-col items-center justify-center mt-6">
         <Avatar size={200} src={userData?.profileImg} />
         <br />
@@ -63,16 +66,24 @@ function ProfileContant() {
       <br />
       <br />
       <div className="flex items-center justify-center">
-        {role === "super_admin" ? "" : <EditProfile userData={userData} />}
+        {role ? (
+          role === "super_admin" ? (
+            ""
+          ) : (
+            <EditProfile userData={userData} />
+          )
+        ) : (
+          ""
+        )}
       </div>
       <br />
       <br />
       <br />
       <br />
       {!BookTourdata ? (
-        <p className="text-center text-9xl, text-pink-600">
+        <p className="text-pink-500  text-center text-2xl">
           {" "}
-          Tour Packages not founded{" "}
+          You do not go any where yet
         </p>
       ) : (
         <p className="text-center text-9xl, text-pink-600">My Tour Packages</p>
@@ -107,7 +118,7 @@ function ProfileContant() {
               </div>
 
               <br />
-              <p className="flex justify-evenly">
+              <div className="flex justify-evenly">
                 <div className="">
                   <PackageReviewModal userId={id} packaged={packaged} />
                 </div>
@@ -118,7 +129,7 @@ function ProfileContant() {
                   {" "}
                   <AiFillDelete className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
                 </button>
-              </p>
+              </div>
             </Card>
           ))}
         </div>
