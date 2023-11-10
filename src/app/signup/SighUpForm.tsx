@@ -101,7 +101,6 @@ const SignupForm: React.FC = () => {
     } catch (err: any) {
       console.error(error);
       const specificError = error as ErrorType;
-      console.log(specificError);
 
       const logError = specificError?.response;
 

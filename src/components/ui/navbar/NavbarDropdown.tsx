@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { RxAvatar } from "react-icons/rx";
 
+
 const withoutLoginItems: MenuProps["items"] = [
   {
     key: "1",
@@ -56,12 +57,13 @@ const loginItemsForUser: MenuProps["items"] = [
 function NavbarDropdown() {
   const { user, setUser } = useUser();
 
-  const { role, id } = getUserInfo() as any;
-  console.log(role, id);
+  const userInfo = (getUserInfo() as any) || {}; // Use an empty object as a fallback
+
+  const { role, id } = userInfo;
 
   useEffect(() => {
-    setUser({ role: role, id: id });
-  }, [role, id]);
+    setUser({ role, id });
+  }, [role, id, setUser]);
 
   const loginItemsForAdmins: MenuProps["items"] = [
     {
@@ -105,8 +107,6 @@ function NavbarDropdown() {
       : withoutLoginItems;
 
   const avatarRef = useRef(null);
-
-  console.log(user.role);
 
   return (
     <div>

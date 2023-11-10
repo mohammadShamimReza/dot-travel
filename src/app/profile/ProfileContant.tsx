@@ -20,7 +20,6 @@ function ProfileContant() {
   const [deleteBookPackageTour] = useDeleteBookPackageTourMutation();
   const [updateUser] = useUpdateUserMutation();
 
-  console.log(role);
 
   const userData = userDatas?.data;
 

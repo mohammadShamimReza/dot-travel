@@ -31,10 +31,6 @@ export const axiosBaseQuery =
         withCredentials: true,
       });
 
-      // console.log(result);
-
-      // return result;
-
       if (response.status >= 200 && response.status < 300) {
         const result: AxiosResponse = {
           data: response.data,

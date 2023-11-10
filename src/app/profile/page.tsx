@@ -13,7 +13,7 @@ function Page() {
     if (!role && !id) {
       router.push("/login");
     }
-  }, [id, role]);
+  }, [id, role, router]);
 
   return (
     <div className="min-h-screen">

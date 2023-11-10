@@ -13,7 +13,6 @@ export const getUserInfo = () => {
   const authToken = getFromLocalStorage(authKey);
   if (authToken) {
     const decodedData = decodedToken(authToken);
-    console.log(decodedData);
     return decodedData;
   } else {
     return "";

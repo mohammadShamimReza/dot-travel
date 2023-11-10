@@ -1,3 +1,4 @@
+"use client";
 import Partners from "@/components/ui/Partners/Partners";
 import ReviewContantCart from "@/components/ui/Reviews/ReviewContantCart";
 import HeroSlider from "@/components/ui/heroSlider/HeroSlider";

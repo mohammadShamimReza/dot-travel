@@ -45,7 +45,6 @@ const LoginForm: React.FC = () => {
 
     try {
       const res = await userLogin({ ...data }).unwrap();
-      console.log(res);
 
       if (res?.data?.accessToken) {
         storeUserInfo({ accessToken: res?.data?.accessToken });

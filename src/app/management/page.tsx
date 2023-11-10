@@ -4,15 +4,21 @@ import Manage_blog from "@/components/ui/manage_work/Manage_blog";
 import Manage_faq from "@/components/ui/manage_work/Manage_faq";
 import Manage_package from "@/components/ui/manage_work/Manage_package";
 import Manage_client from "@/components/ui/manage_work/Manage_user";
-import { getUserInfo } from "@/services/auth.service";
+import { useUser } from "@/lib/UserProvider";
 // import { getUserInfo } from "@/services/auth.service";
 import { Card, Collapse } from "antd";
 import Link from "next/link";
 
 const { Panel } = Collapse;
 
+
+
 function ManageMentPage() {
-  const { role, id } = getUserInfo() as any;
+
+  const { user } = useUser();
+  const { role, id } = user as any;
+
+
 
   if (!role && !id && role === "user") {
     return (
