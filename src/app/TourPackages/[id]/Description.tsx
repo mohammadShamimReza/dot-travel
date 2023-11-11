@@ -1,24 +1,23 @@
 "use client";
+import { useUser } from "@/lib/UserProvider";
 import { usePackageTourByIdQuery } from "@/redux/api/packageApi";
-import { getUserInfo } from "@/services/auth.service";
 import { IpackageReviewAndRating } from "@/types";
 import { Card } from "antd";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { MdOutlineRateReview } from "react-icons/md";
-import travelImage from "../../../assets/heroImage1.jpg";
 import BookingModal from "./BookingModal";
 
 const PropertyDescriptionPage = () => {
-  const { id } = getUserInfo() as any;
+  const { user } = useUser();
+  const { id } = user;
   const pathName = usePathname();
   const parts = pathName.split("/");
   const desiredPart = parts[parts.length - 1];
 
-  const { data: tourPackageData } = usePackageTourByIdQuery(desiredPart);
+  const { data: tourPackageDatas } = usePackageTourByIdQuery(desiredPart);
 
-  console.log(tourPackageData);
-
+  const tourPackageData = tourPackageDatas?.data;
 
   return (
     <div className="container mx-auto p-4 min-h-screen">
@@ -26,11 +25,11 @@ const PropertyDescriptionPage = () => {
       <div className="flex space-x-4">
         <div className="w-3/4">
           <Image
-            src={travelImage}
+            src={tourPackageData?.packageImage}
             width={300}
             height={300}
             alt={"this is tour package image  "}
-            className="rounded-full"
+            // className="rounded-full"
           />
           <br />
           <br />

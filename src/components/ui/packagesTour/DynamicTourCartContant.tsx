@@ -65,7 +65,10 @@ const DynamicTourCartContant = ({
       >
         {" "}
         <div className="">
-          <div ref={avatarRef} className="flex justify-center align-middle ">
+          <div
+            ref={avatarRef}
+            className="flex justify-center align-middle h-40 "
+          >
             {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
             <Image
               src={packageImage}
@@ -78,8 +81,8 @@ const DynamicTourCartContant = ({
             ></Image>
           </div>
         </div>
-        <div className="p-3">
-          <p>{title}</p>
+        <div className="p-3 ">
+          <p className="text-lg text-blue-600">{title}</p>
           <p>Price: {price}</p>
           <p>Destination: {destination}</p>
 
