@@ -7,7 +7,8 @@ import {
 } from "@/redux/api/bookPackageApi";
 import { useUpdateUserMutation, useUsersByIdQuery } from "@/redux/api/userApi";
 import { IBookPackage } from "@/types";
-import { Avatar, Card, message } from "antd";
+import { Card, message } from "antd";
+import Image from "next/image";
 import Link from "next/link";
 import { AiFillDelete } from "react-icons/ai";
 import { MdTour } from "react-icons/md";
@@ -53,12 +54,26 @@ function ProfileContant() {
     <div>
       {" "}
       <div className="flex flex-col items-center justify-center mt-6">
-        <Avatar size={200} src={userData?.profileImg} />
+        <div className="flex justify-center align-middle">
+          {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
+          <Image
+            src={
+              "https://i.ibb.co/mHJTv57/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
+            }
+            width={200}
+            height={100}
+            layout="responsive"
+            objectFit="cover"
+            alt="package image"
+            className=""
+          ></Image>
+        </div>
         <br />
         <br />
-        <p className="text-lg font-semibold my-2 text-pink-600">
+        <p className="text-lg font-semibold my-2 text-blue-600">
           {userData?.firstName} {userData?.lastName}
         </p>
+        {role}
         <p className="text-gray-500 my-1">{userData?.email}</p>
         <p className="text-gray-500 my-1">{userData?.address}</p>
         <p className="text-gray-500 my-1">{userData?.phone}</p>
@@ -81,12 +96,12 @@ function ProfileContant() {
       <br />
       <br />
       {!BookTourdata ? (
-        <p className="text-pink-500  text-center text-2xl">
+        <p className="text-blue-500  text-center text-2xl">
           {" "}
           You do not go any where yet
         </p>
       ) : (
-        <p className="text-center text-9xl, text-pink-600">My Tour Packages</p>
+        <p className="text-center text-9xl, text-blue-600">My Tour Packages</p>
       )}
       <br />
       <br />
@@ -109,7 +124,7 @@ function ProfileContant() {
                   className="text-black hover:text-purple-600"
                 >
                   <div className="flex justify-center align-middle">
-                    <MdTour className="w-8 h-8 hover:text-pink-600 text-pink-500" />
+                    <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" />
                   </div>
                   <p>Price: {packaged.package.price}</p>
                   <p>from: {packaged.package.from}</p>
@@ -127,7 +142,7 @@ function ProfileContant() {
                   onClick={() => handleDeleteFavorites({ id: packaged.id })}
                 >
                   {" "}
-                  <AiFillDelete className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
+                  <AiFillDelete className="h-5 w-5 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
                 </button>
               </div>
             </Card>

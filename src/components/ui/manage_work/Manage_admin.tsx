@@ -60,7 +60,7 @@ function Manage_admin() {
             style={{ width: 250 }}
           >
             <div ref={avatarRef} className="flex justify-center align-middle">
-              <RxAvatar className="w-8 h-8 hover:text-pink-600 text-pink-500" />
+              <RxAvatar className="w-8 h-8 hover:text-blue-600 text-blue-500" />
             </div>
             <p>{admin.email}</p>
             <p>{admin.phone}</p>
@@ -81,7 +81,7 @@ function Manage_admin() {
 
               <button onClick={() => handleDeleteAdmin(admin.id)}>
                 {" "}
-                <AiFillDelete className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
+                <AiFillDelete className="h-5 w-5 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
               </button>
             </div>
           </Card>

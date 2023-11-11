@@ -139,14 +139,14 @@ function BookingModal({
   return (
     <div>
       {" "}
-      <Button onClick={showModal} size="large" className="w-full mt-4 bg-pink">
+      <Button onClick={showModal} size="large" className="w-full mt-4 bg-blue">
         Book Now
       </Button>
       {!id ? (
         <Button
           onClick={() => handleAddToCartLogin()}
           size="large"
-          className="w-full mt-4 bg-pink"
+          className="w-full mt-4 bg-blue"
         >
           Add to favourite
         </Button>
@@ -154,7 +154,7 @@ function BookingModal({
         <Button
           onClick={() => handleAddToCartUser()}
           size="large"
-          className="w-full mt-4 bg-pink"
+          className="w-full mt-4 bg-blue"
         >
           Add to favourite
         </Button>
@@ -162,7 +162,7 @@ function BookingModal({
         <Button
           onClick={() => handleAddToCart()}
           size="large"
-          className="w-full mt-4 bg-pink"
+          className="w-full mt-4 bg-blue"
         >
           Add to favourite
         </Button>
@@ -176,8 +176,8 @@ function BookingModal({
           footer={null}
         >
           <div style={contentStyle}>
-            <Button onClick={showModal} size="large" className=" mt-4 bg-pink">
-              <Link href={"login"} className="text-pink-600">
+            <Button onClick={showModal} size="large" className=" mt-4 bg-blue">
+              <Link href={"login"} className="text-blue-600">
                 Please Login first
               </Link>
             </Button>
@@ -193,7 +193,7 @@ function BookingModal({
             </button>
             <button
               type="submit"
-              className="bg-pink-500 text-white rounded-lg py-2 px-4 hover:bg-pink-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
+              className="bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
               onClick={() => setIsModalOpen(false)}
             >
               OK
@@ -209,7 +209,7 @@ function BookingModal({
           footer={null}
         >
           <div style={contentStyle}>
-            <p className="text-pink-600">Your already book the Package</p>
+            <p className="text-blue-600">Your already book the Package</p>
           </div>
 
           <div className="flex justify-end pt-5">
@@ -222,7 +222,7 @@ function BookingModal({
             </button>
             <button
               type="submit"
-              className="bg-pink-500 text-white rounded-lg py-2 px-4 hover:bg-pink-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
+              className="bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
               onClick={() => setIsModalOpen(false)}
             >
               OK
@@ -241,7 +241,7 @@ function BookingModal({
           <div style={contentStyle}>{steps[current].content}</div>
           <div style={{ marginTop: 24 }}>
             {current < steps.length - 1 && (
-              <Button className="bg-pink-600" onClick={() => next()}>
+              <Button className="bg-blue-600" onClick={() => next()}>
                 Next
               </Button>
             )}
@@ -252,7 +252,7 @@ function BookingModal({
                   setIsModalOpen(false);
                   handleBookingPackageTour();
                 }}
-                className="bg-pink-600"
+                className="bg-blue-600"
               >
                 Done
               </Button>
@@ -273,7 +273,7 @@ function BookingModal({
             </button>
             <button
               type="submit"
-              className="bg-pink-500 text-white rounded-lg py-2 px-4 hover:bg-pink-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
+              className="bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
               onClick={() => setIsModalOpen(false)}
             >
               OK

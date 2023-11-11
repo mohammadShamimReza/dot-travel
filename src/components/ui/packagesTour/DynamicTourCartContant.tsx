@@ -1,8 +1,8 @@
 import { Avatar, Card, Collapse } from "antd";
 import Meta from "antd/es/card/Meta";
+import Image from "next/image";
 import Link from "next/link";
-import React from "react"; // Import React from 'react' if not already imported
-import { SiYourtraveldottv } from "react-icons/si";
+import { useRef } from "react"; // Import React from 'react' if not already imported
 import { DynamicTourPackageData } from "./tourCommon";
 
 const { Panel } = Collapse;
@@ -12,9 +12,12 @@ interface TourPackageProps {
   isLoading: any;
 }
 
-const DynamicTourCartContant: React.FC<TourPackageProps> = ({
+const DynamicTourCartContant = ({
   tourPackage,
   isLoading,
+}: {
+  tourPackage: DynamicTourPackageData;
+  isLoading: any;
 }) => {
   const {
     description,
@@ -28,6 +31,7 @@ const DynamicTourCartContant: React.FC<TourPackageProps> = ({
     to,
   } = tourPackage;
 
+  const avatarRef = useRef(null);
 
   if (isLoading === true) {
     return (
@@ -56,30 +60,23 @@ const DynamicTourCartContant: React.FC<TourPackageProps> = ({
       bordered={false}
     >
       <Link
-        className="text-black hover:text-pink-600"
+        className="text-black hover:text-blue-600"
         href={`/TourPackages/${id}`}
       >
         {" "}
-        <div className="tour-images ">
-          {/* {images.map(
-          (
-            image: string | StaticImport,
-            index: React.Key | null | undefined
-          ) => (
-            <div className="w-full " key={index}>
-              <Image
-                src={image}
-                key={index}
-                // width={100}
-                height={100}
-                style={{ width: "100%" }}
-                alt="hrro bannar 1"
-                className="rounded-xl rounded-b-none "
-              />
-            </div>
-          )
-        )} */}
-          <SiYourtraveldottv className="w-60 h-36 pt-3" />
+        <div className="">
+          <div ref={avatarRef} className="flex justify-center align-middle ">
+            {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
+            <Image
+              src={packageImage}
+              width={200}
+              height={100}
+              layout="responsive"
+              objectFit="cover"
+              alt="package image"
+              // className="w-full h-32"
+            ></Image>
+          </div>
         </div>
         <div className="p-3">
           <p>{title}</p>

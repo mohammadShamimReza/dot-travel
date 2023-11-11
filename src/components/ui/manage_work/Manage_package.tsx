@@ -78,7 +78,7 @@ function Manage_package() {
                 ref={avatarRef}
                 className="flex justify-center align-middle "
               >
-                {/* <MdTour className="w-8 h-8 hover:text-pink-600 text-pink-500" /> */}
+                {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
                 <Image
                   src={packaged?.packageImage}
                   width={200}
@@ -105,7 +105,7 @@ function Manage_package() {
 
                 <button onClick={() => handleDeletePackage(packaged.id)}>
                   {" "}
-                  <AiFillDelete className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
+                  <AiFillDelete className="h-5 w-5 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
                 </button>
               </div>
             </div>

@@ -48,7 +48,7 @@ function Manage_blog() {
 
   if (data?.data?.length === 0) {
     return (
-      <div className="text-lg text-center text-pink-700">User Not found</div>
+      <div className="text-lg text-center text-blue-700">User Not found</div>
     );
   }
 
@@ -64,7 +64,7 @@ function Manage_blog() {
             style={{ width: 250 }}
           >
             {/* <div ref={avatarRef} className="flex justify-center align-middle">
-              <RxAvatar className="w-8 h-8 adminshover:text-pink-600 text-pink-500" />
+              <RxAvatar className="w-8 h-8 adminshover:text-blue-600 text-blue-500" />
             </div> */}
             <p>{blog.description}</p>
             <br />
@@ -75,7 +75,7 @@ function Manage_blog() {
 
               <button onClick={() => handleDeleteAdmin(blog.id)}>
                 {" "}
-                <AiFillDelete className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
+                <AiFillDelete className="h-5 w-5 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
               </button>
             </div>
           </Card>

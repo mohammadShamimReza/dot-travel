@@ -27,7 +27,7 @@ function ManageMentPage() {
         style={{ width: "100%", marginTop: 16 }}
       >
         You are Not authorized
-        <Link href={"/login"} className="text-lg text-pink-600">
+        <Link href={"/login"} className="text-lg text-blue-600">
           Please login
         </Link>{" "}
       </Card>
@@ -39,9 +39,9 @@ function ManageMentPage() {
       <Collapse defaultActiveKey={["1"]}>
         {role === "super_admin" ? (
           <Panel
-            header={<p className="text-lg text-pink-600">Manage Admin</p>}
+            header={<p className="text-lg text-blue-600">Manage Admin</p>}
             key="1"
-            className="bg-pink-50 text-center"
+            className="bg-blue-50 text-center"
           >
             <Manage_admin />
           </Panel>
@@ -50,9 +50,9 @@ function ManageMentPage() {
         )}
         {role === "super_admin" || role === "admin" ? (
           <Panel
-            header={<p className="text-lg text-pink-600">Manage Package</p>}
+            header={<p className="text-lg text-blue-600">Manage Package</p>}
             key="2"
-            className="bg-pink-50 text-center"
+            className="bg-blue-50 text-center"
           >
             <Manage_package />
           </Panel>
@@ -63,24 +63,24 @@ function ManageMentPage() {
         {role === "admin" ? (
           <>
             <Panel
-              header={<p className="text-lg text-pink-600">Manage User</p>}
+              header={<p className="text-lg text-blue-600">Manage User</p>}
               key="3"
-              className="bg-pink-50 text-center"
+              className="bg-blue-50 text-center"
             >
               <Manage_client />
             </Panel>
 
             <Panel
-              header={<p className="text-lg text-pink-600">Manage Faq</p>}
+              header={<p className="text-lg text-blue-600">Manage Faq</p>}
               key="4"
-              className="bg-pink-50 text-center"
+              className="bg-blue-50 text-center"
             >
               <Manage_faq />
             </Panel>
             <Panel
-              header={<p className="text-lg text-pink-600">Manage Blog</p>}
+              header={<p className="text-lg text-blue-600">Manage Blog</p>}
               key="5"
-              className="bg-pink-50 text-center"
+              className="bg-blue-50 text-center"
             >
               <Manage_blog />
             </Panel>

@@ -72,7 +72,7 @@ const LoginForm: React.FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-md m-4 p-6 rounded-lg shadow-md">
-        <h1 className="text-2xl text-center mb-4 font-semibold text-pink-600">
+        <h1 className="text-2xl text-center mb-4 font-semibold text-blue-600">
           Login
         </h1>
         <form onSubmit={handleSubmit(handleLogin)} className="space-y-4">
@@ -121,7 +121,7 @@ const LoginForm: React.FC = () => {
           <div>
             <button
               type="submit"
-              className="bg-pink-500 text-white font-bold p-2 rounded-md w-full hover:bg-pink-600"
+              className="bg-blue-500 text-white font-bold p-2 rounded-md w-full hover:bg-blue-600"
             >
               Login
             </button>

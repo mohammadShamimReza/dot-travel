@@ -11,23 +11,23 @@ function page() {
   return (
     <div className="min-h-screen">
       <Collapse defaultActiveKey={["1"]}>
-        <Panel header="Mange_admin" key="1" className="bg-pink-50 text-center">
+        <Panel header="Mange_admin" key="1" className="bg-blue-50 text-center">
           <Manage_admin />
         </Panel>
         <Panel
           header="Manage_packages?"
           key="2"
-          className="bg-pink-50 text-center"
+          className="bg-blue-50 text-center"
         >
           <Manage_package />
         </Panel>
-        <Panel header="Manage_host?" key="3" className="bg-pink-50 text-center">
+        <Panel header="Manage_host?" key="3" className="bg-blue-50 text-center">
           <Manage_host />
         </Panel>
         <Panel
           header="Mangae_client?"
           key="4"
-          className="bg-pink-50 text-center"
+          className="bg-blue-50 text-center"
         >
           <Manage_client />
         </Panel>

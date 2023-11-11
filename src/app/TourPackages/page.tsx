@@ -48,7 +48,7 @@ function TourPage() {
   if (!tourPackages.data) {
     return (
       <div className="min-h-screen">
-        <h1 className="text-center text-9xl text-pink-600">Data not found</h1>
+        <h1 className="text-center text-9xl text-blue-600">Data not found</h1>
       </div>
     );
   }
@@ -61,7 +61,7 @@ function TourPage() {
             <input
               type="text"
               name="name"
-              className="w-72 block  rounded-md border-0 py-1.5 pl-7 pr-20  ring-1 ring-inset ring-pink-300  placeholder:text-gray-400    sm:text-sm sm:leading-6 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
+              className="w-72 block  rounded-md border-0 py-1.5 pl-7 pr-20  ring-1 ring-inset ring-blue-300  placeholder:text-gray-400    sm:text-sm sm:leading-6 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
               placeholder="search"
               value={searchTerm}
               onChange={handleOnSubmit}
@@ -69,22 +69,24 @@ function TourPage() {
           </form>
         </div>
       </div>
-      <h1 className="text-center text-2xl text-pink-600">Our Tour Packages</h1>
+      <h1 className="text-center text-2xl text-blue-600">Our Tour Packages</h1>
 
       <div className="flex justify-center align-middle pb-20 pt-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 ">
-          {tourPackages?.data?.data?.map(
-            (
-              tourPackage: DynamicTourPackageData,
-              index: Key | null | undefined
-            ) => (
-              <DynamicTourCartContant
-                key={index}
-                tourPackage={tourPackage}
-                isLoading={isLoading}
-              />
-            )
-          )}
+          {tourPackages?.data?.data
+            ?.slice(0, 8)
+            .map(
+              (
+                tourPackage: DynamicTourPackageData,
+                index: Key | null | undefined
+              ) => (
+                <DynamicTourCartContant
+                  key={index}
+                  tourPackage={tourPackage}
+                  isLoading={isLoading}
+                />
+              )
+            )}
         </div>
       </div>
     </div>

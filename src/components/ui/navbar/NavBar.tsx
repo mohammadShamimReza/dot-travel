@@ -41,7 +41,7 @@ function NavBar() {
             <Link href="/favouritePages">
               <button className="text-gray-600 dark:text-white flex items-center gap-2  p-2 rounded transition duration-300 transform hover:scale-110 cursor-pointer">
                 <Badge count={result ? result?.length : 0}>
-                  <GiEternalLove className="w-8 h-8 hover:text-pink-600 text-pink-500" />
+                  <GiEternalLove className="w-8 h-8 hover:text-blue-600 text-blue-500" />
                 </Badge>
               </button>
             </Link>

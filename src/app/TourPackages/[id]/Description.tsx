@@ -49,11 +49,11 @@ const PropertyDescriptionPage = () => {
               (packaged: IpackageReviewAndRating) => (
                 <div key={packaged.id} className="">
                   <div className="flex justify-center align-middle">
-                    <MdOutlineRateReview className="w-8 h-8 hover:text-pink-600 text-pink-500" />
+                    <MdOutlineRateReview className="w-8 h-8 hover:text-blue-600 text-blue-500" />
                   </div>
-                  rating: <p className="text-pink-600">{packaged.rating}</p>{" "}
+                  rating: <p className="text-blue-600">{packaged.rating}</p>{" "}
                   <br />
-                  review: <p className="text-pink-600">
+                  review: <p className="text-blue-600">
                     {packaged.review}
                   </p>{" "}
                 </div>

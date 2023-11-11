@@ -44,7 +44,7 @@ function AddAdminModal() {
       <div className="pb-5">
         <button
           onClick={showModal}
-          className="  border rounded w-32 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125 text-center"
+          className="  border rounded w-32 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125 text-center"
         >
           Add Admin
         </button>
@@ -62,7 +62,7 @@ function AddAdminModal() {
           <Button
             key="ok"
             onClick={handleOk}
-            className="bg-pink-500 text-white w-20"
+            className="bg-blue-500 text-white w-20"
           >
             OK
           </Button>,

@@ -17,7 +17,7 @@ export default function Home() {
         <hr />
         <br />
 
-        <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-pink-500">
+        <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-blue-500">
           Our Special Tour
         </div>
         <br />
@@ -26,7 +26,7 @@ export default function Home() {
           <TourPackageCart />
         </div>
         <div className="text-right">
-          <button className="transition-transform transform hover:scale-105 text-pink-500 ">
+          <button className="transition-transform transform hover:scale-105 text-blue-500 ">
             <Link href="/TourPackages">
               {" "}
               See more Packages <DoubleRightOutlined />
@@ -38,7 +38,7 @@ export default function Home() {
       <div className="pt-28">
         <hr />
         <br />
-        <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-pink-500">
+        <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-blue-500">
           Solo Rooms
         </div>
         <br />
@@ -49,7 +49,7 @@ export default function Home() {
         </div>
 
         <div className="text-right pt-10">
-          <button className="transition-transform transform hover:scale-105 text-pink-500 ">
+          <button className="transition-transform transform hover:scale-105 text-blue-500 ">
             <Link href="/solo" className="">
               {" "}
               See more Rooms <DoubleRightOutlined />
@@ -61,7 +61,7 @@ export default function Home() {
       <div className="mt-28">
         <hr />
         <br />
-        <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-pink-500">
+        <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-blue-500">
           Trusted By
         </div>
         <br />
@@ -73,7 +73,7 @@ export default function Home() {
       <div className="mt-20">
         <hr />
         <br />
-        <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-pink-500">
+        <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-blue-500">
           Happy Users
         </div>
         <br />

@@ -98,7 +98,7 @@ function EditBlogModal({ blog }: { blog: IBlog }) {
             </button>
             <button
               type="submit"
-              className="bg-pink-500 text-white rounded-lg py-2 px-4 hover:bg-pink-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
+              className="bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
             >
               OK
             </button>

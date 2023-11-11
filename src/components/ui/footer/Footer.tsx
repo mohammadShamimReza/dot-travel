@@ -19,10 +19,10 @@ const SubscriptionForm = () => {
           type="email"
           placeholder="Enter your email"
           required
-          className="w-full px-4 py-3 rounded-l bg-white focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500 placeholder-gray-500 text-gray-700 border border-pink-300"
+          className="w-full px-4 py-3 rounded-l bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500 text-gray-700 border border-blue-300"
         />
       </div>
-      <button className="bg-pink-500 text-white px-6 py-3 rounded-r focus:outline-none hover:bg-pink-600">
+      <button className="bg-blue-500 text-white px-6 py-3 rounded-r focus:outline-none hover:bg-blue-600">
         Subscribe
       </button>
     </form>
@@ -31,8 +31,8 @@ const SubscriptionForm = () => {
 
 const Footer = () => {
   return (
-    <footer className=" bg-pink-50 flex items-center justify-between flex-col  ">
-      <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-pink-500 mt-5">
+    <footer className=" bg-blue-50 flex items-center justify-between flex-col  ">
+      <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-blue-500 mt-5">
         Touch with Us
       </div>
       <div className="container mx-auto m-8">

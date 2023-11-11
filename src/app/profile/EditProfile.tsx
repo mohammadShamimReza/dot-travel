@@ -62,7 +62,7 @@ function EditProfile({ userData }: { userData: IUser }) {
       {" "}
       <button
         onClick={showModal}
-        className=" border rounded w-32 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125 text-center"
+        className=" border rounded w-32 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125 text-center"
       >
         Edit Profile
       </button>
@@ -180,7 +180,7 @@ function EditProfile({ userData }: { userData: IUser }) {
             </button>
             <button
               type="submit"
-              className="bg-pink-500 text-white rounded-lg py-2 px-4 hover:bg-pink-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
+              className="bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
             >
               OK
             </button>

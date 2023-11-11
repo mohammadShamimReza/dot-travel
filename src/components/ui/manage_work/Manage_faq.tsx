@@ -49,7 +49,7 @@ function Manage_faq() {
 
   if (data?.data?.length === 0) {
     return (
-      <div className="text-lg text-center text-pink-700">User Not found</div>
+      <div className="text-lg text-center text-blue-700">User Not found</div>
     );
   }
 
@@ -76,7 +76,7 @@ function Manage_faq() {
 
               <button onClick={() => handleDeleteAdmin(faq.id)}>
                 {" "}
-                <AiFillDelete className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
+                <AiFillDelete className="h-5 w-5 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
               </button>
             </div>
           </Card>

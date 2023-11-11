@@ -42,7 +42,7 @@ const AboutUs = () => {
           <Panel
             header={faqData.title}
             key={faqData.id}
-            className="bg-pink-50 text-center"
+            className="bg-blue-50 text-center"
           >
             <Text className="text-gray-700">{faqData.description}</Text>
           </Panel>

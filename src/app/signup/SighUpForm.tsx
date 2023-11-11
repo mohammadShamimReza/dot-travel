@@ -117,7 +117,7 @@ const SignupForm: React.FC = () => {
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="w-full max-w-md m-auto p-6 bg-white rounded-lg shadow-md mb-40">
-        <h1 className="text-2xl text-center mb-4 font-semibold text-pink-600">
+        <h1 className="text-2xl text-center mb-4 font-semibold text-blue-600">
           Sign Up
         </h1>
         <form onSubmit={handleSubmit(handleSignup)} className="space-y-4">
@@ -252,9 +252,9 @@ const SignupForm: React.FC = () => {
                 name="terms"
                 checked={watch("terms")}
                 onChange={toggleTermsCheckbox}
-                className="text-pink-500"
+                className="text-blue-500"
               />
-              <label className="text-sm text-pink-600 ml-2">
+              <label className="text-sm text-blue-600 ml-2">
                 I agree to the terms and conditions
               </label>
             </div>
@@ -266,7 +266,7 @@ const SignupForm: React.FC = () => {
           <div>
             <button
               type="submit"
-              className={`bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 rounded-md w-full`}
+              className={`bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md w-full`}
             >
               Sign Up
             </button>

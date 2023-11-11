@@ -2,9 +2,9 @@
 import { useDeleteUserMutation, useUsersQuery } from "@/redux/api/userApi";
 import { IUser } from "@/types";
 import { Avatar, Card, message } from "antd";
+import Image from "next/image";
 import { useRef } from "react";
 import { AiFillDelete } from "react-icons/ai";
-import { RxAvatar } from "react-icons/rx";
 
 function Manage_user() {
   const loadingData = [1, 2, 3, 4];
@@ -46,7 +46,7 @@ function Manage_user() {
 
   if (data.data.length === 0) {
     return (
-      <div className="text-lg text-center text-pink-700">User Not found</div>
+      <div className="text-lg text-center text-blue-700">User Not found</div>
     );
   }
 
@@ -60,7 +60,20 @@ function Manage_user() {
           style={{ width: 250 }}
         >
           <div ref={avatarRef} className="flex justify-center align-middle">
-            <RxAvatar className="w-8 h-8 adminshover:text-pink-600 text-pink-500" />
+            <div className="flex justify-center align-middle">
+              {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
+              <Image
+                src={
+                  "https://i.ibb.co/mHJTv57/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
+                }
+                width={40}
+                height={40}
+                // layout="responsive"
+                // objectFit="cover"
+                alt="package image"
+                className=""
+              ></Image>
+            </div>
           </div>
           <p className="w-[200px] truncate">{admin.email}</p>
           <p>{admin.phone}</p>
@@ -81,7 +94,7 @@ function Manage_user() {
 
             <button onClick={() => handleDeleteAdmin(admin.id)}>
               {" "}
-              <AiFillDelete className="h-5 w-5 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
+              <AiFillDelete className="h-5 w-5 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
             </button>
           </div>
         </Card>

@@ -23,7 +23,7 @@ const ReviewContant: FC<ReviewProps> = ({ author, date, rating, content }) => {
             className="w-12 h-12 rounded-full border-2 "
           />
 
-          <p className=" text-sm mb-2 text-pink-500">
+          <p className=" text-sm mb-2 text-blue-500">
             {author} <br /> {date}
           </p>
         </div>

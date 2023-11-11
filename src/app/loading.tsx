@@ -12,8 +12,8 @@ const Loading = () => {
       }}
     >
       <Space>
-        {/* <Spin tip="Loading" size="large" className="text-pink-500"></Spin> */}
-        {/* <div className="text-pink-500 text-lg">Loading ...</div> */}
+        {/* <Spin tip="Loading" size="large" className="text-blue-500"></Spin> */}
+        {/* <div className="text-blue-500 text-lg">Loading ...</div> */}
         <Image
           src={LoadingImgae}
           width={500}
