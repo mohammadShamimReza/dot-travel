@@ -16,7 +16,7 @@ function Manage_faq() {
   });
   const [deleteUser] = useDeleteFAQMutation();
 
-  const faqs = data;
+  const faqs = data?.data;
   const avatarRef = useRef(null);
 
   const handleDeleteAdmin = async (id: string) => {

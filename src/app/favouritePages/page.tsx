@@ -26,9 +26,9 @@ function FavoritePackage() {
     }
   );
 
-  console.log(typeof userFavouriteItems, "this is object");
+  console.log(userFavouriteItems, "this is object");
 
-  if (userFavouriteItems?.length === 0) {
+  if (userFavouriteItems?.length === 0 || userFavouriteItems === undefined) {
     return (
       <div className="min-h-screen flex items-center justify-center flex-col">
         <Image

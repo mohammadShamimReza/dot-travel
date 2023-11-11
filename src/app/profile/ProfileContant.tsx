@@ -1,11 +1,11 @@
 "use client";
 import PackageReviewModal from "@/components/ui/modal/package/PackageReviewModal";
+import { useUser } from "@/lib/UserProvider";
 import {
   useBookPackageTourByIdQuery,
   useDeleteBookPackageTourMutation,
 } from "@/redux/api/bookPackageApi";
 import { useUpdateUserMutation, useUsersByIdQuery } from "@/redux/api/userApi";
-import { getUserInfo } from "@/services/auth.service";
 import { IBookPackage } from "@/types";
 import { Avatar, Card, message } from "antd";
 import Link from "next/link";
@@ -14,14 +14,15 @@ import { MdTour } from "react-icons/md";
 import EditProfile from "./EditProfile";
 
 function ProfileContant() {
-  const { id, role, email } = getUserInfo() as any;
+  const { user } = useUser();
+  const { id, role, email } = user as any;
   const { data: userDatas, isLoading } = useUsersByIdQuery(id);
   const { data: BookTourdata } = useBookPackageTourByIdQuery(id);
   const [deleteBookPackageTour] = useDeleteBookPackageTourMutation();
   const [updateUser] = useUpdateUserMutation();
 
-
   const userData = userDatas?.data;
+  console.log(userData);
 
   const handleDeleteFavorites = ({ id }: { id: string }) => {
     message.loading("Removing package from favorites");
@@ -94,7 +95,7 @@ function ProfileContant() {
         <br />
         <br />
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {BookTourdata?.map((packaged: IBookPackage) => (
+          {BookTourdata?.data?.map((packaged: IBookPackage) => (
             <Card
               key={packaged.id}
               title={packaged.package.title}

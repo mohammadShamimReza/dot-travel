@@ -13,7 +13,7 @@ function Manage_user() {
   });
   const [deleteUser] = useDeleteUserMutation();
 
-  const users = data?.data;
+  const users = data?.data?.data;
   const avatarRef = useRef(null);
 
   const handleDeleteAdmin = async (id: string) => {

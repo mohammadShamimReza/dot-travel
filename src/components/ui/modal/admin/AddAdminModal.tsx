@@ -46,7 +46,7 @@ function AddAdminModal() {
           onClick={showModal}
           className="  border rounded w-32 hover:text-pink-600 text-pink-500 hover:cursor-pointer transition duration-300 transform hover:scale-125 text-center"
         >
-          Add Package
+          Add Admin
         </button>
       </div>
 

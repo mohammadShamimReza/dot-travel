@@ -5,7 +5,6 @@ import { IBlog } from "@/types";
 import { Avatar, Card, message } from "antd";
 import { useRef } from "react";
 import { AiFillDelete } from "react-icons/ai";
-import { RxAvatar } from "react-icons/rx";
 import AddBlogModal from "../modal/blog/AddBlogModal";
 import EditBlogModal from "../modal/blog/EditBlogModal";
 
@@ -16,7 +15,7 @@ function Manage_blog() {
   });
   const [deleteUser] = useDeleteUserMutation();
 
-  const blogs = data;
+  const blogs = data?.data;
   const avatarRef = useRef(null);
 
   const handleDeleteAdmin = async (id: string) => {
@@ -64,9 +63,9 @@ function Manage_blog() {
             extra={<a href="#"></a>}
             style={{ width: 250 }}
           >
-            <div ref={avatarRef} className="flex justify-center align-middle">
+            {/* <div ref={avatarRef} className="flex justify-center align-middle">
               <RxAvatar className="w-8 h-8 adminshover:text-pink-600 text-pink-500" />
-            </div>
+            </div> */}
             <p>{blog.description}</p>
             <br />
             <div className="flex justify-evenly">
