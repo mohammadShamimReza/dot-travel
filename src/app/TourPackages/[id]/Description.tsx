@@ -2,7 +2,7 @@
 import { useUser } from "@/lib/UserProvider";
 import { usePackageTourByIdQuery } from "@/redux/api/packageApi";
 import { IpackageReviewAndRating } from "@/types";
-import { Card } from "antd";
+import { Avatar, Card } from "antd";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { MdOutlineRateReview } from "react-icons/md";
@@ -24,13 +24,26 @@ const PropertyDescriptionPage = () => {
       {" "}
       <div className="flex space-x-4">
         <div className="w-3/4">
-          <Image
-            src={tourPackageData?.packageImage}
-            width={300}
-            height={300}
-            alt={"this is tour package image  "}
-            // className="rounded-full"
-          />
+          {!tourPackageData?.packageImage ? (
+            <Card style={{ width: 250, marginTop: 16 }} loading={true}>
+              <Card.Meta
+                avatar={
+                  <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
+                }
+                title="Card title"
+                description="This is the description"
+              />
+            </Card>
+          ) : (
+            <Image
+              src={tourPackageData?.packageImage}
+              width={300}
+              height={300}
+              alt={"this is tour package image  "}
+              // className="rounded-full"
+            />
+          )}
+
           <br />
           <br />
           <br />

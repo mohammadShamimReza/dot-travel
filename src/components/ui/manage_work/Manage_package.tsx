@@ -6,7 +6,7 @@ import {
 import { IPackage } from "@/types";
 import { Avatar, Card, message } from "antd";
 import Image from "next/image";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import AddPackageModal from "../modal/package/AddPackageModal";
 import EditPackageModal from "../modal/package/EditPackageModal";
@@ -30,7 +30,6 @@ function Manage_package() {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
-  const avatarRef = useRef(null);
 
   const handleDeletePackage = async (id: string) => {
     try {
@@ -74,10 +73,7 @@ function Manage_package() {
             className="border flex flex-col justify-between"
           >
             <div className="">
-              <div
-                ref={avatarRef}
-                className="flex justify-center align-middle "
-              >
+              <div className="flex justify-center align-middle ">
                 {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
                 <Image
                   src={packaged?.packageImage}
