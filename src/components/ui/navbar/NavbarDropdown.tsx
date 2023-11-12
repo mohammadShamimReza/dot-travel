@@ -34,6 +34,8 @@ function NavbarDropdown() {
 
   const { role, id } = userInfo;
 
+  console.log(role, id);
+
   useEffect(() => {
     setUser({ role, id });
   }, [role, id, setUser]);

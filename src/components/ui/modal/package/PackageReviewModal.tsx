@@ -79,7 +79,6 @@ function PackageReviewModal({
               required
               id="review"
               name="review"
-              //   defaultValue={}
               placeholder="Tour review"
               className="w-full border p-2 rounded-md"
             ></textarea>
@@ -97,9 +96,10 @@ function PackageReviewModal({
               id="rating"
               type="number"
               name="rating"
-              //   defaultValue={}
               placeholder="Tour rating"
               className="w-full border p-2 rounded-md"
+              min="0"
+              max="5"
             />
           </div>
 

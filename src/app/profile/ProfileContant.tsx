@@ -11,7 +11,6 @@ import { Card, message } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import { AiFillDelete } from "react-icons/ai";
-import { MdTour } from "react-icons/md";
 import EditProfile from "./EditProfile";
 
 function ProfileContant() {
@@ -112,7 +111,7 @@ function ProfileContant() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {BookTourdata?.data?.map((packaged: IBookPackage) => (
             <Card
-              key={packaged.id}
+              key={packaged.package.id}
               title={packaged.package.title}
               extra={<a href="#"></a>}
               style={{ width: 250 }}
@@ -123,8 +122,17 @@ function ProfileContant() {
                   href={`/TourPackages/${packaged.packageId}`}
                   className="text-black hover:text-purple-600"
                 >
-                  <div className="flex justify-center align-middle">
-                    <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" />
+                  <div className="flex justify-center align-middle h-40 ">
+                    {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
+                    <Image
+                      src={packaged.package.packageImage}
+                      width={200}
+                      height={100}
+                      layout="responsive"
+                      objectFit="cover"
+                      alt="package image"
+                      // className="w-full h-32"
+                    ></Image>
                   </div>
                   <p>Price: {packaged.package.price}</p>
                   <p>from: {packaged.package.from}</p>

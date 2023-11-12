@@ -2,10 +2,9 @@
 import { useUser } from "@/lib/UserProvider";
 import { usePackageTourByIdQuery } from "@/redux/api/packageApi";
 import { IpackageReviewAndRating } from "@/types";
-import { Avatar, Card } from "antd";
+import { Avatar, Card, Rate } from "antd";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { MdOutlineRateReview } from "react-icons/md";
 import BookingModal from "./BookingModal";
 
 const PropertyDescriptionPage = () => {
@@ -18,6 +17,10 @@ const PropertyDescriptionPage = () => {
   const { data: tourPackageDatas } = usePackageTourByIdQuery(desiredPart);
 
   const tourPackageData = tourPackageDatas?.data;
+
+  const desc = ["terrible", "bad", "normal", "good", "wonderful"];
+
+  console.log(tourPackageData);
 
   return (
     <div className="container mx-auto p-4 min-h-screen">
@@ -56,18 +59,39 @@ const PropertyDescriptionPage = () => {
             <br />
             Capability {tourPackageData?.maxUser}
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <br />
+          <div className="">
             {tourPackageData?.packageReviewAndRating?.map(
               (packaged: IpackageReviewAndRating) => (
                 <div key={packaged.id} className="">
-                  <div className="flex justify-center align-middle">
-                    <MdOutlineRateReview className="w-8 h-8 hover:text-blue-600 text-blue-500" />
+                  <div className="flex justify-center  text-blue-600 text-lg">
+                    Reviews & Ratings
                   </div>
-                  rating: <p className="text-blue-600">{packaged.rating}</p>{" "}
                   <br />
-                  review: <p className="text-blue-600">
-                    {packaged.review}
-                  </p>{" "}
+                  <br />
+                  <div className="flex justify-left align-middle gap-5 border p-5 rounded-lg">
+                    {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
+                    <Image
+                      src={
+                        "https://i.ibb.co/mHJTv57/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
+                      }
+                      width={40}
+                      height={40}
+                      // layout="responsive"
+                      // objectFit="cover"
+                      alt="package image"
+                      className=""
+                    ></Image>
+                    <div className="">
+                      <span>
+                        <Rate
+                          disabled
+                          defaultValue={parseInt(packaged.rating)}
+                        />
+                      </span>
+                      <p className="text-blue-600 ">{packaged.review}</p>
+                    </div>
+                  </div>
                 </div>
               )
             )}

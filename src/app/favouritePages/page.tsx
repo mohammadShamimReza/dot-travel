@@ -44,7 +44,7 @@ function FavoritePackage() {
         ></Image>
         <div className=" ">
           <p className="  text-blue-500  text-center text-2xl">
-            Favorite Items not found. <br />
+            You do not have any favourite package <br />
             {id ? (
               <div className="hover:text-blue-600 text-blue-500 underline transition duration-300 transform hover:scale-125">
                 {role ? (
@@ -68,7 +68,7 @@ function FavoritePackage() {
     return (
       <div className="min-h-screen">
         <div className="flex items-center justify-center">
-          <p className=" w-64 hover:text-blue-600 text-blue-500 transition duration-300 transform hover:scale-125 text-center">
+          <p className=" w-64 hover:text-blue-600 text-blue-500 transition duration-300 transform hover:scale-125 text-center text-xl">
             Favorite packages
           </p>{" "}
         </div>
@@ -131,7 +131,7 @@ function FavoritePackage() {
                 <button
                   onClick={() => {
                     deleteAddToCartPackageTour(packaged.id);
-                    message.loading("package deleteing");
+                    message.loading("Deleteing packages from favorites...");
                   }}
                 >
                   {" "}

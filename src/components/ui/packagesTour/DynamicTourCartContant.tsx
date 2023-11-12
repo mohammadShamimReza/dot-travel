@@ -31,6 +31,7 @@ const DynamicTourCartContant = ({
     to,
   } = tourPackage;
 
+
   const avatarRef = useRef(null);
 
   if (isLoading === true) {
@@ -82,13 +83,17 @@ const DynamicTourCartContant = ({
           </div>
         </div>
         <div className="p-3 ">
-          <p className="text-lg text-blue-600">{title}</p>
-          <p>Price: {price}</p>
+          <p className="text-2xl font-bold text-blue-500">{title}</p>
+          <p>
+            Price:{" "}
+            <span className="text-lg font-bold text-blue-500">$ {price}</span>{" "}
+          </p>
           <p>Destination: {destination}</p>
 
           <div>
             <p>
               From: {from}
+              <br />
               To: {to}
             </p>
             <p>Max User: {maxUser}</p>

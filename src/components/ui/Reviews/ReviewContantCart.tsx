@@ -1,35 +1,32 @@
+import { useRaviewTourQuery } from "@/redux/api/ratingAndReviewTourApi";
+import { IUser } from "@/types";
 import ReviewContant from "./ReviewContant";
 
 const ReviewContantCart = () => {
+  const { data } = useRaviewTourQuery({});
+  const reviewDatas = data?.data;
+
+  type reviewType = {
+    id: string;
+    review: string;
+    rating: string;
+    userId: string;
+    packageId: string;
+    user: IUser;
+  };
+
   return (
     <div className="">
       <div className="flex flex-wrap gap-4 justify-between">
-        <ReviewContant
-          author="John Doe"
-          date="2023-10-14"
-          rating={4.5}
-          content="Great product. I loved it!"
-        />
-        <ReviewContant
-          author="Jane Smith"
-          date="2023-10-15"
-          rating={5}
-          content="This is the best product I've ever used."
-        />
-        <ReviewContant
-          author="Jane Smith"
-          date="2023-10-15"
-          rating={5}
-          content="This is the best product I've ever used."
-        />
-        <ReviewContant
-          author="Jane Smith"
-          date="2023-10-15"
-          rating={5}
-          content="This is the best product I've ever used."
-        />
-
-        {/* Add more reviews as needed */}
+        {reviewDatas?.map((reviewData: reviewType) => (
+          <ReviewContant
+            key={reviewData.id}
+            author={reviewData.user.firstName}
+            image={""}
+            rating={parseInt(reviewData?.rating)}
+            content={reviewData.review}
+          />
+        ))}
       </div>
     </div>
   );
