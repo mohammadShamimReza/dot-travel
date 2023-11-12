@@ -64,38 +64,42 @@ const DynamicTourCartContant = ({
         className="text-black hover:text-blue-600"
         href={`/TourPackages/${id}`}
       >
-        {" "}
-        <div className="">
-          <div ref={avatarRef} className="flex justify-center align-middle  ">
-            {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
-            <Image
-              src={packageImage || "https://i.ibb.co/F5NtMw0/images.jpg"}
-              width={200}
-              height={100}
-              layout="responsive"
-              objectFit="cover"
-              alt="package image"
-              // className="w-full h-32"
-            ></Image>
+        <div className="flex justify-between flex-col rounded-lg">
+          <div className="">
+            <div
+              ref={avatarRef}
+              className="flex justify-center align-middle  h-40 "
+            >
+              {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
+              <Image
+                src={packageImage || "https://i.ibb.co/F5NtMw0/images.jpg"}
+                width={200}
+                height={300}
+                layout="responsive"
+                objectFit="cover"
+                alt="package image"
+                // className="w-full h-32"
+              ></Image>
+            </div>
           </div>
-        </div>
-        <div className="p-3 ">
-          <p className="text-2xl font-bold text-blue-500">{title}</p>
-          <p>
-            Price:{" "}
-            <span className="text-lg font-bold text-blue-500">$ {price}</span>{" "}
-          </p>
-          <p>Destination: {destination}</p>
-
-          <div>
+          <div className="p-3 ">
+            <p className="text-2xl font-bold text-blue-500">{title}</p>
             <p>
-              From: {from}
-              <br />
-              To: {to}
+              Price:{" "}
+              <span className="text-lg font-bold text-blue-500">$ {price}</span>{" "}
             </p>
-            <p>Max User: {maxUser}</p>
+            <p>Destination: {destination}</p>
+
+            <div>
+              <p>
+                From: {from}
+                <br />
+                To: {to}
+              </p>
+              <p>Max User: {maxUser}</p>
+            </div>
           </div>
-        </div>
+        </div>{" "}
       </Link>
     </Card>
   );

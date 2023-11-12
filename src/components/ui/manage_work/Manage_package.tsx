@@ -75,7 +75,7 @@ function Manage_package() {
             className="border flex flex-col justify-between"
           >
             <div className="">
-              <div className="flex justify-center align-middle ">
+              <div className="flex justify-center align-middle h-40">
                 {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
                 <Image
                   src={
