@@ -111,7 +111,7 @@ function ProfileContant() {
           )}
           {selectedImage !== null && (
             <div className="rounded-lg border flex justify-center align-middle">
-              <div className="p-4 h-40 w-40">
+              <div className="p-4  w-40">
                 <Image
                   src={URL.createObjectURL(selectedImage)}
                   width={200}
@@ -124,22 +124,23 @@ function ProfileContant() {
             </div>
           )}
         </div>
-
+        <br />
         <div className=" mt-2">
           <div className="mb-4">
             {id ? (
               !editProfileUrl ? (
                 <div className="">
                   <label
-                    htmlFor="thumbnailImg"
+                    htmlFor="profileImage"
                     className="py-3 block  font-bold"
                   >
-                    Profile Image
+                    Choose Image
                   </label>
                   <input
                     type="file"
-                    id="thumbnailImg"
-                    name="thumbnailImg"
+                    id="profileImage"
+                    accept=".jpg, .jpeg, .png"
+                    name="profileImage"
                     ref={fileInputRef}
                     className="border border-gray-300 p-2 rounded-lg "
                     onChange={handleImageChange}
@@ -159,7 +160,7 @@ function ProfileContant() {
             ) : (
               ""
             )}
-
+            <br />
             <>
               {selectedImage !== null && (
                 <button

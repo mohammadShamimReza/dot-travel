@@ -1,3 +1,4 @@
+"use client";
 import { useUser } from "@/lib/UserProvider";
 import { useUserLoginMutation } from "@/redux/api/authApi";
 import { getUserInfo, storeUserInfo } from "@/services/auth.service";
@@ -51,7 +52,7 @@ const LoginForm: React.FC = () => {
         const { role, id } = getUserInfo() as any;
         reset({ email: "", password: "" });
 
-        router.push("/profile");
+        router.push(`/profile/${id}`);
 
         setUser({ role: role, id: id });
 
@@ -127,10 +128,15 @@ const LoginForm: React.FC = () => {
             </button>
           </div>
         </form>
+        <br />
+        <br />
+        <div className=" underline text-blue-500">
+          <Link href={"/forgetPassword"}>Forget Password</Link>{" "}
+        </div>
         <div className="text-right pt-4">
           <Link
             href={"signup"}
-            className="bg-purple-500 text-white font-bold p-2 rounded-md w-full hover:bg-purple-600 text-right"
+            className="bg-blue-400 text-white font-bold p-2 rounded-md w-full hover:bg-blue-500 text-right"
           >
             signUp
           </Link>

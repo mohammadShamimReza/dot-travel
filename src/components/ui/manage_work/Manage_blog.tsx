@@ -1,6 +1,5 @@
 "use client";
-import { useBlogQuery } from "@/redux/api/blogApi";
-import { useDeleteUserMutation } from "@/redux/api/userApi";
+import { useBlogQuery, useDeleteBlogMutation } from "@/redux/api/blogApi";
 import { IBlog } from "@/types";
 import { Avatar, Card, message } from "antd";
 import { useRef } from "react";
@@ -13,17 +12,19 @@ function Manage_blog() {
   const { data, isLoading } = useBlogQuery({
     role: "user",
   });
-  const [deleteUser] = useDeleteUserMutation();
+  const [deleteBlog] = useDeleteBlogMutation();
 
   const blogs = data?.data;
   const avatarRef = useRef(null);
 
   const handleDeleteAdmin = async (id: string) => {
     try {
-      message.loading("Deleteting Admin");
-      const result = await deleteUser(id);
+      message.loading("Deleteting Blog");
+      const result = await deleteBlog(id);
+
+      console.log(result);
       if (result) {
-        message.success("Admin deleted successfully");
+        message.success("Blog deleted successfully");
       }
     } catch (error) {}
   };
@@ -48,7 +49,10 @@ function Manage_blog() {
 
   if (data?.data?.length === 0) {
     return (
-      <div className="text-lg text-center text-blue-700">User Not found</div>
+      <>
+        <AddBlogModal />
+        <div className="text-lg text-center text-blue-700">Blog Not found</div>
+      </>
     );
   }
 

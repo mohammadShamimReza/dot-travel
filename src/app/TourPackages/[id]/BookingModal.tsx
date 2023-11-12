@@ -53,7 +53,7 @@ function BookingModal({
       content: (
         <div className="font-bold">
           This tour start from Bangladesh, Destination of this tour is{" "}
-          {tourPackageData?.destination}
+          <span className="text-blue-600"> {tourPackageData?.destination}</span>
         </div>
       ),
     },
@@ -62,7 +62,7 @@ function BookingModal({
       content: (
         <div className="font-bold">
           This tour is Premium for Nangladesh, Price of this tour is{" "}
-          {tourPackageData?.price}
+          <span className="text-blue-600">{tourPackageData?.price}</span>
         </div>
       ),
     },
@@ -94,7 +94,7 @@ function BookingModal({
   const contentStyle: React.CSSProperties = {
     lineHeight: "260px",
     textAlign: "center",
-    color: token.colorTextTertiary,
+    // color: token.colorTextTertiary,
     backgroundColor: token.colorFillAlter,
     borderRadius: token.borderRadiusLG,
     border: `1px dashed ${token.colorBorder}`,
@@ -169,7 +169,7 @@ function BookingModal({
       )}
       {!id ? (
         <Modal
-          title="Basic Modal"
+          title="Booking Modal"
           open={isModalOpen}
           onOk={handleOk}
           onCancel={handleCancel}
@@ -202,7 +202,7 @@ function BookingModal({
         </Modal>
       ) : id !== "" && resForBookNow?.length > 0 ? (
         <Modal
-          title="Basic Modal"
+          title="Booking Modal"
           open={isModalOpen}
           onOk={handleOk}
           onCancel={handleCancel}
@@ -231,7 +231,7 @@ function BookingModal({
         </Modal>
       ) : (
         <Modal
-          title="Basic Modal"
+          title="Booking Modal"
           open={isModalOpen}
           onOk={handleOk}
           onCancel={handleCancel}
@@ -241,7 +241,10 @@ function BookingModal({
           <div style={contentStyle}>{steps[current].content}</div>
           <div style={{ marginTop: 24 }}>
             {current < steps.length - 1 && (
-              <Button className="bg-blue-600" onClick={() => next()}>
+              <Button
+                className="bg-blue-600 text-white hover:bg-blue-700 hover:text-white"
+                onClick={() => next()}
+              >
                 Next
               </Button>
             )}

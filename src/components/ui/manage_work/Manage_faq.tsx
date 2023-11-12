@@ -49,7 +49,11 @@ function Manage_faq() {
 
   if (data?.data?.length === 0) {
     return (
-      <div className="text-lg text-center text-blue-700">User Not found</div>
+      <>
+        <AddFaqModal />
+
+        <div className="text-lg text-center text-blue-700">faq Not found</div>
+      </>
     );
   }
 

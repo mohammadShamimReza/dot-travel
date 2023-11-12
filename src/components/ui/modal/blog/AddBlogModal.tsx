@@ -1,18 +1,24 @@
-"use client";
 import { useCreateBlogMutation } from "@/redux/api/blogApi";
 import { Modal, message } from "antd";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 function AddBlogModal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const [createBlog, { error }] = useCreateBlogMutation();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
 
   const showModal = () => {
     setIsModalOpen(true);
   };
 
-  const handleOk = async () => {
+  const handleOk = () => {
     setIsModalOpen(false);
   };
 
@@ -20,33 +26,23 @@ function AddBlogModal() {
     setIsModalOpen(false);
   };
 
-  const handleOnSubmit = async (e: any) => {
-    e.preventDefault();
+  const onSubmit = async (data: any) => {
+    try {
+      const res = await createBlog({
+        title: data.title,
+        description: data.description,
+      });
 
-    if (
-      e.currentTarget.title.value !== "" &&
-      e.currentTarget.description.value !== ""
-    ) {
-      try {
-        const res = await createBlog({
-          title: e.currentTarget.title.value,
-          description: e.currentTarget.description.value,
-        });
-        e.currentTarget.reset(); // This will clear all form fields
+      // Reset the form
+      reset();
 
-        message.loading("creating blog");
-
-        message.success("blog created successfully");
-
-        // }
-      } catch (error) {
-        message.success("blog is not created");
-        console.error(error);
-      }
-      setIsModalOpen(false);
-    } else {
-      message.error("give all needed data");
+      message.loading("Creating blog");
+      message.success("Blog created successfully");
+    } catch (error) {
+      message.error("Blog is not created");
+      console.error(error);
     }
+    setIsModalOpen(false);
   };
 
   return (
@@ -54,7 +50,7 @@ function AddBlogModal() {
       <div className="pb-5">
         <button
           onClick={showModal}
-          className=" border rounded w-32 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125 text-center"
+          className="border rounded w-32 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125 text-center"
         >
           Add blog
         </button>
@@ -62,38 +58,54 @@ function AddBlogModal() {
 
       <Modal
         title="Add Admin"
-        open={isModalOpen}
+        visible={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
         footer={null}
       >
-        <form onSubmit={handleOnSubmit} className="space-y-4">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-4"
+          id="myForm"
+        >
           <div>
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="title"
             >
-              blog Title
+              Blog Title
             </label>
             <input
               id="title"
               type="text"
-              name="title"
-              placeholder="blog Title"
+              placeholder="Blog Title"
+              {...register("title", { required: "This field is required" })}
               className="w-full border p-2 rounded-md"
             />
+            {/* {errors.title && (
+              <p className="text-red-500 text-sm">{errors.title.message}</p>
+            )} */}
           </div>
           <div>
             <label
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="description"
             >
-              blog Answer
+              Blog Answer
             </label>
             <textarea
-              name="description"
+              placeholder="Blog Answer"
+              {...register("description", {
+                required: "This field is required",
+              })}
+              rows={4}
               className="w-full border p-2 rounded-md"
-            ></textarea>
+            />
+            {/* {errors.description && (
+              <p className="text-red-500 text-sm">
+                {errors.description.message}
+              </p>
+            )} */}
           </div>
           <div className="flex justify-end">
             <button

@@ -17,7 +17,7 @@ const AboutUs = () => {
         <div className="" key={blogData.id}>
           <Title
             level={2}
-            className="text-3xl md:text-4xl font-extrabold mb-4 md:mb-6"
+            className="text-3xl md:text-4xl font-extrabold mb-4 md:mb-6 text-blue-500"
           >
             {blogData.title}
           </Title>
@@ -25,6 +25,9 @@ const AboutUs = () => {
           <Text className="text-gray-700 mb-4 md:mb-6">
             {blogData.description}
           </Text>
+          <br />
+          <br />
+          <br />
         </div>
       ))}
 
@@ -42,9 +45,11 @@ const AboutUs = () => {
           <Panel
             header={faqData.title}
             key={faqData.id}
-            className="bg-blue-50 text-center"
+            className="bg-blue-50 text-center text-lg"
           >
-            <Text className="text-gray-700">{faqData.description}</Text>
+            <Text className="text-gray-700 text-lg p-5">
+              {faqData.description}
+            </Text>
           </Panel>
         ))}
       </Collapse>
