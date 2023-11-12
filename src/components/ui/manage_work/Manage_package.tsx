@@ -62,6 +62,8 @@ function Manage_package() {
     );
   }
 
+  console.log(packages);
+
   return (
     <>
       <AddPackageModal />
@@ -76,7 +78,10 @@ function Manage_package() {
               <div className="flex justify-center align-middle ">
                 {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
                 <Image
-                  src={packaged?.packageImage}
+                  src={
+                    packaged?.packageImage ||
+                    "https://i.ibb.co/F5NtMw0/images.jpg"
+                  }
                   width={200}
                   height={100}
                   layout="responsive"

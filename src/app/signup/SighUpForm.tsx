@@ -46,7 +46,7 @@ const SignupForm: React.FC = () => {
     phone: yup
       .string()
       //   .matches(/^\d{10}$/, "Invalid phone number")
-      .required("contactNo is required"),
+      .required("phone is required"),
     terms: yup.boolean().oneOf([true], "Terms and Conditions must be accepted"),
   });
 
@@ -57,31 +57,24 @@ const SignupForm: React.FC = () => {
 
   const handleSignup = async (data: any) => {
     message.loading("Creating User..");
+    console.log(data);
 
     delete data.terms;
     delete data.repassword;
 
     data.role = "user";
+    data.profileImage = "";
     try {
       const result = await createUser({ ...data }).unwrap();
 
-      reset({
-        address: "",
-        phone: "",
-        password: "",
-        email: "",
-        firstName: "",
-        lastName: "",
-        repassword: "",
-        terms: false,
-      });
+      console.log(result);
 
       if (result?.data?.accessToken) {
         message.success("User log in successfully!");
 
         storeUserInfo({ accessToken: result?.data?.accessToken });
         const { role, id } = getUserInfo() as any;
-        router.push("/profile");
+        router.push(`/profile/${id}`);
 
         setUser({ role: role, id: id });
 
@@ -100,6 +93,7 @@ const SignupForm: React.FC = () => {
       }
     } catch (err: any) {
       console.error(error);
+      console.log(error);
       const specificError = error as ErrorType;
 
       const logError = specificError?.response;
@@ -229,7 +223,7 @@ const SignupForm: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-sm text-gray-600">Phone Number</label>
+            <label className="block text-sm text-gray-600">phone Number</label>
             <Controller
               name="phone"
               control={control}

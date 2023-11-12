@@ -22,7 +22,7 @@ const ReviewContantCart = () => {
           <ReviewContant
             key={reviewData.id}
             author={reviewData.user.firstName}
-            image={""}
+            image={reviewData.user.profileImage}
             rating={parseInt(reviewData?.rating)}
             content={reviewData.review}
           />

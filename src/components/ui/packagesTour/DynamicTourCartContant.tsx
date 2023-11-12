@@ -56,7 +56,7 @@ const DynamicTourCartContant = ({
     <Card
       // title={title}
       hoverable
-      style={{ height: "350px" }}
+      // style={{ height: "350px" }}
       bodyStyle={{ padding: 0 }}
       bordered={false}
     >
@@ -66,13 +66,10 @@ const DynamicTourCartContant = ({
       >
         {" "}
         <div className="">
-          <div
-            ref={avatarRef}
-            className="flex justify-center align-middle h-40 "
-          >
+          <div ref={avatarRef} className="flex justify-center align-middle  ">
             {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
             <Image
-              src={packageImage}
+              src={packageImage || "https://i.ibb.co/F5NtMw0/images.jpg"}
               width={200}
               height={100}
               layout="responsive"

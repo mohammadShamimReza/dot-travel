@@ -18,6 +18,7 @@ const ReviewContant: FC<ReviewProps> = ({ author, image, rating, content }) => {
           <div className="flex justify-center align-middle">
             <Image
               src={
+                image ||
                 "https://i.ibb.co/mHJTv57/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
               }
               height={50}

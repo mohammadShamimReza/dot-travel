@@ -2,7 +2,7 @@
 import { getUserInfo } from "@/services/auth.service";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import ProfileContant from "./ProfileContant";
+import ProfileContant from "../ProfileContant";
 
 function Page() {
   const router = useRouter();

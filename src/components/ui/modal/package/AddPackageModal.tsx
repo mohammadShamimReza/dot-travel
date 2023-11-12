@@ -31,7 +31,8 @@ function AddPackageModal() {
       form.from.value !== "" &&
       form.to.value !== "" &&
       form.maxUser.value !== "" &&
-      form.destination.value !== ""
+      form.destination.value !== "" &&
+      form.packageImage.value
     ) {
       try {
         const res = await createPackage({
@@ -42,7 +43,10 @@ function AddPackageModal() {
           to: form.to.value,
           maxUser: parseInt(form.maxUser.value),
           destination: form.destination.value,
+          packageImage: form.packageImage.value,
         });
+
+        console.log(res);
         e.currentTarget.reset(); // This will clear all form fields
         form.reset(); // This will clear all form fields
 
@@ -67,7 +71,7 @@ function AddPackageModal() {
       </div>
 
       <Modal
-        title="Add Admin"
+        title="Add Pacakge"
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -86,7 +90,7 @@ function AddPackageModal() {
               id="title"
               type="text"
               name="title"
-              placeholder="Category Title"
+              placeholder="Pacakge Title"
               className="w-full border p-2 rounded-md"
             />
           </div>
@@ -96,7 +100,7 @@ function AddPackageModal() {
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="description"
             >
-              Category description
+              Pacakge description
             </label>
             <input
               required
@@ -112,7 +116,7 @@ function AddPackageModal() {
               className="block text-gray-700 text-sm font-bold mb-2"
               htmlFor="price"
             >
-              Category price
+              Pacakge price
             </label>
             <input
               required

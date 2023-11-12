@@ -71,6 +71,7 @@ export interface IUser {
   phone: string;
   role: string;
   address: string;
+  profileImage: string;
 }
 
 export interface IBookPackage {

@@ -1,6 +1,7 @@
 "use client";
 import { authKey } from "@/constants/storageKey";
 import { useUser } from "@/lib/UserProvider";
+import { useUsersByIdQuery } from "@/redux/api/userApi";
 import { getUserInfo, removeUserInfo } from "@/services/auth.service";
 import type { MenuProps } from "antd";
 import { Dropdown } from "antd";
@@ -33,8 +34,6 @@ function NavbarDropdown() {
   const userInfo = (getUserInfo() as any) || {}; // Use an empty object as a fallback
 
   const { role, id } = userInfo;
-
-  console.log(role, id);
 
   useEffect(() => {
     setUser({ role, id });
@@ -110,6 +109,9 @@ function NavbarDropdown() {
 
   const avatarRef = useRef(null);
 
+  const { data } = useUsersByIdQuery(id);
+  const userData = data?.data;
+
   return (
     <div>
       {" "}
@@ -118,10 +120,11 @@ function NavbarDropdown() {
         {/* <button className="border-none"> */}
         <div ref={avatarRef} className="hover:text-blue-600 text-blue-500">
           {user.role ? (
-            <div className="flex justify-center align-middle">
+            <div className="flex justify-center align-middle rounded-full">
               {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
               <Image
                 src={
+                  userData?.profileImage ||
                   "https://i.ibb.co/mHJTv57/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
                 }
                 width={40}
@@ -129,7 +132,7 @@ function NavbarDropdown() {
                 // layout="responsive"
                 // objectFit="cover"
                 alt="package image"
-                className=""
+                className="rounded-full"
               ></Image>
             </div>
           ) : (
