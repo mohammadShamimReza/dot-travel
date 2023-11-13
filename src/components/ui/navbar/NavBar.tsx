@@ -1,22 +1,30 @@
 "use client";
+import { useUser } from "@/lib/UserProvider";
 import { useAddToCartPackageToursQuery } from "@/redux/api/addToCartPackageApi";
-import { getUserInfo } from "@/services/auth.service";
 import { Badge } from "antd";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useRef } from "react";
 import { GiEternalLove } from "react-icons/gi";
 import companyLogo from "../../../assets/company_log.jpg";
 import NavbarDropdown from "./NavbarDropdown";
 
 function NavBar() {
-  const { id } = getUserInfo() as any;
+  const { user } = useUser();
+  const { id, role } = user;
   const { data } = useAddToCartPackageToursQuery({ userId: id });
-  const result = data?.data?.filter(
-    (addTOcartData: { id: string; userId: string; packageId: string }) => {
-      const res = addTOcartData.userId === id;
-      return res;
-    }
-  );
+  const resultRef = useRef<any>(null); // Use 'any' for flexibility
+  useEffect(() => {
+    const addToCartResult = data?.data?.filter(
+      (addTOcartData: { id: string; userId: string; packageId: string }) => {
+        const res = addTOcartData.userId === id;
+        return res;
+      }
+    );
+    resultRef.current = addToCartResult;
+  }, [data?.data, id, user]);
+
+  const result = resultRef.current;
 
   return (
     <nav className="p-2 pb-9 ">

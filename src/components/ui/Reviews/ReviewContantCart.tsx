@@ -6,6 +6,8 @@ const ReviewContantCart = () => {
   const { data } = useRaviewTourQuery({});
   const reviewDatas = data?.data;
 
+  console.log(data);
+
   type reviewType = {
     id: string;
     review: string;

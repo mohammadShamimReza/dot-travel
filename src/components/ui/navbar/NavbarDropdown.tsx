@@ -43,7 +43,7 @@ function NavbarDropdown() {
     {
       key: "1",
       label: (
-        <Link rel="noopener noreferrer" href="/profile">
+        <Link rel="noopener noreferrer" href={`/profile/${id}`}>
           Profile
         </Link>
       ),
@@ -77,7 +77,7 @@ function NavbarDropdown() {
     {
       key: "1",
       label: (
-        <Link rel="noopener noreferrer" href="/profile">
+        <Link rel="noopener noreferrer" href={`/profile/${id}`}>
           Profile
         </Link>
       ),

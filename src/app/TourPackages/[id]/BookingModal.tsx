@@ -191,13 +191,13 @@ function BookingModal({
             >
               Cancel
             </button>
-            <button
+            {/* <button
               type="submit"
               className="bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
               onClick={() => setIsModalOpen(false)}
             >
               OK
-            </button>
+            </button> */}
           </div>
         </Modal>
       ) : id !== "" && resForBookNow?.length > 0 ? (
@@ -220,13 +220,13 @@ function BookingModal({
             >
               Cancel
             </button>
-            <button
+            {/* <button
               type="submit"
               className="bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
               onClick={() => setIsModalOpen(false)}
             >
               OK
-            </button>
+            </button> */}
           </div>
         </Modal>
       ) : (
@@ -274,13 +274,13 @@ function BookingModal({
             >
               Cancel
             </button>
-            <button
+            {/* <button
               type="submit"
               className="bg-blue-500 text-white rounded-lg py-2 px-4 hover:bg-blue-600 hover:cursor-pointer transition duration-300 transform hover:scale-105"
               onClick={() => setIsModalOpen(false)}
             >
               OK
-            </button>
+            </button> */}
           </div>
         </Modal>
       )}

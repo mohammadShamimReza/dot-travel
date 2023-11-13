@@ -37,17 +37,18 @@ export interface IPackage {
   packageImage: string;
   maxUser: number;
   destination: string;
-  packageReviewAndRating: IpackageReviewAndRating;
+  packageReviewAndRating: IPackageReviewAndRating;
   bookedPackage: IBookPackage[];
   addToCartPackage: IAddToCartPackage[];
 }
 
-export interface IpackageReviewAndRating {
-  id: string
-  review: string;
+export interface IPackageReviewAndRating {
+  id: string;
+  packageId: string;
   rating: string;
+  review: string;
+  user: IUser;
   userId: string;
-  package: string;
 }
 
 export interface IFaq {

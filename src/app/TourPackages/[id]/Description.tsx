@@ -1,7 +1,7 @@
 "use client";
 import { useUser } from "@/lib/UserProvider";
 import { usePackageTourByIdQuery } from "@/redux/api/packageApi";
-import { IpackageReviewAndRating } from "@/types";
+import { IPackageReviewAndRating } from "@/types";
 import { Avatar, Card, Rate } from "antd";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -50,19 +50,23 @@ const PropertyDescriptionPage = () => {
           <br />
           <br />
           <br />
-          <p className="text-gray-600 text-sm mb-4">
-            Desctiption: {tourPackageData?.description}
+          <p className=" text-lg mb-4">
+            Desctiption:{" "}
+            <span className="text-blue-600">
+              {" "}
+              {tourPackageData?.description}
+            </span>
             <br />
             From: {tourPackageData?.from}
             <br />
             TO: {tourPackageData?.to}
             <br />
-            Capability {tourPackageData?.maxUser}
+            Capability: {tourPackageData?.maxUser}
           </p>
           <br />
           <div className="">
             {tourPackageData?.packageReviewAndRating?.map(
-              (packaged: IpackageReviewAndRating) => (
+              (packaged: IPackageReviewAndRating) => (
                 <div key={packaged.id} className="">
                   <div className="flex justify-center  text-blue-600 text-lg">
                     Reviews & Ratings
@@ -73,6 +77,7 @@ const PropertyDescriptionPage = () => {
                     {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
                     <Image
                       src={
+                        packaged.user.profileImage ||
                         "https://i.ibb.co/mHJTv57/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
                       }
                       width={40}
