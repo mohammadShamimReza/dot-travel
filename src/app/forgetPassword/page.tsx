@@ -26,12 +26,9 @@ function ForgetPassword() {
     message.loading("sending");
     try {
       const result = await forgetPassword(data);
-      console.log(result);
-      {
-        result.error
-          ? message.error(result?.error?.response?.errorMessages)
-          : message.success("please check your email");
-      }
+     
+       message.success("please check your email");
+      
     } catch (error) {
       console.log(error);
       const specificError = error as ErrorType;

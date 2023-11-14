@@ -46,17 +46,15 @@ function ResetPass() {
         return;
       }
 
-      const result = await resetPassword({ ...data }).unwrap;
+      const res = await resetPassword({ ...data }).unwrap;
 
-      if (result?.data) {
-        reset({ newPassword: "", password: "" });
+      reset({ newPassword: "", password: "" });
 
-        router.push("/login");
+      router.push("/login");
 
-        message.success("reset password successfully!");
-      } else {
-        message.error("User log was not successful! Please try again.");
-      }
+      message.success("reset password successfully!");
+      
+      
     } catch (error) {
       const specificError = error as ErrorType;
 
