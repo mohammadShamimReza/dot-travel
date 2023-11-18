@@ -29,15 +29,9 @@ function NavBar() {
   return (
     <nav className="p-2 pb-9 ">
       <div className="flex items-center justify-between ">
-        <Link href="/">
-          <Image
-            className="rounded-full"
-            src={companyLogo}
-            width={70}
-            height={50}
-            alt="company logo"
-          />
-        </Link>
+        <p className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-blue-500">
+          Dot-travel
+        </p>
 
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
