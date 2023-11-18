@@ -177,7 +177,7 @@ function BookingModal({
         >
           <div style={contentStyle}>
             <Button onClick={showModal} size="large" className=" mt-4 bg-blue">
-              <Link href={"login"} className="text-blue-600">
+              <Link href={"/login"} className="text-blue-600">
                 Please Login first
               </Link>
             </Button>
