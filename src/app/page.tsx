@@ -1,7 +1,6 @@
 "use client";
 import Partners from "@/components/ui/Partners/Partners";
 import ReviewContantCart from "@/components/ui/Reviews/ReviewContantCart";
-import HeroSlider from "@/components/ui/heroSlider/HeroSlider";
 import TourPackageCart from "@/components/ui/packagesTour/TourPackageCart";
 import { DoubleRightOutlined, LoadingOutlined } from "@ant-design/icons";
 import Link from "next/link";
@@ -10,10 +9,8 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 export default function Home() {
   return (
     <div>
+      <div className="">{/* <HeroSlider /> */}</div>
       <div className="">
-        <HeroSlider />
-      </div>
-      <div className="mt-12">
         <hr />
         <br />
 
@@ -22,7 +19,7 @@ export default function Home() {
         </div>
         <br />
         <hr />
-        <div className="m-11">
+        <div className="">
           <TourPackageCart />
         </div>
         <div className="text-right">
@@ -34,31 +31,8 @@ export default function Home() {
           </button>
         </div>
       </div>
-      {/* 
-      <div className="pt-28">
-        <hr />
-        <br />
-        <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-blue-500">
-          Solo Rooms
-        </div>
-        <br />
-        <hr />
-        <div className="pt-20">
-          {" "}
-          <SoloPackageCart />
-        </div>
 
-        <div className="text-right pt-10">
-          <button className="transition-transform transform hover:scale-105 text-blue-500 ">
-            <Link href="/solo" className="">
-              {" "}
-              See more Rooms <DoubleRightOutlined />
-            </Link>{" "}
-          </button>
-        </div>
-      </div> */}
-
-      <div className="mt-28">
+      <div className="">
         <hr />
         <br />
         <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-blue-500">
@@ -66,11 +40,11 @@ export default function Home() {
         </div>
         <br />
         <hr />
-        <div className="p-28">
+        <div className="">
           <Partners />
         </div>
       </div>
-      <div className="mt-20">
+      <div className="">
         <hr />
         <br />
         <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-blue-500">
@@ -78,7 +52,7 @@ export default function Home() {
         </div>
         <br />
         <hr />
-        <div className="m-10 mb-40">
+        <div className="">
           <ReviewContantCart />
         </div>
       </div>

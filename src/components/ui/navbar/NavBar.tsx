@@ -1,6 +1,14 @@
 "use client";
 import { useUser } from "@/lib/UserProvider";
 import { useAddToCartPackageToursQuery } from "@/redux/api/addToCartPackageApi";
+import {
+  FacebookOutlined,
+  InstagramOutlined,
+  MailOutlined,
+  PhoneOutlined,
+  TwitterOutlined,
+  YoutubeOutlined,
+} from "@ant-design/icons";
 import { Badge } from "antd";
 import Image from "next/image";
 import Link from "next/link";
@@ -27,7 +35,25 @@ function NavBar() {
   const result = resultRef.current;
 
   return (
-    <nav className="p-2 pb-9 ">
+    <nav className="w-full">
+      <div className="h-10 bg-gray-800 flex items-center justify-between text-gray-300 px-10">
+        <div className="flex gap-5">
+          <span>
+            <PhoneOutlined /> +01719317307
+          </span>{" "}
+          |
+          <span>
+            {" "}
+            <MailOutlined /> mohammadshamimreza23393@gmail.com
+          </span>
+        </div>
+        <div className="flex gap-5 ">
+          <FacebookOutlined className="hover:cursor-pointer hover:text-blue-500" />
+          <TwitterOutlined className="hover:cursor-pointer hover:text-blue-400" />
+          <YoutubeOutlined className="hover:cursor-pointer hover:text-red-600" />
+          <InstagramOutlined className="hover:cursor-pointer hover:text-red-400" />
+        </div>
+      </div>
       <div className="flex items-center justify-between ">
         <Link href="/">
           <Image
