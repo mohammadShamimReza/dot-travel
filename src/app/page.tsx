@@ -8,17 +8,12 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 export default function Home() {
   return (
-    <div>
-      <div className="">{/* <HeroSlider /> */}</div>
+    <div className="pt-96">
       <div className="">
-        <hr />
-        <br />
-
         <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-blue-500">
           Our Special Tour
         </div>
-        <br />
-        <hr />
+
         <div className="">
           <TourPackageCart />
         </div>
@@ -33,33 +28,23 @@ export default function Home() {
       </div>
 
       <div className="">
-        <hr />
-        <br />
         <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-blue-500">
           Trusted By
         </div>
-        <br />
-        <hr />
+
         <div className="">
           <Partners />
         </div>
       </div>
       <div className="">
-        <hr />
-        <br />
         <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-blue-500">
           Happy Users
         </div>
-        <br />
-        <hr />
+
         <div className="">
           <ReviewContantCart />
         </div>
       </div>
-      <hr />
-      <br />
-
-      <br />
 
       {/* <AboutUs /> */}
     </div>
