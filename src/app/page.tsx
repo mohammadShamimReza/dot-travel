@@ -9,7 +9,7 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 export default function Home() {
   return (
     <div className="pt-96">
-      <div className="">
+      <div className="pt-28">
         <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-blue-500">
           Our Special Tour
         </div>
