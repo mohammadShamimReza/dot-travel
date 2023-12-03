@@ -1,20 +1,11 @@
 "use client";
 import { useUser } from "@/lib/UserProvider";
 import { useAddToCartPackageToursQuery } from "@/redux/api/addToCartPackageApi";
-import {
-  FacebookOutlined,
-  InstagramOutlined,
-  MailOutlined,
-  PhoneOutlined,
-  TwitterOutlined,
-  YoutubeOutlined,
-} from "@ant-design/icons";
-import { Badge } from "antd";
-import Image from "next/image";
+
+import { ShoppingCartOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { GiEternalLove } from "react-icons/gi";
-import companyLogo from "../../../assets/company_log.jpg";
+import NavTop from "./NavTop";
 import NavbarDropdown from "./NavbarDropdown";
 
 function NavBar() {
@@ -36,66 +27,45 @@ function NavBar() {
 
   return (
     <nav className="w-full">
-      <div className="h-10 bg-gray-800 flex items-center justify-between text-gray-300 px-10">
-        <div className="flex gap-5">
-          <span>
-            <PhoneOutlined /> +01719317307
-          </span>{" "}
-          |
-          <span>
-            {" "}
-            <MailOutlined /> mohammadshamimreza23393@gmail.com
-          </span>
-        </div>
-        <div className="flex gap-5 ">
-          <FacebookOutlined className="hover:cursor-pointer hover:text-blue-500" />
-          <TwitterOutlined className="hover:cursor-pointer hover:text-blue-400" />
-          <YoutubeOutlined className="hover:cursor-pointer hover:text-red-600" />
-          <InstagramOutlined className="hover:cursor-pointer hover:text-red-400" />
-        </div>
-      </div>
-      <div className="flex items-center justify-between ">
-        <Link href="/">
-          <Image
-            className="rounded-full"
-            src={companyLogo}
-            width={70}
-            height={50}
-            alt="company logo"
-          />
+      <NavTop />
+      <div className="flex items-center justify-between px-8 h-24 bg-gray-500 text-white">
+        <Link href="/" className="text-3xl font-bold font-serif">
+          Dot-Travel
         </Link>
 
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
-            <Link href="/TourPackages">
-              <button className="text-gray-600 dark:text-white flex items-center gap-2  p-2 rounded transition duration-300 transform hover:scale-110 cursor-pointer">
-                Tour package
-              </button>
-            </Link>
-            <Link href="/favouritePages">
-              <button className="text-gray-600 dark:text-white flex items-center gap-2  p-2 rounded transition duration-300 transform hover:scale-110 cursor-pointer">
-                <Badge count={result ? result?.length : 0}>
-                  <GiEternalLove className="w-8 h-8 hover:text-blue-600 text-blue-500" />
-                </Badge>
-              </button>
-            </Link>
+            <Link href="/TourPackages">Tour package</Link>
+
             <Link href="/about">
-              <button className="text-gray-600 dark:text-white flex items-center gap-2  p-2 rounded transition duration-300 transform hover:scale-110 cursor-pointer">
+              <button className=" flex items-center gap-2  p-2 rounded transition duration-300 transform hover:scale-110 cursor-pointer">
                 About
               </button>
             </Link>
             <Link href="/contact">
-              <button className="text-gray-600 dark:text-white flex items-center gap-2  p-2 rounded transition duration-300 transform hover:scale-110 cursor-pointer">
+              <button className=" flex items-center gap-2  p-2 rounded transition duration-300 transform hover:scale-110 cursor-pointer">
                 Contact
+              </button>
+            </Link>
+            <Link href="/favouritePages">
+              <button className=" flex justify-center align-middle rounded-full bg-white p-3 cursor-pointer hover:bg-slate-300 ">
+                {/* <Badge count={result ? result?.length : 0}> */}
+                <ShoppingCartOutlined className="" style={{ color: "black" }} />
+                {/* </Badge> */}
               </button>
             </Link>
 
             <NavbarDropdown />
           </div>
+          <div>
+            <Link href={"/become-host"}>
+              <div className="bg-blue-600 w-40 p-3 border rounded-full text-slate-200 hover:bg-blue-500 hover:text-white hover:transition-all duration-300 text-lg text-center mx-auto cursor-pointer">
+                Become a host
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
-      <br />
-      <hr />
     </nav>
   );
 }

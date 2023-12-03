@@ -3,9 +3,9 @@ import { authKey } from "@/constants/storageKey";
 import { useUser } from "@/lib/UserProvider";
 import { useUsersByIdQuery } from "@/redux/api/userApi";
 import { getUserInfo, removeUserInfo } from "@/services/auth.service";
+import { UserOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
 import { Dropdown } from "antd";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
@@ -114,34 +114,26 @@ function NavbarDropdown() {
 
   return (
     <div>
-      {" "}
-      <Dropdown menu={{ items }} placement="bottom" className="cursor-pointer">
-        {/* <Button className=""> */}
-        {/* <button className="border-none"> */}
-        <div ref={avatarRef} className="hover:text-blue-600 text-blue-500">
-          {user.role ? (
-            <div className="flex justify-center align-middle rounded-full">
-              {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
-              <Image
-                src={
-                  userData?.profileImage ||
-                  "https://i.ibb.co/mHJTv57/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
-                }
-                width={40}
-                height={40}
-                // layout="responsive"
-                // objectFit="cover"
-                alt="package image"
-                className="rounded-full"
-              ></Image>
-            </div>
-          ) : (
-            "login/signup"
-          )}
-        </div>
-        {/* </button> */}
-        {/* </Button> */}
-      </Dropdown>
+      <div className="">
+        {" "}
+        <Dropdown
+          menu={{ items }}
+          placement="bottom"
+          className="cursor-pointer"
+        >
+          {/* <Button className=""> */}
+          {/* <button className="border-none"> */}
+          <div ref={avatarRef} className=" ">
+            {user.role ? (
+              <div className="flex justify-center align-middle rounded-full bg-white p-3 hover:bg-slate-300 ">
+                <UserOutlined style={{ color: "black" }} />
+              </div>
+            ) : (
+              "login/signup"
+            )}
+          </div>
+        </Dropdown>
+      </div>
     </div>
   );
 }
