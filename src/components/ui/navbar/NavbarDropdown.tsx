@@ -129,7 +129,8 @@ function NavbarDropdown() {
                 <UserOutlined style={{ color: "black" }} />
               </div>
             ) : (
-              "login/signup"
+              <UserOutlined style={{ color: "black" }} />
+
             )}
           </div>
         </Dropdown>
