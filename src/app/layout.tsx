@@ -22,17 +22,15 @@ export default function RootLayout({
     <html className="scroll-smooth" lang="en">
       <body>
         <div className="">
-          <div className="min-h-screen flex justify-center m-4">
-            <div className="w-full max-w-7xl p-4     ">
-              <Providers>
-                <NavBar />
-
-                {children}
-                <ScrollToTopButton />
-                <Footer />
-              </Providers>
+          <Providers>
+            <NavBar />
+            <div className="flex justify-center">
+              {" "}
+              <div className="max-w-7xl">{children}</div>
             </div>
-          </div>
+            <ScrollToTopButton />
+            <Footer />
+          </Providers>
         </div>
       </body>
     </html>
