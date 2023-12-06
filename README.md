@@ -1,5 +1,5 @@
 ## [Live Link](https://dot-travel-frontend.vercel.app/)  
-## [Backend-code](https://github.com/mohammadShamimReza/dot-blog-frontend)
+## [Backend-code](https://github.com/mohammadShamimReza/dot-travel-backend)
 
 
 The platform allows users to manage their entire travel journey from a central location, ensuring efficiency. It offers features like booking travel packages, exploring destinations, sharing reviews, and giving ratings. With an intuitive interface, Dot-travel prioritizes user-friendly design for easy accessibility.
