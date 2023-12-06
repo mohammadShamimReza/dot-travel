@@ -2,7 +2,7 @@ import Contact from "./ContactForm";
 
 function page() {
   return (
-    <div>
+    <div className="w-full">
       <Contact />
     </div>
   );

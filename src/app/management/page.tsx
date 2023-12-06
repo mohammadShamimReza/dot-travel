@@ -18,7 +18,11 @@ function ManageMentPage() {
   const { user } = useUser();
   const { role, id } = user as any;
 
+  let activeKey;
 
+  {
+    role === "super_admin" ? (activeKey = "1") : (activeKey = "2");
+  }
 
   if (!role && !id && role === "user") {
     return (
@@ -35,13 +39,13 @@ function ManageMentPage() {
   }
 
   return (
-    <div className="min-h-screen mb-20">
-      <Collapse defaultActiveKey={["1"]}>
+    <div className="min-h-screen mb-20 ">
+      <Collapse defaultActiveKey={[activeKey]} size="large">
         {role === "super_admin" ? (
           <Panel
             header={<p className="text-lg text-blue-600">Manage Admin</p>}
             key="1"
-            className="bg-blue-50 text-center"
+            className="bg-blue-50 text-center "
           >
             <Manage_admin />
           </Panel>
@@ -50,9 +54,9 @@ function ManageMentPage() {
         )}
         {role === "super_admin" || role === "admin" ? (
           <Panel
-            header={<p className="text-lg text-blue-600">Manage Package</p>}
+            header={<p className="text-lg text-blue-600 ">Manage Package</p>}
             key="2"
-            className="bg-blue-50 text-center"
+            className="bg-blue-50 text-center "
           >
             <Manage_package />
           </Panel>

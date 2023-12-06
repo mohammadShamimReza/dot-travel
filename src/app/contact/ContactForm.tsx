@@ -21,7 +21,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
+    <div className="min-h-screen flex items-center justify-center ">
       <div className="w-full max-w-md m-4 p-6 bg-white rounded-lg shadow-md">
         <h1 className="text-2xl text-center mb-4 font-semibold text-blue-600">
           Contact Us
