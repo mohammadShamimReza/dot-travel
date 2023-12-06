@@ -64,13 +64,12 @@ const DynamicTourCartContant = ({
         className="text-black hover:text-blue-600"
         href={`/TourPackages/${id}`}
       >
-        <div className="flex justify-between flex-col rounded-lg">
+        <div className="flex justify-between flex-col ">
           <div className="">
             <div
               ref={avatarRef}
               className="flex justify-center align-middle  h-40 "
             >
-              {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
               <Image
                 src={packageImage || "https://i.ibb.co/F5NtMw0/images.jpg"}
                 width={200}
@@ -78,25 +77,24 @@ const DynamicTourCartContant = ({
                 layout="responsive"
                 objectFit="cover"
                 alt="package image"
-                // className="w-full h-32"
               ></Image>
             </div>
           </div>
           <div className="p-3 ">
-            <p className="text-2xl font-bold text-blue-500">{title}</p>
-            <p>
-              Price:{" "}
-              <span className="text-lg font-bold text-blue-500">$ {price}</span>{" "}
-            </p>
-            <p>Destination: {destination}</p>
+            <div className="p-3">
+              <p className="text-xl font-bold ">{title}</p>
 
-            <div>
-              <p>
-                From: {from}
-                <br />
-                To: {to}
+              <p className="text-gray-500 text-base"> {destination}</p>
+              <hr />
+              <p className="text-gray-500">
+                From:{" "}
+                <span className="text-lg font-bold text-black">${price} </span>{" "}
+                /night
               </p>
-              <p>Max User: {maxUser}</p>
+
+              <div>
+                <p>Max User: {maxUser}</p>
+              </div>
             </div>
           </div>
         </div>{" "}
