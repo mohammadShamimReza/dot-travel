@@ -86,12 +86,13 @@ const DynamicTourCartContant = ({
 
               <p className="text-gray-500 text-base"> {destination}</p>
               <hr />
+              <br />
               <p className="text-gray-500">
                 From:{" "}
                 <span className="text-lg font-bold text-black">${price} </span>{" "}
                 /night
               </p>
-
+              <br />
               <div>
                 <p>Max User: {maxUser}</p>
               </div>

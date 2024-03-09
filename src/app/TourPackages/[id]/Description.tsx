@@ -50,20 +50,22 @@ const PropertyDescriptionPage = () => {
           <br />
           <br />
           <br />
-          <p className=" text-lg mb-4">
-            Desctiption:{" "}
-            <span className="text-blue-600">
-              {" "}
+          <p className="text-lg mb-4">
+            <span className="font-bold text-gray-800">Description:</span>{" "}
+            <span className="text-blue-600 italic">
               {tourPackageData?.description}
             </span>
             <br />
-            From: {tourPackageData?.from}
+            <span className="font-bold text-gray-800">From:</span>
+            <span className="text-gray-700">{tourPackageData?.from}</span>
             <br />
-            TO: {tourPackageData?.to}
+            <span className="font-bold text-gray-800">To:</span>
+            <span className="text-gray-700">{tourPackageData?.to}</span>
             <br />
-            Capability: {tourPackageData?.maxUser}
+            <span className="font-bold text-gray-800">Capability:</span>
+            <span className="text-green-600">{tourPackageData?.maxUser}</span>
           </p>
-          <br />
+
           <div className="">
             {tourPackageData?.packageReviewAndRating?.map(
               (packaged: IPackageReviewAndRating) => (
