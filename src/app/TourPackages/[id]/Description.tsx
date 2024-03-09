@@ -56,11 +56,14 @@ const PropertyDescriptionPage = () => {
               {tourPackageData?.description}
             </span>
             <br />
+            <br />
             <span className="font-bold text-gray-800">From:</span>
             <span className="text-gray-700">{tourPackageData?.from}</span>
             <br />
+            <br />
             <span className="font-bold text-gray-800">To:</span>
             <span className="text-gray-700">{tourPackageData?.to}</span>
+            <br />
             <br />
             <span className="font-bold text-gray-800">Capability:</span>
             <span className="text-green-600">{tourPackageData?.maxUser}</span>
