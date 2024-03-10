@@ -36,7 +36,7 @@ function PackageReviewModal({
       try {
         message.loading("Creating FAQ");
 
-        message.success("FAQ created successfully");
+        message.success("Review created successfully");
         const res = await createRaviewTour({
           userId: userId,
           packageId: packaged.packageId,
@@ -61,7 +61,7 @@ function PackageReviewModal({
         className="h-5 w-5 hover:cursor-pointer transition duration-300 transform hover:scale-125"
       />
       <Modal
-        title="Updata Package"
+        title="Review "
         open={isModalOpen}
         onOk={handleOk}
         onCancel={handleCancel}
