@@ -15,19 +15,17 @@ const TourPackageCart = () => {
       <div className="min-h-screen">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 ">
           {loadingData.map((item) => (
-            <Card
-              key={item}
-              style={{ width: 250, marginTop: 16 }}
-              loading={true}
-            >
-              <Card.Meta
-                avatar={
-                  <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
-                }
-                title="Card title"
-                description="This is the description"
-              />
-            </Card>
+            <div className="flex justify-center align-middle" key={item}>
+              <Card style={{ width: 250, marginTop: 16 }} loading={true}>
+                <Card.Meta
+                  avatar={
+                    <Avatar src="https://xsgames.co/randomusers/avatar.php?g=pixel&key=1" />
+                  }
+                  title="Card title"
+                  description="This is the description"
+                />
+              </Card>
+            </div>
           ))}
         </div>
       </div>

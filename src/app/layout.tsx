@@ -24,9 +24,9 @@ export default function RootLayout({
         <div className="">
           <Providers>
             <NavBar />
-            <div className="flex justify-center">
+            <div className="">
               {" "}
-              <div className="max-w-7xl">{children}</div>
+              <div className="">{children}</div>
             </div>
             <ScrollToTopButton />
             <Footer />

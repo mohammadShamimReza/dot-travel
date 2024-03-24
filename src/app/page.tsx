@@ -10,13 +10,13 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 export default function Home() {
   return (
-    <div className="pt-96">
+    <div className="pt-96 ">
       <div className="">
-        <div className="text-4xl max-w-7xl font-semibold text-center   mb-10">
+        <div className="text-4xl max-w-7xl font-semibold text-center mb-10">
           Top destinations
         </div>
 
-        <div className="">
+        <div className=" ">
           <TourPackageCart />
         </div>
         <div className="text-right">

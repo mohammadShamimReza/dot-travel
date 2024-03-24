@@ -110,7 +110,7 @@ const SignupForm: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-md m-auto p-6 bg-white rounded-lg shadow-md mb-40">
+      <div className="w-full max-w-2xl m-auto p-6 bg-white rounded-lg shadow-md mb-40">
         <h1 className="text-2xl text-center mb-4 font-semibold text-blue-600">
           Sign Up
         </h1>
