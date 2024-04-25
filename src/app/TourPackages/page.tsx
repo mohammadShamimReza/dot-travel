@@ -6,7 +6,7 @@ import { Avatar, Card } from "antd";
 import { Key, useState } from "react";
 
 function TourPage() {
-  const loadingData = [1, 2, 3, 4];
+  const loadingData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -15,7 +15,6 @@ function TourPage() {
     searchTerm: searchTerm,
   });
 
-
   const handleOnSubmit = (e: any) => {
     e.preventDefault();
     setSearchTerm(e.target.value);
@@ -23,7 +22,7 @@ function TourPage() {
 
   if (!tourPackages) {
     return (
-      <div className="min-h-screen">
+      <div className="min-h-screen max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 ">
           {loadingData.map((item) => (
             <Card
@@ -54,15 +53,15 @@ function TourPage() {
   }
 
   return (
-    <div className="">
+    <div className="max-w-7xl mx-auto">
       <div>
         <div className="flex items-center justify-center pb-12 ">
           <form onSubmit={(e) => e.preventDefault()}>
             <input
               type="text"
               name="name"
-              className="w-72 block  rounded-md border-0 py-1.5 pl-7 pr-20  ring-1 ring-inset ring-blue-300  placeholder:text-gray-400    sm:text-sm sm:leading-6 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="search"
+              className="w-96 block  rounded-md border-0 py-1.5 pl-7 pr-20  ring-1 ring-inset ring-blue-300  placeholder:text-gray-400    sm:text-sm sm:leading-6 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="search destination"
               value={searchTerm}
               onChange={handleOnSubmit}
             />

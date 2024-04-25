@@ -3,7 +3,6 @@ import { useCreateRaviewTourMutation } from "@/redux/api/ratingAndReviewTourApi"
 import { IBookPackage } from "@/types";
 import { Modal, message } from "antd";
 import { useState } from "react";
-import { MdOutlineRateReview } from "react-icons/md";
 
 function PackageReviewModal({
   userId,
@@ -56,10 +55,17 @@ function PackageReviewModal({
 
   return (
     <div>
-      <MdOutlineRateReview
+      {/* <MdOutlineRateReview
         onClick={showModal}
         className="h-5 w-5 hover:cursor-pointer transition duration-300 transform hover:scale-125"
-      />
+      /> */}
+      <button
+        onClick={() => showModal()}
+        className="p-2 border rounded-lg transition duration-300 transform hover:scale-125"
+      >
+        {" "}
+        Review
+      </button>
       <Modal
         title="Review "
         open={isModalOpen}

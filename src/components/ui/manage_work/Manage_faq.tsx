@@ -4,7 +4,6 @@ import { useDeleteFAQMutation, useFAQQuery } from "@/redux/api/faqApi";
 import { IFaq } from "@/types";
 import { Avatar, Card, message } from "antd";
 import { useRef } from "react";
-import { AiFillDelete } from "react-icons/ai";
 import { FaQuestion } from "react-icons/fa";
 import AddFaqModal from "../modal/faq/AddFaqModal";
 import EditFaqModal from "../modal/faq/EditFaqModal";
@@ -78,9 +77,12 @@ function Manage_faq() {
                 <EditFaqModal faqs={faq} />
               </div>
 
-              <button onClick={() => handleDeleteAdmin(faq.id)}>
+              <button
+                onClick={() => handleDeleteAdmin(faq.id)}
+                className="p-2 border rounded-lg transition duration-300 transform hover:scale-125"
+              >
                 {" "}
-                <AiFillDelete className="h-5 w-5 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
+                Delete
               </button>
             </div>
           </Card>

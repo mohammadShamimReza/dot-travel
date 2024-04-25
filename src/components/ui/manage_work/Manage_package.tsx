@@ -7,7 +7,6 @@ import { IPackage } from "@/types";
 import { Avatar, Card, message } from "antd";
 import Image from "next/image";
 import { useState } from "react";
-import { AiFillDelete } from "react-icons/ai";
 import AddPackageModal from "../modal/package/AddPackageModal";
 import EditPackageModal from "../modal/package/EditPackageModal";
 
@@ -104,9 +103,12 @@ function Manage_package() {
                   <EditPackageModal packaged={packaged} />
                 </div>
 
-                <button onClick={() => handleDeletePackage(packaged.id)}>
+                <button
+                  onClick={() => handleDeletePackage(packaged.id)}
+                  className="p-2 border rounded-lg transition duration-300 transform hover:scale-125"
+                >
                   {" "}
-                  <AiFillDelete className="h-5 w-5 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
+                  Delete
                 </button>
               </div>
             </div>

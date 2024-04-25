@@ -3,7 +3,6 @@ import { useUpdatePackageTourMutation } from "@/redux/api/packageApi";
 import { IPackage } from "@/types";
 import { Modal, message } from "antd";
 import { useState } from "react";
-import { AiFillEdit } from "react-icons/ai";
 
 function EditPackageModal({ packaged }: { packaged: IPackage }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,10 +52,15 @@ function EditPackageModal({ packaged }: { packaged: IPackage }) {
 
   return (
     <div className="">
-      <AiFillEdit
-        onClick={showModal}
-        className="h-5 w-5 hover:cursor-pointer transition duration-300 transform hover:scale-125"
-      />
+      <button
+        onClick={() => {
+          showModal();
+        }}
+        className="p-2 border rounded-lg transition duration-300 transform hover:scale-125"
+      >
+        {" "}
+        Edit
+      </button>
       <Modal
         title="Updata Package"
         open={isModalOpen}

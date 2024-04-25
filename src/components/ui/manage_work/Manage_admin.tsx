@@ -3,7 +3,6 @@ import { useUpdateUserMutation, useUsersQuery } from "@/redux/api/userApi";
 import { IUser } from "@/types";
 import { Avatar, Card, message } from "antd";
 import { useRef } from "react";
-import { AiFillDelete } from "react-icons/ai";
 import { RxAvatar } from "react-icons/rx";
 import AddAdminModal from "../modal/admin/AddAdminModal";
 
@@ -79,9 +78,12 @@ function Manage_admin() {
                 />
               </div> */}
 
-              <button onClick={() => handleDeleteAdmin(admin.id)}>
+              <button
+                onClick={() => handleDeleteAdmin(admin.id)}
+                className="p-2 border rounded-lg transition duration-300 transform hover:scale-125"
+              >
                 {" "}
-                <AiFillDelete className="h-5 w-5 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
+                Delete
               </button>
             </div>
           </Card>

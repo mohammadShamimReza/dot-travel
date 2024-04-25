@@ -3,7 +3,6 @@ import { useUpdateFAQMutation } from "@/redux/api/faqApi";
 import { IFaq } from "@/types";
 import { Modal, message } from "antd";
 import { useState } from "react";
-import { AiFillEdit } from "react-icons/ai";
 
 function EditFaqModal({ faqs }: { faqs: IFaq }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,10 +46,15 @@ function EditFaqModal({ faqs }: { faqs: IFaq }) {
 
   return (
     <div className="">
-      <AiFillEdit
-        onClick={showModal}
-        className="h-5 w-5 hover:cursor-pointer transition duration-300 transform hover:scale-125"
-      />
+      <button
+        onClick={() => {
+          showModal();
+        }}
+        className="p-2 border rounded-lg transition duration-300 transform hover:scale-125"
+      >
+        {" "}
+        Edit
+      </button>
       <Modal
         title="Add Admin"
         open={isModalOpen}

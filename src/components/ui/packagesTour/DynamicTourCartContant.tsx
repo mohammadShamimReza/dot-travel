@@ -36,7 +36,7 @@ const DynamicTourCartContant = ({
 
   if (isLoading === true) {
     return (
-      <div className="flex flex-col items-center justify-center mt-6">
+      <div className="flex flex-col items-center justify-center mt-6 border ">
         <br />
         <br />
         <Card style={{ width: 400, marginTop: 16 }} loading={true}>
@@ -57,18 +57,23 @@ const DynamicTourCartContant = ({
       // title={title}
       hoverable
       // style={{ height: "350px" }}
-      bodyStyle={{ padding: 0 }}
+      bodyStyle={{
+        padding: 5,
+        border: "0.5px solid gray",
+        height: "100%",
+        borderRadius: "10px",
+      }}
       bordered={false}
     >
       <Link
-        className="text-black hover:text-blue-600"
+        className="text-black hover:text-blue-600 "
         href={`/TourPackages/${id}`}
       >
         <div className="flex justify-between flex-col ">
-          <div className="">
+          <div className=" ">
             <div
               ref={avatarRef}
-              className="flex justify-center align-middle  h-40 "
+              className="flex justify-center align-middle  h-40 p-3 "
             >
               <Image
                 src={packageImage || "https://i.ibb.co/F5NtMw0/images.jpg"}

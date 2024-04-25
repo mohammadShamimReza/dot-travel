@@ -8,7 +8,6 @@ import { IAddToCartPackage } from "@/types";
 import { Avatar, Card, message } from "antd";
 import Image from "next/image";
 import Link from "next/link";
-import { AiFillDelete } from "react-icons/ai";
 import noProduct from "../../assets/No data-pana.png";
 
 function FavoritePackage() {
@@ -28,10 +27,6 @@ function FavoritePackage() {
     }
   );
 
-  console.log(favouriteItems, id);
-
-  console.log(userFavouriteItems, "this is object");
-
   if (userFavouriteItems?.length === 0 || userFavouriteItems === undefined) {
     return (
       <div className="min-h-screen flex items-center justify-center flex-col">
@@ -45,20 +40,16 @@ function FavoritePackage() {
         <div className=" ">
           <p className="  text-blue-500  text-center text-2xl">
             You do not have any favourite package <br />
-            {id ? (
-              <div className="hover:text-blue-600 text-blue-500 underline transition duration-300 transform hover:scale-125">
-                {role ? (
-                  ""
-                ) : (
-                  <Link href={"/login"} className="">
-                    Login
-                  </Link>
-                )}
-              </div>
-            ) : (
-              ""
-            )}
           </p>{" "}
+          {!id || !role ? (
+            <div className="hover:text-blue-600 text-blue-500 underline transition duration-300 transform hover:scale-125 mt-10">
+              <Link href={"/login"} className="">
+                Please Login
+              </Link>
+            </div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     );
@@ -68,7 +59,7 @@ function FavoritePackage() {
     return (
       <div className="min-h-screen">
         <div className="flex items-center justify-center">
-          <p className=" w-64 hover:text-blue-600 text-blue-500 transition duration-300 transform hover:scale-125 text-center text-xl">
+          <p className=" w-64 hover:text-blue-600 text-blue-500 transition duration-300  text-center text-2xl">
             Favorite packages
           </p>{" "}
         </div>
@@ -77,7 +68,7 @@ function FavoritePackage() {
         <br />
         <br />
         <br />
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {userFavouriteItems?.map((packaged: IAddToCartPackage) => (
             <Card
               key={packaged.package.id}
@@ -133,9 +124,10 @@ function FavoritePackage() {
                     deleteAddToCartPackageTour(packaged.id);
                     message.loading("Deleteing packages from favorites...");
                   }}
+                  className="p-2 border rounded-lg transition duration-300 transform hover:scale-125"
                 >
                   {" "}
-                  <AiFillDelete className="h-5 w-5 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
+                  Delete
                 </button>
               </p>
             </Card>

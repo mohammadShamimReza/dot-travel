@@ -121,8 +121,6 @@ function NavbarDropdown() {
           placement="bottom"
           className="cursor-pointer"
         >
-          {/* <Button className=""> */}
-          {/* <button className="border-none"> */}
           <div ref={avatarRef} className=" ">
             {user.role ? (
               <div className="flex justify-center align-middle rounded-full bg-white p-3 hover:bg-slate-300 ">
@@ -130,9 +128,8 @@ function NavbarDropdown() {
               </div>
             ) : (
               <div className="flex justify-center align-middle rounded-full bg-white p-3 hover:bg-slate-300 ">
-              <UserOutlined style={{ color: "black" }} />
-            </div>
-
+                <UserOutlined style={{ color: "black" }} />
+              </div>
             )}
           </div>
         </Dropdown>

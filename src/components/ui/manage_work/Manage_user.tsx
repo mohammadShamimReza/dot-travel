@@ -4,7 +4,6 @@ import { IUser } from "@/types";
 import { Avatar, Card, message } from "antd";
 import Image from "next/image";
 import { useRef } from "react";
-import { AiFillDelete } from "react-icons/ai";
 
 function Manage_user() {
   const loadingData = [1, 2, 3, 4];
@@ -93,9 +92,12 @@ function Manage_user() {
                 />
               </div> */}
 
-            <button onClick={() => handleDeleteAdmin(admin.id)}>
+            <button
+              onClick={() => handleDeleteAdmin(admin.id)}
+              className="p-2 border rounded-lg transition duration-300 transform hover:scale-125"
+            >
               {" "}
-              <AiFillDelete className="h-5 w-5 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
+              Delete
             </button>
           </div>
         </Card>

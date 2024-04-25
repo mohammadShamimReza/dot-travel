@@ -16,16 +16,16 @@ export default function Home() {
           Top destinations
         </div>
 
-        <div className=" ">
+        <div className="max-w-7xl mx-auto">
           <TourPackageCart />
-        </div>
-        <div className="text-right">
-          <button className="mb-10 underline  ">
-            <Link href="/TourPackages">
-              {" "}
-              See more <DoubleRightOutlined />
-            </Link>{" "}
-          </button>
+          <div className="text-right">
+            <button className="my-10  underline hover:text-blue-500  ">
+              <Link href="/TourPackages">
+                {" "}
+                See more <DoubleRightOutlined />
+              </Link>{" "}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -43,7 +43,7 @@ export default function Home() {
           Happy Users
         </div>
 
-        <div className="mb-28 mt-9">
+        <div className="mb-28 mt-9 max-w-7xl mx-auto">
           <ReviewContantCart />
         </div>
       </div>

@@ -39,7 +39,7 @@ function ManageMentPage() {
   }
 
   return (
-    <div className="min-h-screen mb-20 ">
+    <div className="min-h-screen mb-20 max-w-7xl mx-auto">
       <Collapse defaultActiveKey={[activeKey]} size="large">
         {role === "super_admin" ? (
           <Panel

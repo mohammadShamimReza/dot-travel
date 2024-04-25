@@ -3,7 +3,6 @@ import { useBlogQuery, useDeleteBlogMutation } from "@/redux/api/blogApi";
 import { IBlog } from "@/types";
 import { Avatar, Card, message } from "antd";
 import { useRef } from "react";
-import { AiFillDelete } from "react-icons/ai";
 import AddBlogModal from "../modal/blog/AddBlogModal";
 import EditBlogModal from "../modal/blog/EditBlogModal";
 
@@ -70,16 +69,19 @@ function Manage_blog() {
             {/* <div ref={avatarRef} className="flex justify-center align-middle">
               <RxAvatar className="w-8 h-8 adminshover:text-blue-600 text-blue-500" />
             </div> */}
-            <p>{blog.description}</p>
+            <p className="line-clamp-5">{blog.description}</p>
             <br />
             <div className="flex justify-evenly">
               <div className="">
                 <EditBlogModal blog={blog} />
               </div>
 
-              <button onClick={() => handleDeleteAdmin(blog.id)}>
+              <button
+                onClick={() => handleDeleteAdmin(blog.id)}
+                className="p-2 border rounded-lg transition duration-300 transform hover:scale-125"
+              >
                 {" "}
-                <AiFillDelete className="h-5 w-5 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
+                Delete
               </button>
             </div>
           </Card>

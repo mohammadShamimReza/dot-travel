@@ -32,7 +32,7 @@ const SubscriptionForm = () => {
 const Footer = () => {
   return (
     <footer className=" bg-blue-50 flex items-center justify-between flex-col  ">
-      <div className="text-4xl font-semibold text-center transition-transform transform hover:scale-105 text-blue-500 mt-5">
+      <div className="text-4xl font-semibold text-center  text-blue-500 mt-5">
         Touch with Us
       </div>
       <div className="container mx-auto m-8">

@@ -3,7 +3,6 @@ import { useUpdateBlogMutation } from "@/redux/api/blogApi";
 import { IBlog } from "@/types";
 import { Modal, message } from "antd";
 import { useState } from "react";
-import { AiFillEdit } from "react-icons/ai";
 
 function EditBlogModal({ blog }: { blog: IBlog }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,32 +24,37 @@ function EditBlogModal({ blog }: { blog: IBlog }) {
 
   const handleOnSubmit = async (e: any) => {
     e.preventDefault();
-      const form = e.currentTarget;
-      try {
-        message.loading("Updating faq");
-        const res = await updateBlog({
-          id: blogsData.id,
-          body: {
-            title: e.currentTarget.title.value || blogsData.title,
-            description:
-              e.currentTarget.description.value || blogsData.description,
-          },
-        });
+    const form = e.currentTarget;
+    try {
+      message.loading("Updating faq");
+      const res = await updateBlog({
+        id: blogsData.id,
+        body: {
+          title: e.currentTarget.title.value || blogsData.title,
+          description:
+            e.currentTarget.description.value || blogsData.description,
+        },
+      });
 
-        message.success("faq Update successfully");
-      } catch (error) {
-        message.error("faq Update is not successfully");
-        console.error(error);
-      }
+      message.success("faq Update successfully");
+    } catch (error) {
+      message.error("faq Update is not successfully");
+      console.error(error);
+    }
     setIsModalOpen(false);
   };
 
   return (
     <div className="">
-      <AiFillEdit
-        onClick={showModal}
-        className="h-5 w-5 hover:cursor-pointer transition duration-300 transform hover:scale-125"
-      />
+      <button
+        onClick={() => {
+          showModal();
+        }}
+        className="p-2 border rounded-lg transition duration-300 transform hover:scale-125"
+      >
+        {" "}
+        Edit
+      </button>
       <Modal
         title="Add Admin"
         open={isModalOpen}
@@ -85,7 +89,7 @@ function EditBlogModal({ blog }: { blog: IBlog }) {
             <textarea
               name="description"
               defaultValue={blogsData.description}
-              className="w-full border p-2 rounded-md"
+              className="w-full border p-2 rounded-md h-72"
             ></textarea>
           </div>
           <div className="flex justify-end">

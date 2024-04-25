@@ -12,7 +12,14 @@ interface ReviewProps {
 const ReviewContant: FC<ReviewProps> = ({ author, image, rating, content }) => {
   return (
     <div className="sm:w-60 w-full">
-      <Card className=" p-4 ">
+      <Card
+        bodyStyle={{
+          padding: 20,
+          border: "0.1px solid gray",
+          height: "100%",
+          borderRadius: "10px",
+        }}
+      >
         <div className="flex justify-between flex-col h-60">
           {" "}
           <div className="flex justify-center align-middle">

@@ -12,7 +12,6 @@ import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
 import { RefObject, useRef, useState } from "react";
-import { AiFillDelete } from "react-icons/ai";
 import EditProfile from "./EditProfile";
 
 function ProfileContant() {
@@ -160,7 +159,6 @@ function ProfileContant() {
             ) : (
               ""
             )}
-            <br />
             <>
               {selectedImage !== null && (
                 <button
@@ -191,15 +189,13 @@ function ProfileContant() {
           </div>
         </div>
 
-        <br />
-        <br />
         <p className="text-lg font-semibold my-2 text-blue-600">
-          {userData?.firstName} {userData?.lastName}
+          name: {userData?.firstName} {userData?.lastName}
         </p>
-        {role}
-        <p className="text-gray-500 my-1">{userData?.email}</p>
-        <p className="text-gray-500 my-1">{userData?.address}</p>
-        <p className="text-gray-500 my-1">{userData?.phone}</p>
+
+        <p className="text-gray-500 my-1">Email: {userData?.email}</p>
+        <p className="text-gray-500 my-1">Address: {userData?.address}</p>
+        <p className="text-gray-500 my-1">Phone: {userData?.phone}</p>
       </div>
       <br />
       <br />
@@ -224,7 +220,9 @@ function ProfileContant() {
           You do not go any where yet
         </p>
       ) : (
-        <p className="text-center text-9xl, text-blue-600">My Tour Packages</p>
+        <p className="text-center text-9xl, text-blue-600 text-2xl">
+          My Tour Packages
+        </p>
       )}
       <br />
       <br />
@@ -232,7 +230,7 @@ function ProfileContant() {
       <>
         <br />
         <br />
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {BookTourdata?.data?.map((packaged: IBookPackage) => (
             <Card
               key={packaged.package.id}
@@ -247,7 +245,6 @@ function ProfileContant() {
                   className="text-black hover:text-purple-600"
                 >
                   <div className="flex justify-center align-middle h-40 ">
-                    {/* <MdTour className="w-8 h-8 hover:text-blue-600 text-blue-500" /> */}
                     <Image
                       src={packaged.package.packageImage}
                       width={200}
@@ -255,7 +252,6 @@ function ProfileContant() {
                       layout="responsive"
                       objectFit="cover"
                       alt="package image"
-                      // className="w-full h-32"
                     ></Image>
                   </div>
                   <p>Price: {packaged.package.price}</p>
@@ -272,9 +268,10 @@ function ProfileContant() {
 
                 <button
                   onClick={() => handleDeleteFavorites({ id: packaged.id })}
+                  className="p-2 border rounded-lg transition duration-300 transform hover:scale-125"
                 >
                   {" "}
-                  <AiFillDelete className="h-5 w-5 hover:text-blue-600 text-blue-500 hover:cursor-pointer transition duration-300 transform hover:scale-125" />
+                  Delete
                 </button>
               </div>
             </Card>
