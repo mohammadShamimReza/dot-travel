@@ -57,7 +57,6 @@ const SignupForm: React.FC = () => {
 
   const handleSignup = async (data: any) => {
     message.loading("Creating User..");
-    console.log(data);
 
     delete data.terms;
     delete data.repassword;
@@ -66,8 +65,6 @@ const SignupForm: React.FC = () => {
     data.profileImage = "";
     try {
       const result = await createUser({ ...data }).unwrap();
-
-      console.log(result);
 
       if (result?.data?.accessToken) {
         message.success("User log in successfully!");

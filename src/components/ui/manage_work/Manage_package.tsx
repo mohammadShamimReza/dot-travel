@@ -61,7 +61,6 @@ function Manage_package() {
     );
   }
 
-  console.log(packages);
 
   return (
     <>

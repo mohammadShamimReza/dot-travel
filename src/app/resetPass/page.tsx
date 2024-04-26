@@ -38,7 +38,6 @@ function ResetPass() {
 
   const onSubmit = async (data: any) => {
     data.id = id;
-    console.log(data);
     message.loading("Sending");
     try {
       if (password !== newPassword) {

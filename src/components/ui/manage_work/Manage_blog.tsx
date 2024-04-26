@@ -21,7 +21,6 @@ function Manage_blog() {
       message.loading("Deleteting Blog");
       const result = await deleteBlog(id);
 
-      console.log(result);
       if (result) {
         message.success("Blog deleted successfully");
       }

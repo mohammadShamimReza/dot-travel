@@ -22,7 +22,6 @@ function FavoritePackage() {
   const userFavouriteItems = favouriteItems?.data?.filter(
     (favouriteItem: any) => {
       const res = favouriteItem.userId === id;
-      console.log(res, "this is res");
       return res;
     }
   );
@@ -42,7 +41,7 @@ function FavoritePackage() {
             You do not have any favourite package <br />
           </p>{" "}
           {!id || !role ? (
-            <div className="hover:text-blue-600 text-blue-500 underline transition duration-300 transform hover:scale-125 mt-10">
+            <div className="hover:text-blue-600 text-blue-500 underline transition duration-300 transform hover:scale-125 mt-10 text-right">
               <Link href={"/login"} className="">
                 Please Login
               </Link>

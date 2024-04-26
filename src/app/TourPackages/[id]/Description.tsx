@@ -21,7 +21,6 @@ import BookingModal from "./BookingModal";
 
     const desc = ["terrible", "bad", "normal", "good", "wonderful"];
 
-    console.log(tourPackageData);
 
     return (
       <div className="container mx-auto p-4 min-h-screen">

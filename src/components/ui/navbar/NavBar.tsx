@@ -35,7 +35,6 @@ function NavBar() {
   };
 
   const pathname = usePathname();
-  console.log(pathname);
 
   return (
     <nav className="w-full">

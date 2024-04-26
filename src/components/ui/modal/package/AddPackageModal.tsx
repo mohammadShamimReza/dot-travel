@@ -39,7 +39,6 @@ function AddPackageModal() {
         packageImage: data.packageImage,
       });
 
-      console.log(res);
       reset(); // This will clear all form fields
       message.success("Package created successfully");
     } catch (error) {
