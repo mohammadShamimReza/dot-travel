@@ -19,7 +19,7 @@ const ReviewContantCart = () => {
   return (
     <div className="">
       <div className="flex flex-wrap gap-4 justify-between">
-        {reviewDatas?.map((reviewData: reviewType) => (
+        {reviewDatas?.slice(0, 4).map((reviewData: reviewType) => (
           <ReviewContant
             key={reviewData.id}
             author={reviewData.user.firstName}
