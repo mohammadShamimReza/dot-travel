@@ -1,27 +1,15 @@
-import { Row, Space } from "antd";
 import Image from "next/image";
-import LoadingImgae from "../assets/Fast loading-rafiki.png";
 
 const Loading = () => {
   return (
-    <Row
-      justify="center"
-      align="middle"
-      style={{
-        height: "100vh",
-      }}
-    >
-      <Space>
-        {/* <Spin tip="Loading" size="large" className="text-blue-500"></Spin> */}
-        {/* <div className="text-blue-500 text-lg">Loading ...</div> */}
-        <Image
-          src={LoadingImgae}
-          width={500}
-          height={500}
-          alt="Loading"
-        ></Image>
-      </Space>
-    </Row>
+    <div className="relative flex justify-center items-center">
+      <div className="absolute animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-purple-500"></div>
+      <Image
+        src="https://www.svgrepo.com/show/509001/avatar-thinking-9.svg"
+        className="rounded-full h-28 w-28"
+        alt="loading state"
+      />
+    </div>
   );
 };
 
