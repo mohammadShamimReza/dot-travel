@@ -43,12 +43,11 @@ const AboutUs = () => {
       >
         Frequently Asked Questions
       </Title>
-
-      <Collapse defaultActiveKey={["1"]}>
-        {!faqDatas ? (
-          <Skeleton active />
-        ) : (
-          faqDatas?.data?.map((faqData: IFaq) => (
+      {!faqDatas ? (
+        <Skeleton active />
+      ) : (
+        <Collapse defaultActiveKey={["1"]}>
+          {faqDatas?.data?.map((faqData: IFaq) => (
             <Panel
               header={faqData.title}
               key={faqData.id}
@@ -58,9 +57,9 @@ const AboutUs = () => {
                 {faqData.description}
               </Text>
             </Panel>
-          ))
-        )}
-      </Collapse>
+          ))}
+        </Collapse>
+      )}
     </div>
   );
 };
