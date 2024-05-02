@@ -8,8 +8,12 @@ import { useRef } from "react";
 function Manage_user() {
   const loadingData = [1, 2, 3, 4];
   const { data, isLoading } = useUsersQuery({
-    role: "user",
+    role: "user"
   });
+  console.log(data);
+  const { data: userData, isLoading } = useUsersQuery({
+  });
+  console.log(userData);
   const [deleteUser] = useDeleteUserMutation();
 
   const users = data?.data?.data;
