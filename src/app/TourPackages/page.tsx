@@ -43,13 +43,6 @@ function TourPage() {
       </div>
     );
   }
-  if (tourPackages.data.meta.total === 0) {
-    return (
-      <div className="min-h-screen">
-        <h1 className="text-center text-3xl text-blue-600">Data not found</h1>
-      </div>
-    );
-  }
 
   return (
     <div className="max-w-7xl mx-auto">
