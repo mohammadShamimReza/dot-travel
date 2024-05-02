@@ -20,8 +20,6 @@ import BookingModal from "./BookingModal";
     const tourPackageData = tourPackageDatas?.data;
 
     const desc = ["terrible", "bad", "normal", "good", "wonderful"];
-
-
     return (
       <div className="container mx-auto p-4 min-h-screen">
         {" "}
@@ -84,7 +82,9 @@ import BookingModal from "./BookingModal";
               <br />
               <br />
               <span className="font-bold text-gray-800">Capability: </span>
-              <span className="text-green-600">{tourPackageData?.maxUser}</span>
+              <span className="text-green-600">
+                {tourPackageData?.maxCustomer}
+              </span>
             </p>
             <br />
             <br />
