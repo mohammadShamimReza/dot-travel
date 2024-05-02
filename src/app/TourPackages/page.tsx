@@ -66,7 +66,7 @@ function TourPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 ">
           {tourPackages.data.meta.total === 0 ? (
             <h1 className="text-center text-3xl text-blue-600">
-              Data not found
+              Sorry! Tour not found
             </h1>
           ) : (
             tourPackages?.data?.data
