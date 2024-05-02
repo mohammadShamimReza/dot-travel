@@ -71,20 +71,26 @@ function TourPage() {
 
       <div className="flex justify-center align-middle pb-20 pt-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 ">
-          {tourPackages?.data?.data
-            ?.slice(0, 8)
-            .map(
-              (
-                tourPackage: DynamicTourPackageData,
-                index: Key | null | undefined
-              ) => (
-                <DynamicTourCartContant
-                  key={index}
-                  tourPackage={tourPackage}
-                  isLoading={isLoading}
-                />
+          {tourPackages.data.meta.total === 0 ? (
+            <h1 className="text-center text-3xl text-blue-600">
+              Data not found
+            </h1>
+          ) : (
+            tourPackages?.data?.data
+              ?.slice(0, 8)
+              .map(
+                (
+                  tourPackage: DynamicTourPackageData,
+                  index: Key | null | undefined
+                ) => (
+                  <DynamicTourCartContant
+                    key={index}
+                    tourPackage={tourPackage}
+                    isLoading={isLoading}
+                  />
+                )
               )
-            )}
+          )}
         </div>
       </div>
     </div>
