@@ -46,7 +46,7 @@ function TourPage() {
   if (tourPackages.data.meta.total === 0) {
     return (
       <div className="min-h-screen">
-        <h1 className="text-center text-9xl text-blue-600">Data not found</h1>
+        <h1 className="text-center text-3xl text-blue-600">Data not found</h1>
       </div>
     );
   }
