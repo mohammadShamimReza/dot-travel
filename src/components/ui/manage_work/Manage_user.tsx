@@ -11,7 +11,7 @@ function Manage_user() {
     role: "user"
   });
   console.log(data);
-  const { data: userData, isLoading } = useUsersQuery({
+  const { data: userData } = useUsersQuery({
   });
   console.log(userData);
   const [deleteUser] = useDeleteUserMutation();
