@@ -60,7 +60,7 @@ const Contact = () => {
               onChange={handleChange}
               placeholder="Your Message"
               rows={4}
-              className="w-full border p-2 rounded-md"
+              className="w-full border p-2 rounded-md "
             />
           </div>
           <div>

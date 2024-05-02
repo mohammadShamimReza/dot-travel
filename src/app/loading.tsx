@@ -8,6 +8,8 @@ const Loading = () => {
         src="https://www.svgrepo.com/show/509001/avatar-thinking-9.svg"
         className="rounded-full h-28 w-28"
         alt="loading state"
+        width={500}
+        height={500}
       />
     </div>
   );

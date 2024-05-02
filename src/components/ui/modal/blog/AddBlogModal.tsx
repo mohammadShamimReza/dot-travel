@@ -99,7 +99,7 @@ function AddBlogModal() {
                 required: "This field is required",
               })}
               rows={4}
-              className="w-full border p-2 rounded-md"
+              className="w-full border p-2 rounded-md h-32"
             />
             {/* {errors.description && (
               <p className="text-red-500 text-sm">

@@ -90,7 +90,7 @@ function AddFaqModal() {
               id="description"
               // name="description"
               rows={4}
-              className="w-full border p-2 rounded-md"
+              className="w-full border p-2 rounded-md h-32"
               {...register("description", { required: true })}
             />
           </div>

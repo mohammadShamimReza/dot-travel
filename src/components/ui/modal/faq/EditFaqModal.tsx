@@ -89,7 +89,7 @@ function EditFaqModal({ faqs }: { faqs: IFaq }) {
             <textarea
               name="description"
               defaultValue={faqsData.description}
-              className="w-full border p-2 rounded-md"
+              className="w-full border p-2 rounded-md h-32"
             ></textarea>
           </div>
           <div className="flex justify-end">

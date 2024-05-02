@@ -86,7 +86,7 @@ function PackageReviewModal({
               id="review"
               name="review"
               placeholder="Tour review"
-              className="w-full border p-2 rounded-md"
+              className="w-full border p-2 rounded-md h-32"
             ></textarea>
           </div>
 

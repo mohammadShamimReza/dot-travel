@@ -100,7 +100,7 @@ function EditPackageModal({ packaged }: { packaged: IPackage }) {
               name="description"
               defaultValue={packageTourData.description}
               placeholder="Category description"
-              className="w-full border p-2 rounded-md"
+              className="w-full border p-2 rounded-md h-32"
             ></textarea>
           </div>
           <div>

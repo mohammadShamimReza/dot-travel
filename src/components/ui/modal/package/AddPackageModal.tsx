@@ -34,7 +34,7 @@ function AddPackageModal() {
         price: parseInt(data.price),
         from: data.from,
         to: data.to,
-        maxUser: parseInt(data.maxUser),
+        maxCustomer: parseInt(data.maxUser),
         destination: data.destination,
         packageImage: data.packageImage,
       });
@@ -92,16 +92,16 @@ function AddPackageModal() {
             >
               Package Description
             </label>
-            <input
+            <textarea
               required
               id="description"
-              type="text"
+              // type="text"
               // name="description"
               placeholder="Package Description"
               {...register("description", {
                 required: "This field is required",
               })}
-              className="w-full border p-2 rounded-md"
+              className="w-full border p-2 rounded-md h-32"
             />
           </div>
 
