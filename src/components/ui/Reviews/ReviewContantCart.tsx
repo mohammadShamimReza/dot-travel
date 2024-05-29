@@ -1,11 +1,10 @@
 import { useRaviewTourQuery } from "@/redux/api/ratingAndReviewTourApi";
-import { IUser } from "@/types";
+import { ICustomer } from "@/types";
 import ReviewContant from "./ReviewContant";
 
 const ReviewContantCart = () => {
   const { data } = useRaviewTourQuery({});
   const reviewDatas = data?.data;
-
 
   type reviewType = {
     id: string;
@@ -13,8 +12,10 @@ const ReviewContantCart = () => {
     rating: string;
     userId: string;
     packageId: string;
-    user: IUser;
+    Customer: ICustomer;
   };
+
+  console.log(reviewDatas);
 
   return (
     <div className="">
@@ -22,8 +23,8 @@ const ReviewContantCart = () => {
         {reviewDatas?.slice(0, 4).map((reviewData: reviewType) => (
           <ReviewContant
             key={reviewData.id}
-            author={reviewData.user.firstName}
-            image={reviewData.user.profileImage}
+            author={reviewData.Customer.firstName}
+            image={reviewData.Customer.profileImage}
             rating={parseInt(reviewData?.rating)}
             content={reviewData.review}
           />

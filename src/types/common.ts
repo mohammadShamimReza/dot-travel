@@ -47,7 +47,7 @@ export interface IPackageReviewAndRating {
   packageId: string;
   rating: string;
   review: string;
-  user: IUser;
+  user: ICustomer;
   userId: string;
 }
 
@@ -63,7 +63,7 @@ export interface IBlog {
   description: string;
 }
 
-export interface IUser {
+export interface ICustomer {
   id: string;
   firstName: string;
   lastName: string;
@@ -80,7 +80,7 @@ export interface IBookPackage {
   userId: string;
   packageId: string;
   package: IPackage;
-  user: IUser;
+  user: ICustomer;
 }
 
 export interface IAddToCartPackage {
