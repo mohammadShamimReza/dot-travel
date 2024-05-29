@@ -1,6 +1,6 @@
 "use client";
 import { useUpdateUserMutation, useUsersQuery } from "@/redux/api/userApi";
-import { IUser } from "@/types";
+import { ICustomer } from "@/types";
 import { Button, Modal, Select, message } from "antd";
 import { useState } from "react";
 
@@ -76,7 +76,7 @@ function AddAdminModal() {
           onChange={(value) => setSelectedUserId(value)}
           value={selectedUserId}
         >
-          {user?.data?.map((user: IUser) => (
+          {user?.data?.map((user: ICustomer) => (
             <Option key={user.id} value={user.id}>
               {user.email}
             </Option>

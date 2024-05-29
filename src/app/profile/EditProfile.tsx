@@ -1,10 +1,10 @@
 "use client";
 import { useUpdateUserMutation } from "@/redux/api/userApi";
-import { IUser } from "@/types";
+import { ICustomer } from "@/types";
 import { Modal, message } from "antd";
 import { useState } from "react";
 
-function EditProfile({ userData }: { userData: IUser }) {
+function EditProfile({ userData }: { userData: ICustomer }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const [updateUser, { error }] = useUpdateUserMutation();

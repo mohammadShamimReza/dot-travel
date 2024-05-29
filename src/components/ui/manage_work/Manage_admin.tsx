@@ -1,6 +1,6 @@
 "use client";
 import { useUpdateUserMutation, useUsersQuery } from "@/redux/api/userApi";
-import { IUser } from "@/types";
+import { ICustomer } from "@/types";
 import { Avatar, Card, message } from "antd";
 import { useRef } from "react";
 import { RxAvatar } from "react-icons/rx";
@@ -51,7 +51,7 @@ function Manage_admin() {
     <>
       <AddAdminModal />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {admins?.data?.map((admin: IUser) => (
+        {admins?.data?.map((admin: ICustomer) => (
           <Card
             key={admin.id}
             title={admin.firstName + " " + admin.lastName}

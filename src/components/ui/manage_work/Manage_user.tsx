@@ -1,6 +1,6 @@
 "use client";
 import { useDeleteUserMutation, useUsersQuery } from "@/redux/api/userApi";
-import { IUser } from "@/types";
+import { ICustomer } from "@/types";
 import { Avatar, Card, message } from "antd";
 import Image from "next/image";
 import { useRef } from "react";
@@ -8,11 +8,10 @@ import { useRef } from "react";
 function Manage_user() {
   const loadingData = [1, 2, 3, 4];
   const { data, isLoading } = useUsersQuery({
-    role: "user"
+    role: "user",
   });
   console.log(data);
-  const { data: userData } = useUsersQuery({
-  });
+  const { data: userData } = useUsersQuery({});
   console.log(userData);
   const [deleteUser] = useDeleteUserMutation();
 
@@ -55,7 +54,7 @@ function Manage_user() {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-      {users?.map((admin: IUser) => (
+      {users?.map((admin: ICustomer) => (
         <Card
           key={admin.id}
           title={admin.firstName + " " + admin.lastName}
