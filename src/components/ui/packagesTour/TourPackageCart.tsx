@@ -9,6 +9,8 @@ const TourPackageCart = () => {
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { data: tourPackages, isLoading } = usePackageTourQuery({});
+  console.log(tourPackages);
+
 
   if (!tourPackages) {
     return (
